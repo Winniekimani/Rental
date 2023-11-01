@@ -8,7 +8,9 @@ import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebServlet;
 
+@WebServlet("/jonathan")
 public class Hello implements Servlet {
 
     @Override
@@ -35,7 +37,7 @@ public class Hello implements Servlet {
     @Override
     public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {
         PrintWriter print = servletResponse.getWriter();
-        print.print("<b>hello world</b>");
+        print.print("<b>hello world</b>"+servletRequest.getParameter("name"));
 
     }
     
