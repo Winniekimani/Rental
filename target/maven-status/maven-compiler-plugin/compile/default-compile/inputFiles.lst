@@ -1,4 +1,5 @@
-/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/servlet/HelloAgain.java
-/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/index/Login.java
-/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/servlet/Hello.java
-/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/servlet/HelloFinal.java
+/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/bean/HouseBean.java
+/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/home/Home.java
+/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/auth/Login.java
+/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/model/House.java
+/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/bean/HouseBeanI.java
