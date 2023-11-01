@@ -1,5 +1,6 @@
 package com.winnie.index;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,11 +17,14 @@ public class Login extends HttpServlet {
         String username=req.getParameter("username");
         String password=req.getParameter("password");
 
-        PrintWriter print = resp.getWriter();
+
 
         if (username.equals("winnie") && password.equals("kimani")){
-            print.write("welcome to rental software");
+            RequestDispatcher requestDispatcher=req.getRequestDispatcher("./app/Home.html");
+            requestDispatcher.include(req,resp);
         }else{
+            PrintWriter print = resp.getWriter();
+            //print.write("welcome to rental software");
             print.write("<html><body>invalid login details<a href =\".\">Login again</a></body></html>");
         }
 
