@@ -10,9 +10,9 @@
 2.javax.servlet.http-http servlet
 
 ### ways of implementing servlet
-### implement servlet class
-### extend generic servlet class
-### extend http servlet class
+-implement servlet class
+-extend generic servlet class
+-extend http servlet class
 
 ### Generic servlet
 ### Http servlet
