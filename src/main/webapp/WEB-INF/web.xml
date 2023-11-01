@@ -9,10 +9,33 @@
     <servlet-class>com.winnie.servlet.Hello</servlet-class>
   </servlet>
 
+  <servlet>
+    <servlet-name>WinnieAgain</servlet-name>
+    <servlet-class>com.winnie.servlet.HelloAgain</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>WinnieFinal</servlet-name>
+    <servlet-class>com.winnie.servlet.HelloFinal</servlet-class>
+  </servlet>
+
   <servlet-mapping>
     <servlet-name>Winnie</servlet-name>
     <url-pattern>/jonathan</url-pattern>
 
   </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>WinnieAgain</servlet-name>
+    <url-pattern>/keziah</url-pattern>
+
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>WinnieFinal</servlet-name>
+    <url-pattern>/ivy</url-pattern>
+
+  </servlet-mapping>
+
 </web-app>
 
