@@ -1,6 +1,7 @@
 package com.winnie.auth;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
@@ -23,15 +24,18 @@ public class Login extends HttpServlet {
     }
         public  void doPost(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
 
+            ServletContext ctx=getServletContext();
+
 
         String username=req.getParameter("username");
         String password=req.getParameter("password");
 
 
 
-        if (username.equals(getInitParameter("username")) &&
-                password.equals(getInitParameter("password"))){
-            req.setAttribute("homeInfo","welcome to rental software!!");
+        if (username.equals(ctx.getInitParameter("username")) &&
+                password.equals(ctx.getInitParameter("password"))){
+            ctx.setAttribute("username",username);
+
             RequestDispatcher requestDispatcher=req.getRequestDispatcher("./home");
             requestDispatcher.forward(req,resp);
             //resp.sendRedirect("./app/Home.html");

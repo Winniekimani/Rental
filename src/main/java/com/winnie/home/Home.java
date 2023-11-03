@@ -4,6 +4,7 @@ import com.winnie.app.bean.HouseBean;
 import com.winnie.app.bean.HouseBeanI;
 import com.winnie.app.model.House;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,6 +21,7 @@ public class Home extends HttpServlet {
     public  void doPost(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
 
 
+        ServletContext ctx=getServletContext();
 
 
         /*String homeInfo=(String) req.getAttribute("homeInfo");
@@ -55,6 +57,7 @@ public class Home extends HttpServlet {
                 "    </style>\n" +
                 "</head>\n" +
                 "<body>\n" +
+                 "welcome"+ctx.getAttribute("username")+"</br>"+
                 "\n" +
                 "<h2>List of Available Houses</h2>\n" );
         print.write(housebean.listOfHousesAvailable());
