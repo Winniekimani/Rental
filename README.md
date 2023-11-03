@@ -31,3 +31,7 @@
 
 ### servletRequest-handles request,get parameters
 ### serveletDispature-enables response,printwriter
+
+### servlet context done
+### http session
+### event and listeners
