@@ -1,5 +1,8 @@
 package com.winnie.home;
 
+import com.winnie.app.View.html.AppPage;
+import com.winnie.app.bean.HouseBean;
+import com.winnie.app.bean.HouseBeanI;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.ServletContext;
@@ -20,8 +23,11 @@ public class HomeJournal extends HttpServlet {
         if (StringUtils.isNotBlank((String) httpSession.getAttribute("loggedIn"))){
             ServletContext ctx=getServletContext();
 
+            HouseBeanI houseBeanI = new HouseBean();
+            new AppPage().renderHtml(req, resp, 1,
+                    "<h2>Journals </h2> Journals list/register will go here");
 
-            PrintWriter print = resp.getWriter();
+           /* PrintWriter print = resp.getWriter();
             print.write("<!DOCTYPE html>\n" +
                     "<html>\n" +
                     "<head>\n" +
@@ -80,7 +86,7 @@ public class HomeJournal extends HttpServlet {
             print.write("\n" +
                     "<a href=\"./logout\">Logout</a>" +
                     "</body>\n" +
-                    "</html>");
+                    "</html>");*/
 
         }
 

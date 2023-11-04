@@ -1,5 +1,6 @@
 package com.winnie.home;
 
+import com.winnie.app.View.html.AppPage;
 import com.winnie.app.bean.HouseBean;
 import com.winnie.app.bean.HouseBeanI;
 import com.winnie.app.model.House;
@@ -24,11 +25,11 @@ public class Home extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
         HttpSession httpSession= req.getSession();
         if (StringUtils.isNotBlank((String) httpSession.getAttribute("loggedIn"))){
-            ServletContext ctx=getServletContext();
 
             HouseBeanI housebean = new HouseBean();
+            new AppPage().renderHtml(req,resp,0,"<h2>List of Available Houses</h2>\n"+housebean.listOfHousesAvailable());
 
-            PrintWriter print = resp.getWriter();
+            /*PrintWriter print = resp.getWriter();
 
             print.write("<!DOCTYPE html>\n" +
                     "<html>\n" +
@@ -54,13 +55,7 @@ public class Home extends HttpServlet {
                     "    </style>\n" +
                     "</head>\n" +
                     "<body>\n" +
-                    "<ul class=\"topnav\">\n" +
-                    "<li><a class=\"active\" href=\"./home\">Home</a></li>\n" +
-                    "<li><a href=\"./homejournals\">HouseJournals</a></li>\n" +
-                    "<li><a href=\"#tenants\">Tenants</a></li>\n" +
-                    "<li><a href=\"#payments\">Payments</a></li>\n" +
-                    "<li><a href=\"#houseTypes\">House Types</a></li>\n" +
-                    "</ul>\n" +
+                    ................. +
                     "welcome" + ctx.getAttribute("username") + "</br>\n" +
                     "<h2>List of Available Houses</h2>\n" +
                     "<table>\n" + housebean.listOfHousesAvailable() + "</table>\n" +
@@ -68,7 +63,7 @@ public class Home extends HttpServlet {
                     "<a href=\"./logout\">Logout</a>\n" +
                     "</body>\n" +
                     "</html>");
-
+*/
         }
 
         else{
