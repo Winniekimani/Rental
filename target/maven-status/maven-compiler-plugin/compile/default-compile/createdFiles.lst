@@ -17,7 +17,7 @@ com/winnie/app/bean/HouseBeanI.class
 com/winnie/database/Database.class
 com/winnie/action/Payments.class
 com/winnie/app/bean/HouseBean.class
+com/winnie/action/UserAction.class
 com/winnie/event/AppInit.class
-com/winnie/app/View/huh/yo.class
 com/winnie/event/RequestEvent.class
 com/winnie/app/model/entity/User.class

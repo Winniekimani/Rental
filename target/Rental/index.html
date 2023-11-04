@@ -14,13 +14,22 @@
       background-color: #f2f2f2; /* Set background color */
     }
 
-    .login-box {
+    .form-container {
       width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 10px 0; /* Added margin for spacing between forms */
+    }
+
+    .login-box, .register-box {
+      width: 100%;
       background-color: white;
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       padding: 20px;
       box-sizing: border-box;
+      margin-bottom: 10px; /* Added margin for spacing between boxes */
     }
 
     form {
@@ -71,24 +80,45 @@
 </head>
 <body>
 
-<div class="login-box">
-  <h2 style="text-align: center;">Rental Software</h2>
+<div class="form-container">
+  <div class="login-box">
+    <h2 style="text-align: center;">Rental Software</h2>
 
-  <form action="./login" method="post">
-    <div class="container">
-      <label for="username"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="username" required>
+    <form action="./login" method="post">
+      <div class="container">
+        <label for="username"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="username" required>
 
-      <label for="password"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="password" required>
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" required>
 
-      <button type="submit">Login</button>
-    </div>
+        <button type="submit">Login</button>
+      </div>
 
-    <div class="container">
-      <span class="psw">Forgot <a href="#">password?</a></span>
-    </div>
-  </form>
+      <div class="container">
+        <span class="psw">Forgot <a href="#">password?</a></span>
+      </div>
+    </form>
+  </div>
+
+  <div class="register-box">
+    <h2 style="text-align: center;">Rental Software - Register</h2>
+
+    <form action="./user" method="post">
+      <div class="container">
+        <label for="username"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="username" required>
+
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" required>
+
+        <label for="confirmPassword"><b>Confirm Password</b></label>
+        <input type="password" placeholder="Confirm Password" name="confirmPassword" required>
+
+        <button type="submit">Register</button>
+      </div>
+    </form>
+  </div>
 </div>
 
 </body>
