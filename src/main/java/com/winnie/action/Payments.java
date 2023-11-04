@@ -1,4 +1,4 @@
-package com.winnie.home;
+package com.winnie.action;
 
 import com.winnie.app.View.html.AppPage;
 import com.winnie.app.bean.HouseBean;

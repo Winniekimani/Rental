@@ -1,12 +1,10 @@
-package com.winnie.home;
+package com.winnie.action;
 
 import com.winnie.app.View.html.AppPage;
 import com.winnie.app.bean.HouseBean;
 import com.winnie.app.bean.HouseBeanI;
-import com.winnie.app.model.House;
 import org.apache.commons.lang3.StringUtils;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,10 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 @WebServlet("/home")
 public class Home extends HttpServlet {

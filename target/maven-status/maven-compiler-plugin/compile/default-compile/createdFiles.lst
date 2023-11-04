@@ -9,10 +9,13 @@ com/winnie/app/View/css/AppCss.class
 com/winnie/app/model/view/MenuLinkStatus.class
 com/winnie/auth/Login.class
 com/winnie/app/View/toolbar/Menu.class
-com/winnie/app/model/House.class
+com/winnie/app/model/entity/House.class
 com/winnie/home/HomeJournal.class
 com/winnie/app/bean/HouseBeanI.class
+com/winnie/database/Database.class
 com/winnie/app/bean/HouseBean.class
 com/winnie/home/Payments.class
+com/winnie/event/AppInit.class
 com/winnie/app/View/huh/yo.class
 com/winnie/home/Tenants.class
+com/winnie/app/model/entity/User.class

@@ -1,5 +1,7 @@
 package com.winnie.auth;
 
+import com.winnie.app.model.entity.User;
+import com.winnie.database.Database;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.ServletContext;
@@ -30,28 +32,42 @@ public class Login extends HttpServlet {
 
 
 
-            HttpSession httpSession= req.getSession(true);
-            httpSession.setAttribute("loggedIn",new Date().getTime() + "");
+
 
             ServletContext ctx=getServletContext();
         String username=req.getParameter("username");
         String password=req.getParameter("password");
 
+            Database database = Database.getDbInstance();
+            System.out.println("what time was this database created:" +database.getDatabaseCreateAt());
+
+            for (User user : database.getUsers()){
+
+                if (username.equals(user.getUsername()) && password.equals(user.getPassword())){
+                    HttpSession httpSession= req.getSession(true);
+                    httpSession.setAttribute("loggedIn",new Date().getTime() + "");
+                    httpSession.setAttribute("username",username);
+
+                    resp.sendRedirect("./home");
+
+                }
+            }
+            PrintWriter print = resp.getWriter();
+            print.write("<html><body>invalid login details<a href =\".\">Login again</a></body></html>");
 
 
-        if (username.equals(ctx.getInitParameter("username")) &&
+
+        /*if (username.equals(ctx.getInitParameter("username")) &&
                 password.equals(ctx.getInitParameter("password"))){
             httpSession.setAttribute("username",username);
 
             resp.sendRedirect("./home");
-            //RequestDispatcher requestDispatcher=req.getRequestDispatcher("./home");
-            //requestDispatcher.forward(req,resp);
-            //resp.sendRedirect("./app/Home.html");
+
         }else{
             PrintWriter print = resp.getWriter();
             //print.write("welcome to rental software");
             print.write("<html><body>invalid login details<a href =\".\">Login again</a></body></html>");
-        }
+        }*/
 
     }
 }

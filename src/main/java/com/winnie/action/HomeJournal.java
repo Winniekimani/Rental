@@ -1,4 +1,4 @@
-package com.winnie.home;
+package com.winnie.action;
 
 import com.winnie.app.View.html.AppPage;
 import com.winnie.app.bean.HouseBean;
@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet("/homejournals")
 public class HomeJournal extends HttpServlet {

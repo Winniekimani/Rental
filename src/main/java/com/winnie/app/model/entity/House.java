@@ -1,4 +1,4 @@
-package com.winnie.app.model;
+package com.winnie.app.model.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
