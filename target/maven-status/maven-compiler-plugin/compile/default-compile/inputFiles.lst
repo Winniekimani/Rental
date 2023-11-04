@@ -6,10 +6,13 @@
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/auth/Logout.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/View/css/AppCss.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/View/toolbar/BottomToolBar.java
+/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/home/HouseTypes.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/View/huh/yo.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/View/toolbar/Menu.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/View/html/AppPage.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/auth/Login.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/home/HomeJournal.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/model/view/MenuLink.java
+/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/home/Payments.java
+/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/home/Tenants.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/model/view/MenuLinkStatus.java

@@ -1,4 +1,40 @@
 package com.winnie.home;
 
-public class HouseTypes {
+import com.winnie.app.View.html.AppPage;
+import com.winnie.app.bean.HouseBean;
+import com.winnie.app.bean.HouseBeanI;
+import org.apache.commons.lang3.StringUtils;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+
+@WebServlet("/housetypes")
+
+public class HouseTypes  extends HttpServlet {
+
+    public void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
+        HttpSession httpSession= req.getSession();
+        if (StringUtils.isNotBlank((String) httpSession.getAttribute("loggedIn"))){
+
+            HouseBeanI housebean = new HouseBean();
+            new AppPage().renderHtml(req,resp,3,"<h2>housetypes </h2>find our available housetypes");;
+
+        }
+
+        else{
+            resp.sendRedirect("./");
+        }
+
+
+
+    }
+
+
+
 }
+

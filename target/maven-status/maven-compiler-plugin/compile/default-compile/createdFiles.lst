@@ -1,5 +1,6 @@
 com/winnie/app/View/toolbar/TopToolBar.class
 com/winnie/app/View/toolbar/BottomToolBar.class
+com/winnie/home/HouseTypes.class
 com/winnie/app/View/html/AppPage.class
 com/winnie/home/Home.class
 com/winnie/app/model/view/MenuLink.class
@@ -12,4 +13,6 @@ com/winnie/app/model/House.class
 com/winnie/home/HomeJournal.class
 com/winnie/app/bean/HouseBeanI.class
 com/winnie/app/bean/HouseBean.class
+com/winnie/home/Payments.class
 com/winnie/app/View/huh/yo.class
+com/winnie/home/Tenants.class
