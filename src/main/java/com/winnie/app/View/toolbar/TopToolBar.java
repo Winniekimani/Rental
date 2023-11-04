@@ -16,10 +16,10 @@ public class TopToolBar  implements Serializable ,Menu{
 
     {
         links.add(new MenuLink("./home", "Home", MenuLinkStatus.ACTIVE));
-        links.add(new MenuLink("./homejournals", "HomeJournals", MenuLinkStatus.NOT_ACTIVE));
-        links.add(new MenuLink("./tenants", "tenants", MenuLinkStatus.NOT_ACTIVE));
-        links.add(new MenuLink("./housetypes", "housetypes", MenuLinkStatus.NOT_ACTIVE));
-        links.add(new MenuLink("./payments", "payments", MenuLinkStatus.NOT_ACTIVE));
+        links.add(new MenuLink("./properties", "Houses", MenuLinkStatus.NOT_ACTIVE));
+        links.add(new MenuLink("./tenants", "Tenants", MenuLinkStatus.NOT_ACTIVE));
+        links.add(new MenuLink("./housetypes","HouseTypes", MenuLinkStatus.NOT_ACTIVE));
+        links.add(new MenuLink("./payments", "Payments", MenuLinkStatus.NOT_ACTIVE));
     }
 
     /*@Override
@@ -31,7 +31,7 @@ public class TopToolBar  implements Serializable ,Menu{
         for (MenuLink link:links)
                menuBar+= "<li><a "+(link.getStatus()== MenuLinkStatus.ACTIVE? "Class=\"active\"" : "")
                        + "href=\"" + link.getUrl() + "\">"+link.getLabel() + "</a></li>\n" ;
-                //"<li><a href=\"./homejournals\">HouseJournals</a></li>\n" +
+                //"<li><a href=\"./houses\">Houses/a></li>\n" +
                 //"<li><a href=\"#tenants\">Tenants</a></li>\n" +
                 //"<li><a href=\"#payments\">Payments</a></li>\n" +
                // "<li><a href=\"#houseTypes\">House Types</a></li>\n" +

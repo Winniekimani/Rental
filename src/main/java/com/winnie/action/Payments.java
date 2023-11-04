@@ -20,7 +20,7 @@ public class Payments  extends HttpServlet {
         HttpSession httpSession= req.getSession();
         if (StringUtils.isNotBlank((String) httpSession.getAttribute("loggedIn"))){
 
-            HouseBeanI housebean = new HouseBean();
+
             new AppPage().renderHtml(req,resp,4,"<h2>Payments </h2>payment info available here");
 
         }

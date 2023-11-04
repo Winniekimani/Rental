@@ -21,7 +21,18 @@ public class Home extends HttpServlet {
         if (StringUtils.isNotBlank((String) httpSession.getAttribute("loggedIn"))){
 
             HouseBeanI housebean = new HouseBean();
-            new AppPage().renderHtml(req,resp,0,"<h2>List of Available Houses</h2>\n"+housebean.listOfHousesAvailable());
+            new AppPage().renderHtml(req,resp,0,"<h2>List of Available Houses</h2>\n"+
+                    "<br/>Add House<br/><form action=\"./houses\" method=\"post\">" +
+
+                    "<label for=\"houseType\">House Type:</label><br>" +
+                    "<input type=\"text\" id=\"houseType\" name=\"houseType\"><br>"+
+                   " <label for=\"houseLocation\">House Location:</label><br>"+
+                    "<input type=\"text\" id=\"houseLocation\" name=\"houseLocation\"><br>"+
+                   " <label for=\"housePrice\">House Price:</label><br>"+
+                    "<input type=\"text\" id=\"housePrice\" name=\"housePrice\"><br><br>"+
+                    "<input type=\"submit\" value=\"Add House\">" +
+                    "</form><br/>"+housebean.listOfHousesAvailable());
+
 
             /*PrintWriter print = resp.getWriter();
 

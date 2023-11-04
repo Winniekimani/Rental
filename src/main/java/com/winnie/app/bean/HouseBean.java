@@ -14,7 +14,7 @@ public class HouseBean implements HouseBeanI,Serializable {
         List<House> houses= Database.getDbInstance().getHouses();
 
         StringBuilder trBuilder = new StringBuilder();
-        trBuilder.append("<table><tr><th>HouseType</th><th>Location</th><th>HousePrice</th>");
+        trBuilder.append("<table><tr><th>HouseType</th><th>HouseLocation</th><th>HousePrice</th>");
         for (House house: houses)
             trBuilder.append(house.tableRow());
 

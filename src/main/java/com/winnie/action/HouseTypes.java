@@ -21,7 +21,7 @@ public class HouseTypes  extends HttpServlet {
         HttpSession httpSession= req.getSession();
         if (StringUtils.isNotBlank((String) httpSession.getAttribute("loggedIn"))){
 
-            HouseBeanI housebean = new HouseBean();
+
             new AppPage().renderHtml(req,resp,3,"<h2>housetypes </h2>find our available housetypes");;
 
         }

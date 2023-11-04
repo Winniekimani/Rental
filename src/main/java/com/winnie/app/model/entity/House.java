@@ -6,7 +6,7 @@ import java.text.DecimalFormat;
 
 public class House implements Serializable {
     private String houseType;
-    private String Location;
+    private String houseLocation;
 
     //no of rooms
     //housename
@@ -15,11 +15,12 @@ public class House implements Serializable {
     public House() {
     }
 
-    public House(String houseType, String location, BigDecimal housePrice) {
+    public House(String houseType, String houseLocation, BigDecimal housePrice) {
         this.houseType = houseType;
-        Location = location;
+        this.houseLocation = houseLocation;
         this.housePrice = housePrice;
     }
+
 
     public String getHouseType() {
         return houseType;
@@ -29,12 +30,12 @@ public class House implements Serializable {
         this.houseType = houseType;
     }
 
-    public String getLocation() {
-        return Location;
+    public String getHouseLocation() {
+        return houseLocation;
     }
 
-    public void setLocation(String location) {
-        Location = location;
+    public void setHouseLocation(String houseLocation) {
+        this.houseLocation = houseLocation;
     }
 
     public BigDecimal getHousePrice() {
@@ -49,7 +50,7 @@ public class House implements Serializable {
         StringBuilder trBuilder = new StringBuilder();
         trBuilder.append("<tr>");
         trBuilder.append("<td>").append(getHouseType().isBlank()?"":getHouseType().trim()).append("</td>");
-        trBuilder.append("<td>").append(getLocation().isBlank()?"":getLocation().trim()).append("</td>");
+        trBuilder.append("<td>").append(getHouseLocation().isBlank()?"": getHouseLocation().trim()).append("</td>");
         trBuilder.append("<td>").append(getHousePrice()==null?""
             :new DecimalFormat("#,###.##").format(getHousePrice())).append("</td>");
         trBuilder.append("<tr>");

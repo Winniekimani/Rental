@@ -20,7 +20,7 @@ public class Tenants extends HttpServlet {
         HttpSession httpSession= req.getSession();
         if (StringUtils.isNotBlank((String) httpSession.getAttribute("loggedIn"))){
 
-            HouseBeanI housebean = new HouseBean();
+
             new AppPage().renderHtml(req,resp,2,"<h2>tenants </h2>tenants list available here");
 
         }
