@@ -7,6 +7,9 @@ import java.text.DecimalFormat;
 public class House implements Serializable {
     private String houseType;
     private String Location;
+
+    //no of rooms
+    //housename
     private BigDecimal housePrice;
 
     public House() {

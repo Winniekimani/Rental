@@ -1,6 +1,7 @@
-com/winnie/auth/Logout.class
 com/winnie/app/bean/HouseBeanI.class
 com/winnie/app/bean/HouseBean.class
 com/winnie/home/Home.class
+com/winnie/auth/Logout.class
 com/winnie/auth/Login.class
 com/winnie/app/model/House.class
+com/winnie/home/HomeJournal.class

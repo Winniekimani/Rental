@@ -29,35 +29,43 @@ public class Home extends HttpServlet {
             HouseBeanI housebean = new HouseBean();
 
             PrintWriter print = resp.getWriter();
+
             print.write("<!DOCTYPE html>\n" +
                     "<html>\n" +
                     "<head>\n" +
                     "    <style>\n" +
-                    "        table {\n" +
-                    "          font-family: arial, sans-serif;\n" +
-                    "          border-collapse: collapse;\n" +
-                    "          width: 100%;\n" +
+                    "        ul.topnav {\n" +
+                    "            list-style-type: none;\n" +
+                    "            margin: 0;\n" +
+                    "            padding: 0;\n" +
+                    "            overflow: hidden;\n" +
+                    "            background-color: #333;\n" +
                     "        }\n" +
-                    "\n" +
-                    "        td, th {\n" +
-                    "          border: 1px solid #dddddd;\n" +
-                    "          text-align: left;\n" +
-                    "          padding: 8px;\n" +
+                    "        ul.topnav li { float: left; }\n" +
+                    "        ul.topnav li a {\n" +
+                    "            display: block;\n" +
+                    "            color: white;\n" +
+                    "            text-align: center;\n" +
+                    "            padding: 14px 16px;\n" +
+                    "            text-decoration: none;\n" +
                     "        }\n" +
-                    "\n" +
-                    "        tr:nth-child(even) {\n" +
-                    "          background-color: #dddddd;\n" +
-                    "        }\n" +
+                    "        ul.topnav li a:hover { background-color: #ddd; }\n" +
+                    "        ul.topnav li a.active { background-color: #04AA6D; }\n" +
                     "    </style>\n" +
                     "</head>\n" +
                     "<body>\n" +
-                    "welcome"+ctx.getAttribute("username")+"</br>"+
-                    "\n" +
-                    "<h2>List of Available Houses</h2>\n" );
-            print.write(housebean.listOfHousesAvailable());
-            print.write("\n" +
-                    "serverInfo:"+ctx.getServerInfo() + "</br>" +
-                    "<a href=\"./logout\">Logout</a>" +
+                    "<ul class=\"topnav\">\n" +
+                    "<li><a class=\"active\" href=\"./home\">Home</a></li>\n" +
+                    "<li><a href=\"./homejournals\">HouseJournals</a></li>\n" +
+                    "<li><a href=\"#tenants\">Tenants</a></li>\n" +
+                    "<li><a href=\"#payments\">Payments</a></li>\n" +
+                    "<li><a href=\"#houseTypes\">House Types</a></li>\n" +
+                    "</ul>\n" +
+                    "welcome" + ctx.getAttribute("username") + "</br>\n" +
+                    "<h2>List of Available Houses</h2>\n" +
+                    "<table>\n" + housebean.listOfHousesAvailable() + "</table>\n" +
+                    "serverInfo:" + ctx.getServerInfo() + "</br>\n" +
+                    "<a href=\"./logout\">Logout</a>\n" +
                     "</body>\n" +
                     "</html>");
 
