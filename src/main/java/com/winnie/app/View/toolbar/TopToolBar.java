@@ -24,22 +24,7 @@ public class TopToolBar  implements Serializable ,Menu{
         links.add(new MenuLink("./payments", "Payments", MenuLinkStatus.NOT_ACTIVE));
     }
 
-    /*@Override
-    public String menu(List<MenuLink> links) {
 
-
-        String menuBar="<ul class=\"topnav\">\n" +;
-
-        for (MenuLink link:links)
-               menuBar+= "<li><a "+(link.getStatus()== MenuLinkStatus.ACTIVE? "Class=\"active\"" : "")
-                       + "href=\"" + link.getUrl() + "\">"+link.getLabel() + "</a></li>\n" ;
-                //"<li><a href=\"./houses\">Houses/a></li>\n" +
-                //"<li><a href=\"#tenants\">Tenants</a></li>\n" +
-                //"<li><a href=\"#payments\">Payments</a></li>\n" +
-               // "<li><a href=\"#houseTypes\">House Types</a></li>\n" +
-                menuBar+="</ul>\n" ;
-        return menuBar;
-    }*/
 
     @Override
     public String menu(int activeLinkIndex) {
@@ -52,8 +37,7 @@ public class TopToolBar  implements Serializable ,Menu{
                     + "href=\"" + link.getUrl() + "\">"+link.getLabel() + "</a></li>\n" ;
         //"<li><a href=\"./homejournals\">HouseJournals</a></li>\n" +
         //"<li><a href=\"#tenants\">Tenants</a></li>\n" +
-        //"<li><a href=\"#payments\">Payments</a></li>\n" +
-        // "<li><a href=\"#houseTypes\">House Types</a></li>\n" +
+
         menuBar+="</ul>\n" ;
         return menuBar;
     }

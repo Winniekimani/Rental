@@ -39,18 +39,6 @@ public class HouseTypeDropDown implements OptionMenu{
         return stringBuilder.toString();
 
 
-       /* StringBuilder stringBuilder = new StringBuilder()
-                .append(
-                        "<label for=\"houseType\">HouseType</label>\n" +
-                                "<select  id=\"houseType\" name=\"houseType\">\n");
 
-        for (Option houseType : houseTypeList) {
-            stringBuilder.append("<option value=\"").append(houseType.getOptionName()).append("\">")
-                    .append(houseType.getLabel())
-                    .append("</option>\n");
-        }
-        stringBuilder.append("</select>");
-
-        return stringBuilder.toString();*/
     }
 }

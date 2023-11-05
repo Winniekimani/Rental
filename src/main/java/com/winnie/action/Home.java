@@ -24,7 +24,7 @@ public class Home extends HttpServlet {
             HouseBeanI housebean = new HouseBean();
             HouseTypeDropDown houseTypeDropDown = new HouseTypeDropDown();
             String houseTypeDropdown = houseTypeDropDown.menu();
-            String addHouseForm = "<br/>Add House<br/><form action=\"./houses\" method=\"post\">" +
+            String addHouseForm = "<br/>Add House<br/><form action=\"./house-action\" method=\"post\">" +
                     "<label for=\"houseId\">House ID:</label><br>" +
                     "<input type=\"text\" id=\"houseId\" name=\"houseId\"><br>" +
                     "<label for=\"houseName\">House Name:</label><br>" +
