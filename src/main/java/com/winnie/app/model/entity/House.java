@@ -1,32 +1,53 @@
 package com.winnie.app.model.entity;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
 public class House implements Serializable {
-    private String houseType;
+
+    private String houseId;
+
+    private String houseName;
+    private HouseType houseType;
     private String houseLocation;
 
-    //no of rooms
-    //housename
     private BigDecimal housePrice;
 
     public House() {
     }
 
-    public House(String houseType, String houseLocation, BigDecimal housePrice) {
+    public House(String houseId, String houseName, HouseType houseType, String houseLocation, BigDecimal housePrice) {
+        this.houseId = houseId;
+        this.houseName = houseName;
         this.houseType = houseType;
         this.houseLocation = houseLocation;
         this.housePrice = housePrice;
     }
 
+    public String getHouseId() {
+        return houseId;
+    }
 
-    public String getHouseType() {
+    public void setHouseId(String houseId) {
+        this.houseId = houseId;
+    }
+
+    public String getHouseName() {
+        return houseName;
+    }
+
+    public void setHouseName(String houseName) {
+        this.houseName = houseName;
+    }
+
+    public HouseType getHouseType() {
         return houseType;
     }
 
-    public void setHouseType(String houseType) {
+    public void setHouseType(HouseType houseType) {
         this.houseType = houseType;
     }
 
@@ -49,7 +70,10 @@ public class House implements Serializable {
     public String tableRow(){
         StringBuilder trBuilder = new StringBuilder();
         trBuilder.append("<tr>");
-        trBuilder.append("<td>").append(getHouseType().isBlank()?"":getHouseType().trim()).append("</td>");
+        trBuilder.append("<td>").append(StringUtils.trimToEmpty(getHouseId())).append("</td>");
+        trBuilder.append("<td>").append(getHouseName()).append("</td>");
+
+        trBuilder.append("<td>").append(getHouseType()).append("</td>");
         trBuilder.append("<td>").append(getHouseLocation().isBlank()?"": getHouseLocation().trim()).append("</td>");
         trBuilder.append("<td>").append(getHousePrice()==null?""
             :new DecimalFormat("#,###.##").format(getHousePrice())).append("</td>");

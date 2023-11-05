@@ -21,7 +21,7 @@ public class Payments  extends HttpServlet {
         if (StringUtils.isNotBlank((String) httpSession.getAttribute("loggedIn"))){
 
 
-            new AppPage().renderHtml(req,resp,4,"<h2>Payments </h2>payment info available here");
+            new AppPage().renderHtml(req,resp,3,"<h2>Payments </h2>payment info available here");
 
         }
 
