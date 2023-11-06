@@ -24,7 +24,19 @@ public class AddHouse extends HttpServlet {
             HouseTypeDropDown houseTypeDropDown = new HouseTypeDropDown();
             String houseTypeDropdown = houseTypeDropDown.menu();
             String addHouseForm = "<br/>Add House<br/>" +
-                    git 
+                    "<form action=\"./house-action\" method=\"post\">" +
+                    "<label for=\"houseId\">House ID:</label><br>" +
+                    "<input type=\"text\" id=\"houseId\" name=\"houseId\"><br>" +
+                    "<label for=\"houseName\">House Name:</label><br>" +
+                    "<input type=\"text\" id=\"houseName\" name=\"houseName\"><br>" +
+                    "<label for=\"houseType\">House Type:</label><br>" +
+                    houseTypeDropdown + "<br>" +
+                    "<label for=\"houseLocation\">House Location:</label><br>" +
+                    "<input type=\"text\" id=\"houseLocation\" name=\"houseLocation\"><br>" +
+                    "<label for=\"housePrice\">House Price:</label><br>" +
+                    "<input type=\"text\" id=\"housePrice\" name=\"housePrice\"><br><br>" +
+                    "<input type=\"submit\" value=\"Add House\">" +
+                    "</form>";
             String availableHouses = "<h2>List of Available Houses</h2>\n" ;
             new AppPage().renderHtml(req, resp, 4, addHouseForm + "<br/>" );
 
