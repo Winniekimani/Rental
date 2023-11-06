@@ -2,6 +2,7 @@ package com.winnie.event;
 
 import com.winnie.app.model.entity.House;
 import com.winnie.app.model.entity.HouseType;
+import com.winnie.app.model.entity.Tenant;
 import com.winnie.app.model.entity.User;
 import com.winnie.database.Database;
 
@@ -9,6 +10,7 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 import java.math.BigDecimal;
+import java.util.Date;
 
 @WebListener
 public class AppInit implements ServletContextListener {
@@ -34,6 +36,14 @@ public class AppInit implements ServletContextListener {
         database.getHouses().add(new House("8","14A", HouseType.PENTHOUSE,"hurlingham", BigDecimal.valueOf(26500000)));
         database.getHouses().add(new House("9","15A", HouseType.ONE_BEDROOM_APARTMENT,"parklands", BigDecimal.valueOf(50000)));
         database.getHouses().add(new House("10","16A", HouseType.COTTAGE,"parklands", BigDecimal.valueOf(5000)));
+
+
+
+        System.out.println("************** Adding Tenants*********");
+        //database.getTenants().add(new Tenant("winnie","kimani","0746450089",24/102023,15/10/2024,50000.00,"12A","paid"));
+
+
+
     }
 
 

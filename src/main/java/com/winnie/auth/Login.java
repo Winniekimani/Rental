@@ -32,8 +32,6 @@ public class Login extends HttpServlet {
 
 
 
-
-
             ServletContext ctx=getServletContext();
         String username=req.getParameter("username");
         String password=req.getParameter("password");

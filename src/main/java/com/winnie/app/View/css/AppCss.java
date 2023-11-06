@@ -6,6 +6,7 @@ public class AppCss  implements Serializable {
 
     private String style = "<style>" +
 
+
             "  ul.topnav {\n" +
             "      list-style-type: none;\n" +
             "      margin: 0;\n" +
@@ -24,9 +25,9 @@ public class AppCss  implements Serializable {
             "      text-decoration: none;\n" +
             "    }\n" +
             "\n" +
-            "    ul.topnav li a:hover { background-color: #ddd; }\n" +
+            "    ul.topnav li a:hover { background-color: blue; }\n" +
             "\n" +
-            "    ul.topnav li a.active { background-color: #04AA6D; }" +
+            "    ul.topnav li a.active { background-color: pink; }" +
             "        table {\n" +
             "          font-family: arial, sans-serif;\n" +
             "          border-collapse: collapse;\n" +
@@ -43,6 +44,8 @@ public class AppCss  implements Serializable {
             "          background-color: #dddddd;\n" +
             "        }\n" +
             "</style>" ;
+
+
 
     public String getStyle() {
         return style;

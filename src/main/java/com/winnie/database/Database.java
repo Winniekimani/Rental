@@ -1,6 +1,7 @@
 package com.winnie.database;
 
 import com.winnie.app.model.entity.House;
+import com.winnie.app.model.entity.Tenant;
 import com.winnie.app.model.entity.User;
 
 import java.io.Serializable;
@@ -14,6 +15,8 @@ public class Database implements Serializable {
     private String databaseCreateAt;
     private List<User>users = new ArrayList<>();
     private List<House>houses= new ArrayList<>();
+
+    private List<Tenant>tenants= new ArrayList<>();
     private static  Database dbInstance;
     private Database(){}
 
@@ -41,6 +44,14 @@ public class Database implements Serializable {
 
     public void setHouses(List<House> houses) {
         this.houses = houses;
+    }
+
+    public List<Tenant> getTenants() {
+        return tenants;
+    }
+
+    public void setTenants(List<Tenant> tenants) {
+        this.tenants = tenants;
     }
 
     public String getDatabaseCreateAt() {

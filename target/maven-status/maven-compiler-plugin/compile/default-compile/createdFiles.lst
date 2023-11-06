@@ -17,9 +17,13 @@ com/winnie/database/Database.class
 com/winnie/app/bean/HouseBean.class
 com/winnie/app/View/dropdown/Option.class
 com/winnie/action/UserAction.class
+com/winnie/action/TenantAction.class
 com/winnie/action/HouseAction.class
 com/winnie/app/model/entity/HouseType.class
 com/winnie/action/Tenants.class
 com/winnie/action/Payments.class
+com/winnie/app/bean/TenantBean.class
 com/winnie/event/AppInit.class
+com/winnie/app/model/entity/Tenant.class
+com/winnie/app/bean/TenantBeanI.class
 com/winnie/app/model/entity/User.class

@@ -12,10 +12,7 @@ import java.util.Map;
 
 
 public class TopToolBar  implements Serializable ,Menu{
-
-    private final List<MenuLink> links = new ArrayList<>();
-
-
+private final List<MenuLink> links = new ArrayList<>();
 
     {
         links.add(new MenuLink("./home", "Home", MenuLinkStatus.ACTIVE));
