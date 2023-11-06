@@ -7,6 +7,23 @@ public class AppCss  implements Serializable {
     private String style = "<style>" +
 
 
+//           add-house-css
+            ".addHouseButton{\n" +
+            "        padding: 12px ;\n" +
+            "        border-radius: 5px; \n" +
+            "        border:none;\n" +
+            "        background-color: rgb(10, 79, 182) ;\n" +
+            "        color: white;\n" +
+            "        cursor: pointer;      \n" +
+            "        width: 100px;\n" +
+            "        display: flex;\n" +
+            "        justify-content: center;\n" +
+            "    }\n" +
+            "    .addHouseButton a{\n" +
+            "        text-decoration: none;\n" +
+            "        color: white;\n" +
+            "        \n" +
+            "    }"+
             "  ul.topnav {\n" +
             "      list-style-type: none;\n" +
             "      margin: 0;\n" +
@@ -27,7 +44,7 @@ public class AppCss  implements Serializable {
             "\n" +
             "    ul.topnav li a:hover { background-color: blue; }\n" +
             "\n" +
-            "    ul.topnav li a.active { background-color: pink; }" +
+           /* "    ul.topnav li a.active { background-color: pink; }" +*/
             "        table {\n" +
             "          font-family: arial, sans-serif;\n" +
             "          border-collapse: collapse;\n" +

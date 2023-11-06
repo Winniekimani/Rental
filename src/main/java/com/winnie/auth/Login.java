@@ -22,7 +22,7 @@ public class Login extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
         HttpSession httpSession= req.getSession();
         if (StringUtils.isNotBlank((String) httpSession.getAttribute("loggedIn")))
-        resp.sendRedirect("./home");
+        resp.sendRedirect("./houses");
         else
             resp.sendRedirect("./");
 
@@ -46,7 +46,7 @@ public class Login extends HttpServlet {
                     httpSession.setAttribute("loggedIn",new Date().getTime() + "");
                     httpSession.setAttribute("username",username);
 
-                    resp.sendRedirect("./home");
+                    resp.sendRedirect("./houses");
 
                 }
             }

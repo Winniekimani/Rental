@@ -5,9 +5,11 @@
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/TenantAction.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/View/toolbar/Menu.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/database/Database.java
+/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/RegisterUser.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/Home.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/Houses.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/Payments.java
+/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/AddHouse.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/Tenants.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/bean/HouseBean.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/UserAction.java
