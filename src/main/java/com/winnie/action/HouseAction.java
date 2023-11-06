@@ -35,12 +35,12 @@ public class HouseAction extends HttpServlet {
             } catch (NumberFormatException e) {
                 // Set an error message
                 req.setAttribute("error", "Please enter a valid house price.");
-                req.getRequestDispatcher("/home").forward(req, resp);
+                req.getRequestDispatcher("/houses").forward(req, resp);
                 return;
             }
 
             database.getHouses().add(new House(houseId,houseName,houseType, houseLocation, housePrice));
-            resp.sendRedirect("./home");
+            resp.sendRedirect("./houses");
         } else {
             resp.sendRedirect("./");
         }

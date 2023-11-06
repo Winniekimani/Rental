@@ -38,7 +38,7 @@ public class AddHouse extends HttpServlet {
                     "<input type=\"submit\" value=\"Add House\">" +
                     "</form>";
             String availableHouses = "<h2>List of Available Houses</h2>\n" ;
-            new AppPage().renderHtml(req, resp, 4, addHouseForm + "<br/>" );
+            new AppPage().renderHtml(req, resp, 1, addHouseForm + "<br/>" );
 
         } else {
             resp.sendRedirect("./");

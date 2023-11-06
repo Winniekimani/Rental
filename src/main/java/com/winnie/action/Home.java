@@ -21,7 +21,7 @@ import java.io.PrintWriter;
 public class Home extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
-        HttpSession httpSession= req.getSession();
+       HttpSession httpSession= req.getSession();
         if (StringUtils.isNotBlank((String) httpSession.getAttribute("loggedIn"))){
 
             HouseBeanI housebean = new HouseBean();
@@ -41,7 +41,7 @@ public class Home extends HttpServlet {
                     "<input type=\"submit\" value=\"Add House\">" +
                     "</form>";
             String availableHouses = "<h2>List of Available Houses</h2>\n" + housebean.listOfHousesAvailable();
-            new AppPage().renderHtml(req, resp, 0, addHouseForm + "<br/>" + availableHouses);
+            new AppPage().renderHtml(req, resp, 4, addHouseForm + "<br/>" + availableHouses);
 
         }
 
