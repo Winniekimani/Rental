@@ -18,20 +18,13 @@ public class Payments  extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
         HttpSession httpSession= req.getSession();
-        if (StringUtils.isNotBlank((String) httpSession.getAttribute("loggedIn"))){
+
 
 
             new AppPage().renderHtml(req,resp,3,"<h2>Payments </h2>payment info available here");
 
-        }
-
-        else{
-            resp.sendRedirect("./");
-        }
-
-
-
     }
+
 
 
 

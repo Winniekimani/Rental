@@ -1,5 +1,7 @@
 package com.winnie.action;
 
+import com.winnie.app.bean.HouseBean;
+import com.winnie.app.bean.HouseBeanI;
 import com.winnie.app.model.entity.House;
 import com.winnie.app.model.entity.HouseType;
 import com.winnie.database.Database;
@@ -17,11 +19,28 @@ import java.math.BigDecimal;
 @WebServlet("/house-action")
 public class HouseAction extends HttpServlet {
 
-
+    private HouseBeanI houseBean = new HouseBean();
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession httpSession = req.getSession();
 
-        if (StringUtils.isNotBlank((String) httpSession.getAttribute("loggedIn"))) {
+        try {
+            houseBean.addHouse(new House(req.getParameter("houseId"),req.getParameter("houseName"),
+                    HouseType.valueOf(req.getParameter("houseType")),
+                    req.getParameter("houseLocation"),new BigDecimal(req.getParameter("housePrice"))));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        resp.sendRedirect("./houses");
+
+
+
+    }
+}
+
+
+
+        /*if (StringUtils.isNotBlank((String) httpSession.getAttribute("loggedIn"))) {
             Database database = Database.getDbInstance();
 
             String houseId=req.getParameter("houseId");
@@ -43,6 +62,5 @@ public class HouseAction extends HttpServlet {
             resp.sendRedirect("./houses");
         } else {
             resp.sendRedirect("./");
-        }
-    }
-}
+
+        }*/

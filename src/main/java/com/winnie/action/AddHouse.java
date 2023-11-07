@@ -18,7 +18,7 @@ public class AddHouse extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession httpSession = req.getSession();
-        if (StringUtils.isNotBlank((String) httpSession.getAttribute("loggedIn"))) {
+
 
             HouseTypeDropDown houseTypeDropDown = new HouseTypeDropDown();
             String houseTypeDropdown = houseTypeDropDown.menu();
@@ -39,8 +39,6 @@ public class AddHouse extends HttpServlet {
             String availableHouses = "<h2>List of Available Houses</h2>\n" ;
             new AppPage().renderHtml(req, resp, 1, addHouseForm + "<br/>" );
 
-        } else {
-            resp.sendRedirect("./");
-        }
+
     }
 }

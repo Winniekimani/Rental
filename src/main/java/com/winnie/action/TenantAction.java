@@ -24,7 +24,7 @@ public class TenantAction  extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession httpSession = req.getSession();
 
-        if (StringUtils.isNotBlank((String) httpSession.getAttribute("loggedIn"))) {
+
             Database database = Database.getDbInstance();
 
             String firstName = req.getParameter("firstName");
@@ -55,9 +55,7 @@ public class TenantAction  extends HttpServlet {
             database.getTenants().add(new Tenant(firstName,lastName,phone,leaseStartDate,leaseEndDate,rentAmount,houseId,paymentStatus));
 
             resp.sendRedirect("./tenants");
-        } else {
-            resp.sendRedirect("./");
-        }
+
 
         }
     }

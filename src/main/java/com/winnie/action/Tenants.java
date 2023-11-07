@@ -20,7 +20,7 @@ public class Tenants extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
         HttpSession httpSession= req.getSession();
-        if (StringUtils.isNotBlank((String) httpSession.getAttribute("loggedIn"))){
+
 
             TenantBeanI tenantbean = new TenantBean();
             String addTenantForm =
@@ -32,11 +32,7 @@ public class Tenants extends HttpServlet {
             String availableTenants = "<h2>List of Available Tenants</h2>\n" + tenantbean.listOfTenants();
             new AppPage().renderHtml(req, resp, 1, addTenantForm + "<br/>" + availableTenants);
 
-        }
 
-        else{
-            resp.sendRedirect("./");
-        }
 
 
 

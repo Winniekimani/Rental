@@ -18,7 +18,7 @@ public class DeleteHouse extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession httpSession = req.getSession();
 
-        if (StringUtils.isNotBlank((String) httpSession.getAttribute("loggedIn"))) {
+
             Database database = Database.getDbInstance();
             String houseId = req.getParameter("houseId");
 
@@ -35,8 +35,6 @@ public class DeleteHouse extends HttpServlet {
 
 
             resp.sendRedirect("./houses");
-        } else {
-            resp.sendRedirect("./");
-        }
+
     }
 }

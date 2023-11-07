@@ -21,11 +21,10 @@ public class Login extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
         HttpSession httpSession= req.getSession();
-        if (StringUtils.isNotBlank((String) httpSession.getAttribute("loggedIn")))
+        /*if (StringUtils.isNotBlank((String) httpSession.getAttribute("loggedIn")))
         resp.sendRedirect("./houses");
-        else
+        else*/
             resp.sendRedirect("./");
-
 
     }
         public  void doPost(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {

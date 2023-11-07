@@ -17,7 +17,6 @@ public class AddTenant extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession httpSession = req.getSession();
-        if (StringUtils.isNotBlank((String) httpSession.getAttribute("loggedIn"))) {
 
 
             String addTenantForm = "<br/>Add Tenant<br/><form action=\"./tenant-action\" method=\"post\">" +
@@ -45,8 +44,6 @@ public class AddTenant extends HttpServlet {
             String listOfTenants = "<h2>List of Available Houses</h2>\n" ;
             new AppPage().renderHtml(req, resp, 1, addTenantForm + "<br/>" );
 
-        } else {
-            resp.sendRedirect("./");
-        }
+
     }
 }
