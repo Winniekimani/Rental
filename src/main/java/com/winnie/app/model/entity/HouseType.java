@@ -15,6 +15,6 @@ public enum HouseType implements Serializable {
     COTTAGE,
 
     FARMHOUSE,
-    PENTHOUSE
+     PENTHOUSE
 
 }

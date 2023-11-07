@@ -12,9 +12,11 @@
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/Houses.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/Payments.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/AddHouse.java
+/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/HouseTypeConverter.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/Tenants.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/bean/HouseBean.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/UserAction.java
+/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/BaseAction.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/model/entity/User.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/bean/TenantBeanI.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/auth/Logout.java

@@ -5,6 +5,7 @@ import com.winnie.app.bean.HouseBeanI;
 import com.winnie.app.model.entity.House;
 import com.winnie.app.model.entity.HouseType;
 import com.winnie.database.Database;
+import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.ServletException;
@@ -14,19 +15,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 
 @WebServlet("/house-action")
-public class HouseAction extends HttpServlet {
+public class HouseAction extends BaseAction {
 
     private HouseBeanI houseBean = new HouseBean();
+    private House house = new House();
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession httpSession = req.getSession();
 
+
+        serializeForm(house,req.getParameterMap());
+
         try {
-            houseBean.addHouse(new House(req.getParameter("houseId"),req.getParameter("houseName"),
-                    HouseType.valueOf(req.getParameter("houseType")),
-                    req.getParameter("houseLocation"),new BigDecimal(req.getParameter("housePrice"))));
+            houseBean.addHouse(house);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -35,11 +39,23 @@ public class HouseAction extends HttpServlet {
 
 
 
+
+
     }
 }
 
+//then this
+       /* try {
+            houseBean.addHouse(new House(req.getParameter("houseId"),req.getParameter("houseName"),
+                    HouseType.valueOf(req.getParameter("houseType")),
+                    req.getParameter("houseLocation"),new BigDecimal(req.getParameter("housePrice"))));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
+        resp.sendRedirect("./houses");*/
 
+//first like this
         /*if (StringUtils.isNotBlank((String) httpSession.getAttribute("loggedIn"))) {
             Database database = Database.getDbInstance();
 
