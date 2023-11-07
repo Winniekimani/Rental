@@ -20,10 +20,9 @@ public class AddHouse extends HttpServlet {
         HttpSession httpSession = req.getSession();
         if (StringUtils.isNotBlank((String) httpSession.getAttribute("loggedIn"))) {
 
-            //HouseBeanI housebean = new HouseBean();
             HouseTypeDropDown houseTypeDropDown = new HouseTypeDropDown();
             String houseTypeDropdown = houseTypeDropDown.menu();
-            String addHouseForm = "<br/>Add House<br/>" +
+            String addHouseForm = " <br/>Add House<br/>" +
                     "<form action=\"./house-action\" method=\"post\">" +
                     "<label for=\"houseId\">House ID:</label><br>" +
                     "<input type=\"text\" id=\"houseId\" name=\"houseId\"><br>" +

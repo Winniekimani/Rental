@@ -21,35 +21,14 @@ import java.io.PrintWriter;
 public class Home extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
-       HttpSession httpSession= req.getSession();
-        if (StringUtils.isNotBlank((String) httpSession.getAttribute("loggedIn"))){
+        HttpSession httpSession = req.getSession();
 
-            HouseBeanI housebean = new HouseBean();
-            HouseTypeDropDown houseTypeDropDown = new HouseTypeDropDown();
-            String houseTypeDropdown = houseTypeDropDown.menu();
-            String addHouseForm = "<br/>Add House<br/><form action=\"./house-action\" method=\"post\">" +
-                    "<label for=\"houseId\">House ID:</label><br>" +
-                    "<input type=\"text\" id=\"houseId\" name=\"houseId\"><br>" +
-                    "<label for=\"houseName\">House Name:</label><br>" +
-                    "<input type=\"text\" id=\"houseName\" name=\"houseName\"><br>" +
-                    "<label for=\"houseType\">House Type:</label><br>" +
-                    houseTypeDropdown + "<br>" +
-                    "<label for=\"houseLocation\">House Location:</label><br>" +
-                    "<input type=\"text\" id=\"houseLocation\" name=\"houseLocation\"><br>" +
-                    "<label for=\"housePrice\">House Price:</label><br>" +
-                    "<input type=\"text\" id=\"housePrice\" name=\"housePrice\"><br><br>" +
-                    "<input type=\"submit\" value=\"Add House\">" +
-                    "</form>";
-            String availableHouses = "<h2>List of Available Houses</h2>\n" + housebean.listOfHousesAvailable();
-            new AppPage().renderHtml(req, resp, 4, addHouseForm + "<br/>" + availableHouses);
+        new AppPage().renderHtml(req, resp, 0,
+                "<div class='HomePage'>" +
 
-        }
-
-        else{
-            resp.sendRedirect("./");
-        }
-
-
+                        "" +
+                        "" +
+                        "</div>" );
 
     }
 }

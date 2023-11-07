@@ -23,14 +23,37 @@ public class HouseBean implements HouseBeanI,Serializable {
         return trBuilder.toString();
     }
 
-
-    public House addOrUpdateHouse(House house) throws Exception{
-
-       return null;
+    @Override
+    public House addHouse(House house) throws Exception {
+        Database db= Database.getDbInstance();
+        db.getHouses().add(house);
+        return house;
     }
+
+
 
     public void deleteHouse(House house){
 
+
+        Database db= Database.getDbInstance();
+        db.getHouses().remove(house);
+
     }
+
+
+        @Override
+        public void updateHouse(House updatedHouse) {
+            List<House> houses = Database.getDbInstance().getHouses();
+            for (int i = 0; i < houses.size(); i++) {
+                House house = houses.get(i);
+                if (house.getHouseId().equals(updatedHouse.getHouseId())) {
+                    houses.set(i, updatedHouse);
+                    return;
+                }
+            }
+        }
+
+
+
 
 }

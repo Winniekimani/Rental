@@ -77,10 +77,33 @@ public class House implements Serializable {
         trBuilder.append("<td>").append(getHouseLocation().isBlank()?"": getHouseLocation().trim()).append("</td>");
         trBuilder.append("<td>").append(getHousePrice()==null?""
             :new DecimalFormat("#,###.##").format(getHousePrice())).append("</td>");
+
+        //button to remove house
+        trBuilder.append("<td>").append(deleteHouse()).append("</td>");
+        trBuilder.append("<td>").append(updateHouse()).append("</td>");
         trBuilder.append("<tr>");
+
+
 
         return trBuilder.toString();
 
+    }
+
+
+    public String deleteHouse() {
+        // Add a button to remove the house
+        return "<form action=\"./delete\" method=\"post\">" +
+                "<input type=\"hidden\" name=\"houseId\" value=\"" + getHouseId() + "\" />" +
+                "<input type=\"submit\" value=\"Remove\" />" +
+                "</form>";
+    }
+
+    public String updateHouse() {
+        // Add a button to edit the house
+        return "<form action=\"./edit-house\" method=\"get\">" +
+                "<input type=\"hidden\" name=\"houseId\" value=\"" + getHouseId() + "\" />" +
+                "<input type=\"submit\" value=\"Edit\" />" +
+                "</form>";
     }
 
 }

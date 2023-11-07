@@ -24,6 +24,24 @@ public class AppCss  implements Serializable {
             "        color: white;\n" +
             "        \n" +
             "    }"+
+
+            //add-tenant-css
+            ".addTenantButton{\n" +
+                    "        padding: 12px ;\n" +
+                    "        border-radius: 5px; \n" +
+                    "        border:none;\n" +
+                    "        background-color: rgb(10, 79, 182) ;\n" +
+                    "        color: white;\n" +
+                    "        cursor: pointer;      \n" +
+                    "        width: 100px;\n" +
+                    "        display: flex;\n" +
+                    "        justify-content: center;\n" +
+                    "    }\n" +
+                    "    .addTenantButton a{\n" +
+                    "        text-decoration: none;\n" +
+                    "        color: white;\n" +
+                    "        \n" +
+                    "    }"+
             "  ul.topnav {\n" +
             "      list-style-type: none;\n" +
             "      margin: 0;\n" +
@@ -60,6 +78,7 @@ public class AppCss  implements Serializable {
             "        tr:nth-child(even) {\n" +
             "          background-color: #dddddd;\n" +
             "        }\n" +
+
             "</style>" ;
 
 

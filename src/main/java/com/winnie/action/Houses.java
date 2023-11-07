@@ -28,12 +28,12 @@ public class Houses extends HttpServlet {
         if (StringUtils.isNotBlank((String) httpSession.getAttribute("loggedIn"))){
 
             HouseBeanI housebean = new HouseBean();
-            HouseTypeDropDown houseTypeDropDown = new HouseTypeDropDown();
-            String houseTypeDropdown = houseTypeDropDown.menu();
-            String addHouseForm = "<br/>Add House<br/>" +
+            String addHouseForm =
                    "<div class=\"addHouseButton\" >\n" +
                     "            <a href=\"./add\">Add House</a>\n" +
                     "        </div>";
+
+
             String availableHouses = "<h2>List of Available Houses</h2>\n" + housebean.listOfHousesAvailable();
             new AppPage().renderHtml(req, resp, 1, addHouseForm + "<br/>" + availableHouses);
 
