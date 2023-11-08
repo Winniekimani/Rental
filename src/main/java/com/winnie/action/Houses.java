@@ -2,6 +2,7 @@ package com.winnie.action;
 
 import com.winnie.app.View.dropdown.HouseTypeDropDown;
 import com.winnie.app.View.html.AppPage;
+import com.winnie.app.View.html.HtmlComponent;
 import com.winnie.app.bean.HouseBean;
 import com.winnie.app.bean.HouseBeanI;
 import com.winnie.app.bean.TenantBean;
@@ -27,14 +28,14 @@ public class Houses extends HttpServlet {
         HttpSession httpSession= req.getSession();
 
             HouseBeanI housebean = new HouseBean();
-            String addHouseForm =
+            String addHouseButton =
                    "<div class=\"addHouseButton\" >\n" +
                     "            <a href=\"./add\">Add House</a>\n" +
                     "        </div>";
 
-
             String availableHouses = "<h2>List of Available Houses</h2>\n" + housebean.listOfHousesAvailable();
-            new AppPage().renderHtml(req, resp, 1, addHouseForm + "<br/>" + availableHouses);
+            new AppPage().renderHtml(req, resp, 1, addHouseButton +"<br/>"
+                    + "<br/>" + availableHouses);
 
     }
 

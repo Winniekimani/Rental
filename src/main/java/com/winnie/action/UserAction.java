@@ -1,5 +1,7 @@
 package com.winnie.action;
 
+import com.winnie.app.bean.UserBean;
+import com.winnie.app.bean.UserBeanI;
 import com.winnie.app.model.entity.House;
 import com.winnie.app.model.entity.User;
 import com.winnie.database.Database;
@@ -16,25 +18,17 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @WebServlet("/user")
-public class UserAction extends HttpServlet {
+public class UserAction extends BaseAction {
+    UserBeanI userBean= new UserBean();
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-                HttpSession httpSession = req.getSession();
-            Database database = Database.getDbInstance();
 
-        String username= req.getParameter("username");
-        String password = req.getParameter("password");
-        String confirmPassword = req.getParameter("confirmPassword");
 
-        if (password.equals(confirmPassword)){
-            database.getUsers().add(new User(100L, username, password));
+            User registerUser=new User();
+            serializeForm(registerUser,req.getParameterMap());
 
-            httpSession.setAttribute("username",username);
+            userBean.register(registerUser);
 
-            httpSession.setAttribute("loggedIn",new Date().getTime() + "");
-
-            resp.sendRedirect("./houses");
-        }
             resp.sendRedirect("./");
 
 

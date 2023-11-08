@@ -26,7 +26,6 @@ public class HouseAction extends BaseAction {
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession httpSession = req.getSession();
 
-
         serializeForm(house,req.getParameterMap());
 
         try {

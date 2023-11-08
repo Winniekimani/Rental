@@ -1,4 +1,4 @@
-package com.winnie.auth;
+package com.winnie.action;
 
 
 import javax.servlet.ServletException;
@@ -10,7 +10,7 @@ import java.io.IOException;
 
 
 @WebServlet(urlPatterns = "/logout")
-public class Logout extends HttpServlet {
+public class LogoutAction extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
             req.getSession().invalidate();//this will destroy the session
