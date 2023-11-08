@@ -17,6 +17,7 @@ public class House implements Serializable {
     private BigDecimal housePrice;
 
 
+
     public House() {
     }
 
@@ -68,7 +69,7 @@ public class House implements Serializable {
         this.housePrice = housePrice;
     }
 
-    public String tableRow(){
+   /* public String tableRow(){
 
 
         StringBuilder trBuilder = new StringBuilder();
@@ -82,7 +83,7 @@ public class House implements Serializable {
         trBuilder.append("<td>").append(updateHouse()).append("</td>");
         trBuilder.append("<tr>");
         return trBuilder.toString();
-       /* StringBuilder trBuilder = new StringBuilder();
+       *//* StringBuilder trBuilder = new StringBuilder();
         trBuilder.append("<tr>");
         trBuilder.append("<td>").append(StringUtils.trimToEmpty(getHouseId())).append("</td>");
         trBuilder.append("<td>").append(getHouseName()).append("</td>");
@@ -98,11 +99,9 @@ public class House implements Serializable {
         trBuilder.append("<td>").append(updateHouse()).append("</td>");
         trBuilder.append("<tr>");
 
+        return trBuilder.toString();*//*
 
-
-        return trBuilder.toString();*/
-
-    }
+    }*/
 
 
     public String deleteHouse() {

@@ -34,8 +34,11 @@ public class Houses extends HttpServlet {
                     "        </div>";
 
             String availableHouses = "<h2>List of Available Houses</h2>\n" + housebean.listOfHousesAvailable();
-            new AppPage().renderHtml(req, resp, 1, addHouseButton +"<br/>"
+            new AppPage().renderHtml(req, resp, 1, addHouseButton + "<br/>"
                     + "<br/>" + availableHouses);
+
+        /*new AppPage().renderHtml(req, resp, 1, availableHouses + "<br/>" + "<br/>" + addHouseButton);
+*/
 
     }
 

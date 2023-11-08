@@ -1,16 +1,65 @@
 package com.winnie.app.View.html;
 
 import com.winnie.app.View.dropdown.HouseTypeDropDown;
+import com.winnie.app.model.entity.House;
 import com.winnie.app.model.entity.HouseType;
+import com.winnie.database.Database;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
+import java.util.List;
 
 public class HtmlComponent implements Serializable {
 
-    public static String table() {
-        return StringUtils.EMPTY;
+    public static String table(List<? >models) {
+
+
+        if(models == null || models.isEmpty())
+            return StringUtils.EMPTY;
+
+        Field [] fields = models.get(0).getClass().getDeclaredFields();
+
+        StringBuilder trBuilder = new StringBuilder();
+        trBuilder.append("<table><tr>");
+
+        for (Field field:fields){
+            trBuilder.append("<th>" + field.getName() + "</th>");
+
+        }
+        trBuilder.append("</tr>");
+        for (Object model:models){
+            trBuilder.append("<tr>");
+             for (Field field:fields){
+
+                 try {
+                     field.setAccessible(true);
+                     trBuilder.append("<td>").append(field.get(model)).append("</td>");
+
+                 } catch (IllegalAccessException e) {
+                     throw new RuntimeException(e);
+                 }
+             }
+            // Add delete and update buttons
+            trBuilder.append("<td>").append(((House) model).deleteHouse()).append("</td>");
+            trBuilder.append("<td>").append(((House) model).updateHouse()).append("</td>");
+             trBuilder.append("</tr>");
+
+        }
+        trBuilder.append("</table>");
+        return trBuilder.toString();
+        /*List<House> houses= Database.getDbInstance().getHouses();
+
+        StringBuilder trBuilder = new StringBuilder();
+        trBuilder.append("<table><tr><th>HouseId</th><th>HouseName</th><th>HouseType</th><th>HouseLocation</th><th>HousePrice</th></tr>");
+        for (House house: houses)
+            trBuilder.append(house.tableRow());
+
+        trBuilder.append("</table>");
+
+        return trBuilder.toString();*/
+
+
     }
     public static String htmlForm(Object model){
 

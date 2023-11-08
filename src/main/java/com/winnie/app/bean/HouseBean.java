@@ -1,5 +1,6 @@
 package com.winnie.app.bean;
 
+import com.winnie.app.View.html.HtmlComponent;
 import com.winnie.app.model.entity.House;
 import com.winnie.database.Database;
 
@@ -11,16 +12,13 @@ import java.util.List;
 public class HouseBean implements HouseBeanI,Serializable {
     public String listOfHousesAvailable(){
 
-        List<House> houses= Database.getDbInstance().getHouses();
 
-        StringBuilder trBuilder = new StringBuilder();
-        trBuilder.append("<table><tr><th>HouseId</th><th>HouseName</th><th>HouseType</th><th>HouseLocation</th><th>HousePrice</th></tr>");
-        for (House house: houses)
-            trBuilder.append(house.tableRow());
 
-        trBuilder.append("</table>");
 
-        return trBuilder.toString();
+        //trBuilder.append(HtmlComponent.table( Database.getDbInstance().getHouses()));
+
+
+        return HtmlComponent.table( Database.getDbInstance().getHouses());
     }
 
     @Override
