@@ -50,8 +50,9 @@ public class AddHouse extends HttpServlet {
                     "<input type=\"text\" id=\"housePrice\" name=\"housePrice\"><br><br>" +
                     "<input type=\"submit\" value=\"Add House\">" +
                     "</form>";*/
-
-            new AppPage().renderHtml(req, resp, 1, HtmlComponent.htmlForm(new House()) + "<br/>" );
+/*
+            new AppPage().renderHtml(req, resp, 1, HtmlComponent.htmlForm(new House()) + "<br/>" );*/
+        new AppPage().renderHtml(req, resp, 1, HtmlComponent.htmlForm(House.class) + "<br/>" );
 
 
     }

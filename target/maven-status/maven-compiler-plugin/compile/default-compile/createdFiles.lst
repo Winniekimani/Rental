@@ -5,6 +5,8 @@ com/winnie/app/View/html/AppPage.class
 com/winnie/app/View/dropdown/HouseTypeDropDown.class
 com/winnie/app/model/view/MenuLink.class
 com/winnie/app/bean/AuthBeanI.class
+com/winnie/app/model/entity/Payment.class
+com/winnie/app/View/html/WinnieHtmlFormField.class
 com/winnie/app/View/css/AppCss.class
 com/winnie/app/model/view/MenuLinkStatus.class
 com/winnie/app/View/dropdown/OptionMenu.class
@@ -22,6 +24,7 @@ com/winnie/action/EditHouse.class
 com/winnie/action/DeleteHouse.class
 com/winnie/action/UserAction.class
 com/winnie/app/bean/AuthBean.class
+com/winnie/app/View/html/WinnieTableColHeader.class
 com/winnie/app/bean/UserBeanI.class
 com/winnie/action/TenantAction.class
 com/winnie/action/RegisterUser.class
@@ -40,4 +43,5 @@ com/winnie/event/AppInit.class
 com/winnie/utils/TenantUtils.class
 com/winnie/app/model/entity/Tenant.class
 com/winnie/app/bean/TenantBeanI.class
+com/winnie/app/View/html/WinnieHtmlForms.class
 com/winnie/app/model/entity/User.class
