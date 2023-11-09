@@ -11,22 +11,23 @@ import java.text.DecimalFormat;
 @WinnieHtmlForms(label = "House")
 public class House implements Serializable {
 
-    @WinnieTableColHeader(header="Id Of The House")
+    @WinnieTableColHeader(header="HouseId")
     @WinnieHtmlFormField(label="House Id")
     private String houseId;
-    @WinnieTableColHeader(header="Name Of The House")
+    @WinnieTableColHeader(header="HouseName")
     @WinnieHtmlFormField(label="House Name")
     private String houseName;
-    @WinnieTableColHeader(header="Type Of The House")
+    @WinnieTableColHeader(header="HouseType")
     @WinnieHtmlFormField(label="House Type")
     private HouseType houseType;
 
 
-    @WinnieTableColHeader(header="Location Of The House")
+    @WinnieTableColHeader(header="HouseLocation")
     @WinnieHtmlFormField(label="House Location")
     private String houseLocation;
 
-    @WinnieTableColHeader(header="Price Of The House")@WinnieHtmlFormField(label="House Price")
+    @WinnieTableColHeader(header="HousePrice")
+    @WinnieHtmlFormField(label="House Price")
     private BigDecimal housePrice;
 
 

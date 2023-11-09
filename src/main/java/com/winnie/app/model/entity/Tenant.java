@@ -1,18 +1,41 @@
 package com.winnie.app.model.entity;
 
+import com.winnie.app.View.html.WinnieHtmlFormField;
+import com.winnie.app.View.html.WinnieHtmlForms;
+import com.winnie.app.View.html.WinnieTableColHeader;
+
 import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+@WinnieHtmlForms(label = "Tenants")
 public class Tenant implements Serializable {
+
+    @WinnieTableColHeader(header="FirstName")
+    @WinnieHtmlFormField(label="First Name")
     private String firstName;
+    @WinnieTableColHeader(header="LastNAme")
+    @WinnieHtmlFormField(label="Last Name")
     private String lastName;
+    @WinnieTableColHeader(header="Tenant's Phone No")
+    @WinnieHtmlFormField(label="Phone No")
     private String phone;
+
+    @WinnieTableColHeader(header="LeaseStartDate")
+    @WinnieHtmlFormField(label="Lease StartDate")
     private Date leaseStartDate;
+    @WinnieTableColHeader(header="LeaseEndDate")
+    @WinnieHtmlFormField(label="Lease EndDate")
     private Date leaseEndDate;
+    @WinnieTableColHeader(header="RentAmount")
+    @WinnieHtmlFormField(label="Rent Amount")
     private double rentAmount;
+    @WinnieTableColHeader(header="TenantHouseId")
+    @WinnieHtmlFormField(label="Tenant HouseId")
     private String houseId;
+    @WinnieTableColHeader(header="PaymentStatus")
+    @WinnieHtmlFormField(label="Payment Status")
     private String paymentStatus;
 
 
