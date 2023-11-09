@@ -70,7 +70,7 @@ public class HtmlComponent implements Serializable {
 
         public static String htmlForm(Class<?> modelClass) {
 
-      /*  WinnieHtmlForms winnieHtmlForms=null;
+       /* WinnieHtmlForms winnieHtmlForms=null;
         if (modelClass.isAnnotationPresent(WinnieHtmlForms.class))
              winnieHtmlForms=modelClass.getAnnotation(WinnieHtmlForms.class);
 

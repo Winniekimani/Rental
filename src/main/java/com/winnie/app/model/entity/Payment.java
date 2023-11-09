@@ -1,13 +1,21 @@
 package com.winnie.app.model.entity;
 
+import com.winnie.app.View.html.WinnieHtmlFormField;
+import com.winnie.app.View.html.WinnieHtmlForms;
+
 import java.io.Serializable;
 import java.util.Date;
-
+@WinnieHtmlForms(label = "Payments" )
 public class Payment implements Serializable {
+
+   @WinnieHtmlFormField(label = "Id Payment")
     private String paymentId;
+    @WinnieHtmlFormField(label = "Amount to Pay")
     private double amount;
+    @WinnieHtmlFormField(label = "Payment Date")
     private Date paymentDate;
 
+    @WinnieHtmlFormField(label = "Payment Method")
     private String paymentMethod;
 
     public Payment() {

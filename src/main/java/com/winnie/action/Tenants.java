@@ -30,7 +30,7 @@ public class Tenants extends HttpServlet {
 
 
             String availableTenants = "<h2>List of Available Tenants</h2>\n" + tenantbean.listOfTenants();
-            new AppPage().renderHtml(req, resp, 1, addTenantForm + "<br/>" + availableTenants);
+            new AppPage().renderHtml(req, resp, 2, addTenantForm + "<br/>" + availableTenants);
 
 
 
