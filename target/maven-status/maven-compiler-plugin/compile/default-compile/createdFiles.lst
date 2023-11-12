@@ -9,6 +9,7 @@ com/winnie/app/model/view/MenuLinkStatus.class
 com/winnie/app/View/dropdown/OptionMenu.class
 com/winnie/app/bean/UserBean.class
 com/winnie/app/View/toolbar/Menu.class
+com/winnie/app/userbean/LoginForm.class
 com/winnie/app/model/entity/House.class
 com/winnie/app/bean/HouseBeanI.class
 com/winnie/database/Database.class

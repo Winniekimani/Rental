@@ -1,5 +1,6 @@
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/bean/AuthBeanI.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/LogoutAction.java
+/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/userbean/LoginForm.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/bean/HouseBeanI.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/model/entity/Payment.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/View/toolbar/TopToolBar.java

@@ -56,16 +56,21 @@
     <h2><%=newCalculator.addNumbers(2000,4000) %></h2>
 
    --%>
+
+
+ <jsp:useBean id="loginForm"  class="com.winnie.app.userbean.LoginForm" />
+ <jsp:setProperty name="loginForm" property="usernamePlaceHolder" value="Enter Unique Username"/>
 <div class="login-container">
   <h2>Login</h2>
 
   <form action="./login" method="post">
     <label for="username">Username:</label>
-    <input type="text" id="username" name="username" required />
+    <!---<input type="text" placeholder="username" name="username" required /> --->
+    <input type="text" placeholder="<jsp:getProperty name="loginForm" property="usernamePlaceHolder"/>" name="username" required />
 
     <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required>
-
+    <!----<input type="password" placeholder="password" name="password" required>-->
+    <input type="password" placeholder="<jsp:getProperty name="loginForm" property="passwordPlaceHolder"/>" name="password" required>
     <input type="submit" value="submit" />
 
 
