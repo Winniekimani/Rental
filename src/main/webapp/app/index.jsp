@@ -1,5 +1,10 @@
 
-<%@ page import="com.winnie.app.View.toolbar.TopToolBar"%>
+
+<%@ page import="com.winnie.app.View.toolbar.TopToolBar" %>
+
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,12 +17,26 @@
 </head>
 
 <body>
+
+
   <%=new TopToolBar().menu((int)request.getAttribute("activeMenu")) %>
+
+
+
+
   <h3><%= application.getInitParameter("AppName")%><h3>
   <br/>&nbsp;<br/>
   <h3>Welcome: <%= session.getAttribute("username") %> </h3><br/>
 
+<%--
  <%= request.getAttribute("content") %>
+ ---%>
+
+ <jsp:useBean id="contentBean" class="com.winnie.app.userbean.ContentBean" scope="request"/>
+
+ <jsp:setProperty name="contentBean" property="content" value='<%= request.getAttribute("content") %>'/>
+ <%= contentBean.getContent() %>
+
    <a href=\"./logout\">Logout</a>
   </body>
   </html>

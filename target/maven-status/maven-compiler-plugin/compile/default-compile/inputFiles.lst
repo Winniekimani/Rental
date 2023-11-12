@@ -20,6 +20,7 @@
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/AddHouse.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/bean/UserBeanI.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/HouseTypeConverter.java
+/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/userbean/ContentBean.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/Tenants.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/View/html/WinnieTableColHeader.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/bean/HouseBean.java
@@ -32,6 +33,7 @@
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/LoginAction.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/AddTenant.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/EditHouse.java
+/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/userbean/NavBarBean.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/model/entity/House.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/View/dropdown/Option.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/DeleteHouse.java
