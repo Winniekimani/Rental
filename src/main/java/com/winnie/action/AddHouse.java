@@ -1,12 +1,7 @@
 package com.winnie.action;
 
-import com.winnie.app.View.dropdown.HouseTypeDropDown;
-import com.winnie.app.View.html.AppPage;
 import com.winnie.app.View.html.HtmlComponent;
-import com.winnie.app.bean.HouseBean;
-import com.winnie.app.bean.HouseBeanI;
 import com.winnie.app.model.entity.House;
-import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 @WebServlet("/add")
-public class AddHouse extends HttpServlet {
+public class AddHouse extends BaseAction{
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession httpSession = req.getSession();/*
@@ -52,7 +47,9 @@ public class AddHouse extends HttpServlet {
                     "</form>";*/
 /*
             new AppPage().renderHtml(req, resp, 1, HtmlComponent.htmlForm(new House()) + "<br/>" );*/
-        new AppPage().renderHtml(req, resp, 1, HtmlComponent.htmlForm(House.class) + "<br/>" );
+        /*new AppPage().renderHtml(req, resp, 1, HtmlComponent.htmlForm(House.class) + "<br/>" );*/
+
+        renderPage(req,resp,1,HtmlComponent.htmlForm(House.class) + "<br/>" );
 
 
     }

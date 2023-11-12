@@ -1,19 +1,15 @@
 com/winnie/app/View/toolbar/TopToolBar.class
 com/winnie/app/View/toolbar/BottomToolBar.class
-com/winnie/action/Houses.class
-com/winnie/app/View/html/AppPage.class
 com/winnie/app/View/dropdown/HouseTypeDropDown.class
 com/winnie/app/model/view/MenuLink.class
 com/winnie/app/bean/AuthBeanI.class
 com/winnie/app/model/entity/Payment.class
 com/winnie/app/View/html/WinnieHtmlFormField.class
-com/winnie/app/View/css/AppCss.class
 com/winnie/app/model/view/MenuLinkStatus.class
 com/winnie/app/View/dropdown/OptionMenu.class
 com/winnie/app/bean/UserBean.class
 com/winnie/app/View/toolbar/Menu.class
 com/winnie/app/model/entity/House.class
-com/winnie/action/Home.class
 com/winnie/app/bean/HouseBeanI.class
 com/winnie/database/Database.class
 com/winnie/app/bean/HouseBean.class
@@ -25,6 +21,7 @@ com/winnie/action/DeleteHouse.class
 com/winnie/action/UserAction.class
 com/winnie/app/bean/AuthBean.class
 com/winnie/app/View/html/WinnieTableColHeader.class
+com/winnie/action/HomeAction.class
 com/winnie/app/bean/UserBeanI.class
 com/winnie/action/TenantAction.class
 com/winnie/action/RegisterUser.class
@@ -38,6 +35,7 @@ com/winnie/action/AddHouse.class
 com/winnie/action/Payments.class
 com/winnie/app/bean/TenantBean.class
 com/winnie/action/AddTenant.class
+com/winnie/jsputils/Calculator.class
 com/winnie/action/HouseTypeConverter.class
 com/winnie/event/AppInit.class
 com/winnie/utils/TenantUtils.class

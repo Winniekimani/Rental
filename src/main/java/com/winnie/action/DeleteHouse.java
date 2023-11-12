@@ -34,7 +34,8 @@ public class DeleteHouse extends HttpServlet {
             }*/
 
 
-            resp.sendRedirect("./houses");
+            //resp.sendRedirect("./houses");
+            resp.sendRedirect("./house-action");
 
     }
 }

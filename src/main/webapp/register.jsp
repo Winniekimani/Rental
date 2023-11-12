@@ -33,7 +33,6 @@
       margin: 10px 0;
       border: 1px solid #ccc;
       border-radius: 5px;
-
     }
 
     input[type="text"]:focus,
@@ -53,22 +52,34 @@
   </style>
 </head>
 <body>
-<div class="login-container">
-  <h2>Login</h2>
 
-  <form action="./login" method="post">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" required />
-
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required>
-
-    <input type="submit" value="submit" />
+<%=
+application.getInitParameter("AppName")
+%>
 
 
-  </form>
-  <a href="./registerUser">Register User</a>
+<h1>
+<%= application.getAttribute("attributeFrom") %>
+</h1>
 
-</div>
+
+  <div class="login-container">
+
+    <br> <br>
+    <h3>Register User</h3>
+    <form action="./user" method="post">
+      <label for="username">Username:</label>
+      <input type="text"  name="username" required />
+
+      <label for="password">Password:</label>
+      <input type="password" name="password" required>
+
+      <label >Confirm Password:</label>
+      <input type="password" name="confirmPassword" required>
+
+      <input type="submit"  />
+    </form>
+    <a href="./">Back to Login</a>
+  </div>
 </body>
 </html>

@@ -29,15 +29,15 @@ public class AuthFilter implements Filter {
         System.out.println("context path:" + httpRequest.getContextPath());
         System.out.println("context URI:" + httpRequest.getRequestURI());
 
-       if (httpSession.isNew()){
+       if (httpSession.isNew() || StringUtils.isBlank((String) httpSession.getAttribute("loggedIn"))){
             httpSession.invalidate();
-            if (servletPath.equals("/login") || servletPath.equals("/registerUser" ) || servletPath.equals("/index.html")|| servletPath.equals("/user")){
+            if (servletPath.equals("/login") || servletPath.equals("/registerUser" ) || servletPath.contains("jsp")|| servletPath.equals("/user")){
                 chain.doFilter(request,response);
             }
             else {
 
                 //httpResponse.sendRedirect(httpRequest.getContextPath()+"/");
-                httpResponse.sendRedirect(httpRequest.getContextPath()+"/houses");
+                httpResponse.sendRedirect(httpRequest.getContextPath()+"/home");
                 response.getWriter().flush();
             }
        }else {

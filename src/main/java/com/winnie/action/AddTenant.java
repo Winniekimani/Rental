@@ -1,8 +1,7 @@
 package com.winnie.action;
 
-import com.winnie.app.View.dropdown.HouseTypeDropDown;
-import com.winnie.app.View.html.AppPage;
-import org.apache.commons.lang3.StringUtils;
+import com.winnie.app.View.html.HtmlComponent;
+import com.winnie.app.model.entity.House;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/add-tenant")
-public class AddTenant extends HttpServlet {
+public class AddTenant extends BaseAction {
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession httpSession = req.getSession();
@@ -42,7 +41,10 @@ public class AddTenant extends HttpServlet {
                     "            <button type=\"submit\">Save</button>" +
                     "        </form>";
             String listOfTenants = "<h2>List of Available Houses</h2>\n" ;
-            new AppPage().renderHtml(req, resp, 1, addTenantForm + "<br/>" );
+            /*new AppPage().renderHtml(req, resp, 1, addTenantForm + "<br/>" );
+*/
+        renderPage(req,resp,2, addTenantForm + "<br/>");
+
 
 
     }

@@ -23,7 +23,8 @@ public class LoginAction extends BaseAction {
     public void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
         HttpSession httpSession= req.getSession();
         if (StringUtils.isNotBlank((String) httpSession.getAttribute("loggedIn")))
-        resp.sendRedirect("./houses");
+        //resp.sendRedirect("./houses");
+        resp.sendRedirect("./home");
         else
             resp.sendRedirect("./");
 
@@ -39,8 +40,10 @@ public class LoginAction extends BaseAction {
             HttpSession httpSession= req.getSession(true);
             httpSession.setAttribute("loggedIn",new Date().getTime() + "");
             httpSession.setAttribute("username",loginUser.getUsername());
+            httpSession.setAttribute("activeMenu",0);
 
-            resp.sendRedirect("./houses");
+            //resp.sendRedirect("./houses");
+            resp.sendRedirect("./home");
 
         }
 
