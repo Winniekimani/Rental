@@ -3,7 +3,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+  <%--
   <%@ include file="../style/style.jsp"%>
+    ---%>
+
+   <jsp:include page="../style/style.jsp"/>
 </head>
 
 <body>

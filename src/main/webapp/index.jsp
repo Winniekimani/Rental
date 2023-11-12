@@ -18,7 +18,12 @@
 
   <style>
 
+    <jsp:include page="./style/style.jsp"/>
+
+    <%--
      <%@ include file="./style/style.jsp"%>
+     ---%>
+
   </style>
 </head>
 <body>
