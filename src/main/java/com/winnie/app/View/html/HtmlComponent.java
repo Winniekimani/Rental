@@ -78,8 +78,10 @@ public class HtmlComponent implements Serializable {
             return StringUtils.EMPTY;
 
 
-            String htmlForm = "<br/>Add " + modelClass.getSimpleName() + "<br/>" +
+            String htmlForm =  "<div class=\"login-container\">"+
+                    "<br/>Add " + modelClass.getSimpleName() + "<br/>" +
                     "<form action=\"./" + modelClass.getSimpleName().toLowerCase() + "-action\" method=\"post\">";
+                    //"<div class=\"login-container\">";
 
             Field[] fields = modelClass.getDeclaredFields();
 
@@ -115,14 +117,16 @@ public class HtmlComponent implements Serializable {
                             + "\" name=\"" + (StringUtils.isBlank(formField.name())?fieldName: formField.name()) + "\"><br>";
                 } else if (fieldType == BigDecimal.class) {
                     htmlForm += "<input type=\"number\" step=\"any\" id=\"" + (StringUtils.isBlank(formField.id())?fieldName: formField.id())
-                            + "\" name=\"" + (StringUtils.isBlank(formField.name())?fieldName: formField.name()) + "\"><br>";
+                            + "\" name=\"" + (StringUtils.isBlank(formField.name())?fieldName: formField.name()) + "\"><br><br>";
 
                 }
                     // Add additional handling for other data types if needed
             }
 
             htmlForm += "<input type=\"submit\" value=\"Add " + modelClass.getSimpleName() + "\">";
-            htmlForm += "</form>";
+            htmlForm += "</div>"+
+                    "</form>"+
+                    "<br/><hr/><br/>";
 
             return htmlForm;
         }
