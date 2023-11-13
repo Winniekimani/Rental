@@ -1,6 +1,8 @@
 
 
 <%@ page import="com.winnie.app.View.toolbar.TopToolBar" %>
+<%@ page import="com.winnie.app.userbean.ActiveMenuBean" %>
+
 
 
 
@@ -18,10 +20,16 @@
 
 <body>
 
-
+<%--
   <%=new TopToolBar().menu((int)request.getAttribute("activeMenu")) %>
+---%>
 
 
+ <jsp:useBean id="toolbar" class="com.winnie.app.View.toolbar.TopToolBar" scope="request"/>
+ <jsp:useBean id="activeMenuBean" class="com.winnie.app.userbean.ActiveMenuBean" scope="request"/>
+
+ <jsp:setProperty name="activeMenuBean" property="activeMenu" value='<%= request.getAttribute("activeMenu") %>'/>
+ <%= toolbar.menu(activeMenuBean.getActiveMenu()) %>
 
 
   <h3><%= application.getInitParameter("AppName")%><h3>
@@ -33,7 +41,6 @@
  ---%>
 
  <jsp:useBean id="contentBean" class="com.winnie.app.userbean.ContentBean" scope="request"/>
-
  <jsp:setProperty name="contentBean" property="content" value='<%= request.getAttribute("content") %>'/>
  <%= contentBean.getContent() %>
 

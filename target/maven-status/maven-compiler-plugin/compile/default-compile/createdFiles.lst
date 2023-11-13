@@ -27,7 +27,6 @@ com/winnie/app/bean/UserBeanI.class
 com/winnie/action/TenantAction.class
 com/winnie/action/RegisterUser.class
 com/winnie/action/LogoutAction.class
-com/winnie/app/userbean/NavBarBean.class
 com/winnie/action/HouseAction.class
 com/winnie/action/LoginAction.class
 com/winnie/app/model/entity/HouseType.class
@@ -37,6 +36,7 @@ com/winnie/action/AddHouse.class
 com/winnie/action/Payments.class
 com/winnie/app/bean/TenantBean.class
 com/winnie/action/AddTenant.class
+com/winnie/app/userbean/ActiveMenuBean.class
 com/winnie/jsputils/Calculator.class
 com/winnie/action/HouseTypeConverter.class
 com/winnie/event/AppInit.class
