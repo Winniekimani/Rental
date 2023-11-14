@@ -10,7 +10,7 @@
     int justAnotherNo = new Calculator().addNumbers(3000,4000);
 %>
   ---%>
-
+<%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,8 +32,16 @@
 
 <h2><%= application.getInitParameter("AppName")%></h2>
 <%
-    application.setAttribute("attributeFrom", "this was set in loginPage");
+    application.setAttribute("pagelink", "Home/<a href='index.jsp'>Login</a>Register");
 %>
+<%--
+    if(!session.isNew() && session.getAttribute("loggedIn")!=null);
+      {
+      response.sendRedirect("./home");
+      }
+      else{
+      --%>
+
 
 
 
@@ -59,10 +67,11 @@
 
 
  <jsp:useBean id="loginForm"  class="com.winnie.app.userbean.LoginForm" />
+
  <jsp:setProperty name="loginForm" property="usernamePlaceHolder" value="Enter Unique Username"/>
 <div class="login-container">
   <h2>Login</h2>
-
+Time to login <jsp:getProperty name="loginForm" property="timeToLogin" />
   <form action="./login" method="post">
     <label for="username">Username:</label>
     <!---<input type="text" placeholder="username" name="username" required /> --->

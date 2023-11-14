@@ -59,7 +59,7 @@ application.getInitParameter("AppName")
 
 
 <h1>
-<%= application.getAttribute("attributeFrom") %>
+<%= application.getAttribute("pagelink") %>
 </h1>
 
 

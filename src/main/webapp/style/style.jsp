@@ -127,4 +127,5 @@
           border-radius: 10px;
           cursor: pointer;
         }
+        <%-- new css interface --%>
   </style>

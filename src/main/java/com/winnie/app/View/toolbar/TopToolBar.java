@@ -22,9 +22,6 @@ private final List<MenuLink> links = new ArrayList<>();
         links.add(new MenuLink("./logout", "Logout", MenuLinkStatus.NOT_ACTIVE));
     }
 
-    public TopToolBar() {
-
-    }
 
 
 
