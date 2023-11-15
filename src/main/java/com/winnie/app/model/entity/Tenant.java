@@ -5,8 +5,6 @@ import com.winnie.app.View.html.WinnieHtmlForms;
 import com.winnie.app.View.html.WinnieTableColHeader;
 
 import java.io.Serializable;
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @WinnieHtmlForms(label = "Tenants")
@@ -24,25 +22,23 @@ public class Tenant implements Serializable {
 
     @WinnieTableColHeader(header="LeaseStartDate")
     @WinnieHtmlFormField(label="Lease StartDate")
-    private Date leaseStartDate;
+    private String leaseStartDate;
     @WinnieTableColHeader(header="LeaseEndDate")
     @WinnieHtmlFormField(label="Lease EndDate")
-    private Date leaseEndDate;
+    private String leaseEndDate;
     @WinnieTableColHeader(header="RentAmount")
     @WinnieHtmlFormField(label="Rent Amount")
     private double rentAmount;
     @WinnieTableColHeader(header="TenantHouseId")
     @WinnieHtmlFormField(label="Tenant HouseId")
     private String houseId;
-    @WinnieTableColHeader(header="PaymentStatus")
-    @WinnieHtmlFormField(label="Payment Status")
-    private String paymentStatus;
 
 
     public Tenant() {
     }
 
-    public Tenant(String firstName, String lastName, String phone, Date leaseStartDate, Date leaseEndDate, double rentAmount,  String houseId, String paymentStatus) {
+
+    public Tenant(String firstName, String lastName, String phone, String leaseStartDate, String leaseEndDate, double rentAmount, String houseId) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
@@ -50,7 +46,6 @@ public class Tenant implements Serializable {
         this.leaseEndDate = leaseEndDate;
         this.rentAmount = rentAmount;
         this.houseId = houseId;
-        this.paymentStatus = paymentStatus;
     }
 
     public String getFirstName() {
@@ -77,19 +72,19 @@ public class Tenant implements Serializable {
         this.phone = phone;
     }
 
-    public Date getLeaseStartDate() {
+    public String getLeaseStartDate() {
         return leaseStartDate;
     }
 
-    public void setLeaseStartDate(Date leaseStartDate) {
+    public void setLeaseStartDate(String leaseStartDate) {
         this.leaseStartDate = leaseStartDate;
     }
 
-    public Date getLeaseEndDate() {
+    public String getLeaseEndDate() {
         return leaseEndDate;
     }
 
-    public void setLeaseEndDate(Date leaseEndDate) {
+    public void setLeaseEndDate(String leaseEndDate) {
         this.leaseEndDate = leaseEndDate;
     }
 
@@ -109,32 +104,22 @@ public class Tenant implements Serializable {
         this.houseId = houseId;
     }
 
-    public String getPaymentStatus() {
-        return paymentStatus;
+
+    public String deleteTenant() {
+        // Add a button to remove the house
+        return "<form action=\"./delete-tenant\" method=\"post\">" +
+                "<input type=\"hidden\" name=\"houseId\" value=\"" + getHouseId() + "\" />" +
+                "<input type=\"submit\" value=\"Remove\" />" +
+                "</form>";
     }
 
-    public void setPaymentStatus(String paymentStatus) {
-        this.paymentStatus = paymentStatus;
-    }
 
-    public String tableRow() {
-        StringBuilder trBuilder = new StringBuilder();
-        trBuilder.append("<tr>");
-
-        trBuilder.append("<td>").append(getFirstName()).append("</td>");
-        trBuilder.append("<td>").append(getLastName()).append("</td>");
-        trBuilder.append("<td>").append(getPhone()).append("</td>");
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        trBuilder.append("<td>").append(getLeaseStartDate() != null ? dateFormat.format(getLeaseStartDate()) : "").append("</td>");
-        trBuilder.append("<td>").append(getLeaseEndDate() != null ? dateFormat.format(getLeaseEndDate()) : "").append("</td>");
-
-        trBuilder.append("<td>").append(getRentAmount() == 0 ? "" : new DecimalFormat("#,###.##").format(getRentAmount())).append("</td>");
-        trBuilder.append("<td>").append(getHouseId()).append("</td>");
-        trBuilder.append("<td>").append(getPaymentStatus()).append("</td>");
-        trBuilder.append("</tr>");
-
-        return trBuilder.toString();
-    }
+    /*public String updateTenant() {
+        // Add a button to edit the house
+        return "<form action=\"./edit-house\" method=\"get\">" +
+                "<input type=\"hidden\" name=\"houseId\" value=\"" + getHouseId() + "\" />" +
+                "<input type=\"submit\" value=\"Edit\" />" +
+                "</form>";
+    }*/
 
 }

@@ -1,15 +1,5 @@
 
 
-
-<%---this is index page-----%>
-<%---
-<%@ page import="com.winnie.jsputils.Calculator"%>
-<%!
-  String appHeader="<h2>Rental Software</h2>";
-     Calculator newCalculator = new Calculator();
-    int justAnotherNo = new Calculator().addNumbers(3000,4000);
-%>
-  ---%>
 <%@ page isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -85,6 +75,7 @@
 
   </form>
 
+</br>
    <%---<a href="./registerUser">Register User</a>-----%>
     <a href="register.jsp">Register User</a>
 

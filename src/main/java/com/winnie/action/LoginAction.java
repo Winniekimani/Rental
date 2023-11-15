@@ -23,7 +23,7 @@ public class LoginAction extends BaseAction {
     public void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
         HttpSession httpSession= req.getSession();
         if (StringUtils.isNotBlank((String) httpSession.getAttribute("loggedIn")))
-        //resp.sendRedirect("./houses");
+
         resp.sendRedirect("./home");
         else
             resp.sendRedirect("./");
@@ -42,7 +42,6 @@ public class LoginAction extends BaseAction {
             httpSession.setAttribute("username",loginUser.getUsername());
             httpSession.setAttribute("activeMenu",0);
 
-            //resp.sendRedirect("./houses");
             resp.sendRedirect("./home");
 
         }
@@ -54,14 +53,4 @@ public class LoginAction extends BaseAction {
     }
 }
 
-/*if (username.equals(ctx.getInitParameter("username")) &&
-                password.equals(ctx.getInitParameter("password"))){
-            httpSession.setAttribute("username",username);
 
-            resp.sendRedirect("./home");
-
-        }else{
-            PrintWriter print = resp.getWriter();
-            //print.write("welcome to rental software");
-            print.write("<html><body>invalid login details<a href =\".\">Login again</a></body></html>");
-        }*/

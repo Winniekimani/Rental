@@ -12,12 +12,6 @@ import java.util.List;
 public class HouseBean implements HouseBeanI,Serializable {
     public String listOfHousesAvailable(){
 
-
-
-
-        //trBuilder.append(HtmlComponent.table( Database.getDbInstance().getHouses()));
-
-
         return HtmlComponent.table( Database.getDbInstance().getHouses());
     }
 
@@ -39,17 +33,17 @@ public class HouseBean implements HouseBeanI,Serializable {
     }
 
 
-        @Override
-        public void updateHouse(House updatedHouse) {
-            List<House> houses = Database.getDbInstance().getHouses();
-            for (int i = 0; i < houses.size(); i++) {
-                House house = houses.get(i);
-                if (house.getHouseId().equals(updatedHouse.getHouseId())) {
-                    houses.set(i, updatedHouse);
-                    return;
-                }
+    @Override
+    public void updateHouse(House updatedHouse) {
+        List<House> houses = Database.getDbInstance().getHouses();
+        for (int i = 0; i < houses.size(); i++) {
+            House house = houses.get(i);
+            if (house.getHouseId().equals(updatedHouse.getHouseId())) {
+                houses.set(i, updatedHouse);
+                return;
             }
         }
+    }
 
 
 

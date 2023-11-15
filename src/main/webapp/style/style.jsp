@@ -34,6 +34,23 @@
       text-decoration: none;
       color: white;
     }
+     /* add-payment-css */
+        .addPaymentButton {
+          padding: 12px;
+          border-radius: 5px;
+          border: none;
+          background-color: rgb(10, 79, 182);
+          color: white;
+          cursor: pointer;
+          width: 100px;
+          display: flex;
+          justify-content: center;
+        }
+
+        .addPaymentButton a {
+          text-decoration: none;
+          color: white;
+        }
 
     ul.topnav {
       list-style-type: none;

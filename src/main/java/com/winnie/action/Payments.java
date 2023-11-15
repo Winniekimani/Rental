@@ -11,21 +11,15 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/payments")
-public class Payments  extends BaseAction{
-
-    public void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
-        HttpSession httpSession= req.getSession();
+public class Payments  extends BaseAction {
 
 
-        renderPage(req,resp,3, HtmlComponent.htmlForm(Payment.class));
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 
-            /*new AppPage().renderHtml(req,resp,3, HtmlComponent.htmlForm(Payment.class));
-*/
+        renderPage(req, resp, 3, HtmlComponent.htmlForm(Payment.class));
+
+
     }
-
-
-
-
 }
 

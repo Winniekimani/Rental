@@ -14,8 +14,6 @@ import java.io.IOException;
 public class Tenants extends BaseAction {
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
-        HttpSession httpSession= req.getSession();
-
 
             TenantBeanI tenantbean = new TenantBean();
             String addTenantForm =
@@ -24,9 +22,8 @@ public class Tenants extends BaseAction {
                     "        </div>";
 
 
-            String availableTenants = "<h2>List of Available Tenants</h2>\n" + tenantbean.listOfTenants();/*
+            String availableTenants = "<h2>List of Available Tenants</h2>\n" + tenantbean.listOfTenants();
 
-            new AppPage().renderHtml(req, resp, 2, addTenantForm + "<br/>" + availableTenants);*/
 
         renderPage(req,resp,2,addTenantForm + "<br/>" + availableTenants );
 
@@ -39,8 +36,6 @@ public class Tenants extends BaseAction {
 
 
 }
-            //new AppPage().renderHtml(req,resp,2,"<h2>tenants </h2>tenants list available here");
-
 
 
 

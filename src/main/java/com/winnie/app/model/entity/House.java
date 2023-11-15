@@ -83,39 +83,6 @@ public class House implements Serializable {
         this.housePrice = housePrice;
     }
 
-   /* public String tableRow(){
-
-
-        StringBuilder trBuilder = new StringBuilder();
-        trBuilder.append("<tr>");
-        trBuilder.append("<td>").append(StringUtils.trimToEmpty(getHouseId())).append("</td>");
-        trBuilder.append("<td>").append(getHouseName() != null ? getHouseName() : "").append("</td>");
-        trBuilder.append("<td>").append(getHouseType() != null ? getHouseType().toString() : "").append("</td>");
-        trBuilder.append("<td>").append(getHouseLocation() != null ? getHouseLocation().trim() : "").append("</td>");
-        trBuilder.append("<td>").append(getHousePrice() != null ? new DecimalFormat("#,###.##").format(getHousePrice()) : "").append("</td>");
-        trBuilder.append("<td>").append(deleteHouse()).append("</td>");
-        trBuilder.append("<td>").append(updateHouse()).append("</td>");
-        trBuilder.append("<tr>");
-        return trBuilder.toString();
-       *//* StringBuilder trBuilder = new StringBuilder();
-        trBuilder.append("<tr>");
-        trBuilder.append("<td>").append(StringUtils.trimToEmpty(getHouseId())).append("</td>");
-        trBuilder.append("<td>").append(getHouseName()).append("</td>");
-
-        //trBuilder.append("<td>").append(getHouseType()).append("</td>");
-        trBuilder.append("<td>").append(getHouseType().name()).append("</td>");
-        trBuilder.append("<td>").append(getHouseLocation().isBlank()?"": getHouseLocation().trim()).append("</td>");
-        trBuilder.append("<td>").append(getHousePrice()==null?""
-            :new DecimalFormat("#,###.##").format(getHousePrice())).append("</td>");
-
-        //button to remove house
-        trBuilder.append("<td>").append(deleteHouse()).append("</td>");
-        trBuilder.append("<td>").append(updateHouse()).append("</td>");
-        trBuilder.append("<tr>");
-
-        return trBuilder.toString();*//*
-
-    }*/
 
 
     public String deleteHouse() {

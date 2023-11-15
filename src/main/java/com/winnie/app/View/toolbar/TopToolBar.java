@@ -14,9 +14,6 @@ import java.util.Map;
 public class TopToolBar  implements Serializable ,Menu{
 
 
- /*   private String menu;
-
-    private int activeLink;*/
 
     private final List<MenuLink> links = new ArrayList<>();
 
@@ -28,32 +25,6 @@ public class TopToolBar  implements Serializable ,Menu{
         links.add(new MenuLink("./logout", "Logout", MenuLinkStatus.NOT_ACTIVE));
     }
 
-   /* public String getMenu() {
-        this.activateLink(getActiveLink());
-
-        String menuBar="<ul class=\"topnav\">";
-
-        for (MenuLink link:links)
-            menuBar+= "<li><a "+(link.getStatus()== MenuLinkStatus.ACTIVE? "Class=\"active\"" : "")
-                    + "href=\"" + link.getUrl() + "\">"+link.getLabel() + "</a></li>\n" ;
-        //"<li><a href=\"./homejournals\">HouseJournals</a></li>\n" +
-        //"<li><a href=\"#tenants\">Tenants</a></li>\n" +
-
-        menuBar+="</ul>\n" ;
-        return menuBar;
-    }
-
-    public void setMenu(String menu) {
-        this.menu = menu;
-    }
-
-    public int getActiveLink() {
-        return activeLink;
-    }
-
-    public void setActiveLink(int activeLink) {
-        this.activeLink = activeLink;
-    }*/
 
     @Override
     public String menu(int activeLinkIndex) {
@@ -81,10 +52,6 @@ public class TopToolBar  implements Serializable ,Menu{
 
     }
 
-  /*  @Override
-    public String menu(int activeLinkIndex) {
-        return null;
-    }*/
 
 
 

@@ -1,6 +1,7 @@
 package com.winnie.database;
 
 import com.winnie.app.model.entity.House;
+import com.winnie.app.model.entity.Payment;
 import com.winnie.app.model.entity.Tenant;
 import com.winnie.app.model.entity.User;
 
@@ -15,6 +16,7 @@ public class Database implements Serializable {
     private String databaseCreateAt;
     private List<User>users = new ArrayList<>();
     private List<House>houses= new ArrayList<>();
+    private List<Payment>payments= new ArrayList<>();
 
     private List<Tenant>tenants= new ArrayList<>();
     private static  Database dbInstance;
@@ -54,7 +56,16 @@ public class Database implements Serializable {
         this.tenants = tenants;
     }
 
+    public List<Payment> getPayments() {
+        return payments;
+    }
+
+    public void setPayments(List<Payment> payments) {
+        this.payments = payments;
+    }
+
     public String getDatabaseCreateAt() {
         return databaseCreateAt;
     }
+
 }

@@ -1,5 +1,6 @@
 package com.winnie.app.bean;
 
+import com.winnie.app.View.html.HtmlComponent;
 import com.winnie.app.model.entity.House;
 import com.winnie.app.model.entity.Tenant;
 import com.winnie.database.Database;
@@ -11,24 +12,23 @@ public class TenantBean implements TenantBeanI, Serializable {
     @Override
     public String listOfTenants() {
 
-        List<Tenant>tenants=Database.getDbInstance().getTenants();
-        StringBuilder trBuilder = new StringBuilder();
-        trBuilder.append("<table><tr><th>FirstName</th><th>LastName</th><th>Phone</th><th>LeaseStartDate</th><th>LeaseEndDate</th><th>RentAmount</th><th>HouseId</th><th>PaymentStatus</th></tr>");
-        for (Tenant tenant: tenants)
-            trBuilder.append(tenant.tableRow());
 
-        trBuilder.append("</table>");
-
-        return trBuilder.toString();
+        return HtmlComponent.table( Database.getDbInstance().getTenants());
     }
 
     @Override
-    public House addTenant(Tenant tenant) throws Exception {
-        return null;
+    public Tenant addTenant(Tenant tenant) throws Exception {
+        Database db= Database.getDbInstance();
+        db.getTenants().add(tenant);
+        return tenant;
     }
 
     @Override
     public void deleteTenant(Tenant tenant) {
+
+
+        Database db= Database.getDbInstance();
+        db.getTenants().remove(tenant);
 
     }
 }

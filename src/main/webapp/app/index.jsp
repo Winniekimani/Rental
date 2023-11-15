@@ -64,6 +64,6 @@ ${toolbar.menu(activeMenuBean.activeMenu)}
  <jsp:setProperty name="contentBean" property="content" value="${requestScope.content}"/>
  ${contentBean.content}
 
-   <a href=\"./logout\">Logout</a>
+
   </body>
   </html>

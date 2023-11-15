@@ -22,7 +22,7 @@ import java.util.List;
 
 
 @WebServlet("/edit-house")
-public class EditHouse extends HttpServlet {
+public class EditHouse extends BaseAction {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String houseId = req.getParameter("houseId");
@@ -36,8 +36,8 @@ public class EditHouse extends HttpServlet {
             PrintWriter out = resp.getWriter();
             out.println("<html><body>");
             out.println("<form action='./house-action' method='post'>");
-            out.println("House ID: <input type='text' name='houseId' value='" + house.getHouseId() + "'><br>");
             out.println("House ID: " + house.getHouseId() + "<br>");
+            out.println("House ID: <input type='text' name='houseId' value='" + house.getHouseId() + "'><br>");
             out.println("House Name: <input type='text' name='houseName' value='" + house.getHouseName() + "'><br>");
             out.println("House Type: <input type='text' name='houseType' value='" + house.getHouseType() + "'><br>");
             out.println("House Location: <input type='text' name='houseLocation' value='" + house.getHouseLocation() + "'><br>");

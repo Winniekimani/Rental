@@ -1,18 +1,12 @@
 package com.winnie.event;
 
-import com.winnie.app.model.entity.House;
-import com.winnie.app.model.entity.HouseType;
-import com.winnie.app.model.entity.Tenant;
-import com.winnie.app.model.entity.User;
+import com.winnie.app.model.entity.*;
 import com.winnie.database.Database;
-import com.winnie.utils.TenantUtils;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 import java.math.BigDecimal;
-import java.text.ParseException;
-import java.util.Date;
 
 @WebListener
 public class AppInit implements ServletContextListener {
@@ -43,21 +37,18 @@ public class AppInit implements ServletContextListener {
 
 
         System.out.println("************** Adding Tenants*********");
-        //database.getTenants().add(new Tenant("winnie","kimani","0746450089",24/102023,15/10/2024,50000.00,"12A","paid"));
 
-        try {
-            database.getTenants().add(TenantUtils.createTenant("Winnie", "Kimani", "0746450089", "24/10/2023", "20/10/2024", 100000.00, "12A", "paid"));
-            database.getTenants().add(TenantUtils.createTenant("maryann", "njeri", "0748970089", "24/3/2023", "25/12/2024", 25000.00, "5", "unpaid"));
-            database.getTenants().add(TenantUtils.createTenant("vincent", "njenga", "0746450089", "24/2/2023", "10/8/2024", 60000.00, "12A", "unpaid"));
-            database.getTenants().add(TenantUtils.createTenant("fredrick", "kamau", "0746470089", "24/5/2023", "15/09/2024", 58000.00, "8", "paid"));
-            database.getTenants().add(TenantUtils.createTenant("mwihaki", "wanjiru", "07464900089", "24/6/2023", "15/02/2024", 5000.00, "10B", "paid"));
-            database.getTenants().add(TenantUtils.createTenant("ochieng", "omera", "0748900089", "24/9/2023", "15/112/2024", 60000.00, "20", "unpaid"));
-            database.getTenants().add(TenantUtils.createTenant("ochieng", "omera", "0751050089", "29/9/2023", "15/11/2024", 70000.00, "24", "unpaid"));
-            database.getTenants().add(TenantUtils.createTenant("ochieng", "omera", "074950089", "28/9/2023", "15/12/2024", 20000.00, "228B", "unpaid"));
-            database.getTenants().add(TenantUtils.createTenant("ochieng", "omera", "0740450089", "20/9/2023", "15/10/2024", 10000.00, "26", "paid"));
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
+
+
+     database.getTenants().add(new Tenant("winnie","kimani","0789900909","25/10/2011","30/10/1025",110000.00,"12A"));
+     database.getTenants().add(new Tenant("winnie","kimani","0789900909","25/10/2011","30/10/1025",110000.00,"12A"));
+     database.getTenants().add(new Tenant("winnie","kimani","0789900909","25/10/2011","30/10/1025",110000.00,"12A"));
+     database.getTenants().add(new Tenant("winnie","kimani","0789900909","25/10/2011","30/10/1025",110000.00,"12A"));
+     database.getTenants().add(new Tenant("winnie","kimani","0789900909","25/10/2011","30/10/1025",110000.00,"12A"));
+     database.getTenants().add(new Tenant("winnie","kimani","0789900909","25/10/2011","30/10/1025",110000.00,"12A"));
+     database.getTenants().add(new Tenant("winnie","kimani","0789900909","25/10/2011","30/10/1025",110000.00,"12A"));
+
+
 
 
     }

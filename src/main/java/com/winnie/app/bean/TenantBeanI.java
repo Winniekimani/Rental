@@ -6,6 +6,6 @@ import com.winnie.app.model.entity.Tenant;
 public interface TenantBeanI {
 
     String listOfTenants();
-    House addTenant(Tenant tenant) throws Exception;
+    Tenant addTenant(Tenant tenant) throws Exception;
     void deleteTenant(Tenant tenant);
 }
