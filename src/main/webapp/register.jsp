@@ -1,3 +1,4 @@
+<%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,15 +54,9 @@
 </head>
 <body>
 
-<%=
-application.getInitParameter("AppName")
-%>
+${applicationScope.AppName}
 
-
-<h1>
-<%= application.getAttribute("pagelink") %>
-</h1>
-
+<h1>${applicationScope.pagelink}</h1>
 
   <div class="login-container">
 

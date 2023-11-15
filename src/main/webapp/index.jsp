@@ -11,6 +11,7 @@
 %>
   ---%>
 <%@ page isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,18 +31,17 @@
 
 <h2>Rental Software</h2>
 
+<h2>${applicationScope.AppName}</h2>
+
+<c:set var="pagelink" value="Home/<a href='index.jsp'>Login</a>Register" scope="application"/>
+
+<%---
 <h2><%= application.getInitParameter("AppName")%></h2>
+
 <%
     application.setAttribute("pagelink", "Home/<a href='index.jsp'>Login</a>Register");
 %>
-<%--
-    if(!session.isNew() && session.getAttribute("loggedIn")!=null);
-      {
-      response.sendRedirect("./home");
-      }
-      else{
-      --%>
-
+----%>
 
 
 
@@ -71,15 +71,15 @@
  <jsp:setProperty name="loginForm" property="usernamePlaceHolder" value="Enter Unique Username"/>
 <div class="login-container">
   <h2>Login</h2>
-Time to login <jsp:getProperty name="loginForm" property="timeToLogin" />
+   Time to Login ${loginForm.timeToLogin}
   <form action="./login" method="post">
     <label for="username">Username:</label>
     <!---<input type="text" placeholder="username" name="username" required /> --->
-    <input type="text" placeholder="<jsp:getProperty name="loginForm" property="usernamePlaceHolder"/>" name="username" required />
+    <input type="text" placeholder="${loginForm.usernamePlaceHolder}" name="username" required />
 
     <label for="password">Password:</label>
     <!----<input type="password" placeholder="password" name="password" required>-->
-    <input type="password" placeholder="<jsp:getProperty name="loginForm" property="passwordPlaceHolder"/>" name="password" required>
+    <input type="password" placeholder="${loginForm.passwordPlaceHolder}" name="password" required>
     <input type="submit" value="submit" />
 
 
