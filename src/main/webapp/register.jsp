@@ -54,7 +54,7 @@
 </head>
 <body>
 
-${applicationScope.AppName}
+${initParam.AppName}
 
 <h1>${applicationScope.pagelink}</h1>
 

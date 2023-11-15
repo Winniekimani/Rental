@@ -31,7 +31,7 @@
 
 <h2>Rental Software</h2>
 
-<h2>${applicationScope.AppName}</h2>
+<h2>${initParam.AppName}</h2>
 
 <c:set var="pagelink" value="Home/<a href='index.jsp'>Login</a>Register" scope="application"/>
 
