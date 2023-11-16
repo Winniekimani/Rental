@@ -1,4 +1,5 @@
 <%@ page isELIgnored="false" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,27 +55,31 @@
 </head>
 <body>
 
-${initParam.AppName}
+<%-----${initParam.AppName}--------%>
 
+
+
+  <c:out value="${initParam.AppName}" />
 <h1>${applicationScope.pagelink}</h1>
+  <%------<h1><c:out value="${applicationScope.pagelink}" /></h1>---%>
 
   <div class="login-container">
+      <br> <br>
+      <h3>Register User</h3>
+      <form action="./user" method="post">
+        <label for="username">Username:</label>
+        <input type="text"  name="username" required />
 
-    <br> <br>
-    <h3>Register User</h3>
-    <form action="./user" method="post">
-      <label for="username">Username:</label>
-      <input type="text"  name="username" required />
+        <label for="password">Password:</label>
+        <input type="password" name="password" required>
 
-      <label for="password">Password:</label>
-      <input type="password" name="password" required>
+        <label >Confirm Password:</label>
+        <input type="password" name="confirmPassword" required>
 
-      <label >Confirm Password:</label>
-      <input type="password" name="confirmPassword" required>
-
-      <input type="submit"  />
-    </form>
-    <a href="./">Back to Login</a>
+        <input type="submit"  />
+      </form>
+      <a href="./">Back to Login</a>
   </div>
-</body>
-</html>
+
+  </body>
+  </html>

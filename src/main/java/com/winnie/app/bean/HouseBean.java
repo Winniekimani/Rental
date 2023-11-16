@@ -24,11 +24,18 @@ public class HouseBean implements HouseBeanI,Serializable {
 
 
 
-    public void deleteHouse(House house){
+    public void deleteHouse(String houseId) {
+        Database db = Database.getDbInstance();
+        // Remove the house from the database
+        db.getHouses().removeIf(house -> house.getHouseId().equals(houseId));
 
-
-        Database db= Database.getDbInstance();
-        db.getHouses().remove(house);
+         /*  List<House> houses = database.getHouses();
+            for (House house : houses) {
+                if (house.getHouseId().equals(houseId)) {
+                    houses.remove(house);
+                    break;  // Optional - to break the loop after the first removal
+                }
+            }*/
 
     }
 

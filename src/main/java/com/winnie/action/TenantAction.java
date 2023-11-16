@@ -38,7 +38,6 @@ public class TenantAction  extends BaseAction{
             throw new RuntimeException(e);
         }
 
-
             resp.sendRedirect("./tenants");
 
 

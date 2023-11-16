@@ -51,29 +51,9 @@ public class AuthFilter implements Filter {
 
        }
 
-        /*if (servletPath.equals("/login") || servletPath.equals("/registerUser")){
-            System.out.println("1");
-            chain.doFilter(request,response);
 
-        }else{
-            if (httpSession.isNew()) {
 
-                System.out.println("2");
-
-                httpSession.invalidate();
-                httpResponse.sendRedirect(httpRequest.getContextPath()+"/login");
-            }
-            else if(StringUtils.isNotBlank((String) httpSession.getAttribute("loggedIn"))){
-                System.out.println("3");
-                httpResponse.sendRedirect(httpRequest.getContextPath()+"/houses");
-                response.getWriter().flush();
-            }else {
-                System.out.println("4");
-                httpResponse.sendRedirect(httpRequest.getContextPath()+"/login");
-                response.getWriter().flush();
-            }*/
-
-       }
+    }
 
 
 

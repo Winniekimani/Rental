@@ -13,22 +13,31 @@ public class TenantBean implements TenantBeanI, Serializable {
     public String listOfTenants() {
 
 
-        return HtmlComponent.table( Database.getDbInstance().getTenants());
+        return HtmlComponent.table(Database.getDbInstance().getTenants());
     }
 
     @Override
     public Tenant addTenant(Tenant tenant) throws Exception {
-        Database db= Database.getDbInstance();
+        Database db = Database.getDbInstance();
         db.getTenants().add(tenant);
         return tenant;
     }
 
     @Override
-    public void deleteTenant(Tenant tenant) {
 
+    public void deleteTenant(String tenantId) {
+        if (tenantId != null && !tenantId.isEmpty()) {
+            Database db = Database.getDbInstance();
+            db.getTenants().removeIf(tenant -> tenant.getTenantId().equals(tenantId));
+        }
 
-        Database db= Database.getDbInstance();
-        db.getTenants().remove(tenant);
+         /*  List<House> houses = database.getHouses();
+            for (House house : houses) {
+                if (house.getHouseId().equals(houseId)) {
+                    houses.remove(house);
+                    break;  // Optional - to break the loop after the first removal
+                }
+            }*/
 
     }
 }

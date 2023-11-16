@@ -40,13 +40,13 @@ public class AppInit implements ServletContextListener {
 
 
 
-     database.getTenants().add(new Tenant("winnie","kimani","0789900909","25/10/2011","30/10/1025",110000.00,"12A"));
-     database.getTenants().add(new Tenant("winnie","kimani","0789900909","25/10/2011","30/10/1025",110000.00,"12A"));
-     database.getTenants().add(new Tenant("winnie","kimani","0789900909","25/10/2011","30/10/1025",110000.00,"12A"));
-     database.getTenants().add(new Tenant("winnie","kimani","0789900909","25/10/2011","30/10/1025",110000.00,"12A"));
-     database.getTenants().add(new Tenant("winnie","kimani","0789900909","25/10/2011","30/10/1025",110000.00,"12A"));
-     database.getTenants().add(new Tenant("winnie","kimani","0789900909","25/10/2011","30/10/1025",110000.00,"12A"));
-     database.getTenants().add(new Tenant("winnie","kimani","0789900909","25/10/2011","30/10/1025",110000.00,"12A"));
+     database.getTenants().add(new Tenant("1","winnie","kimani","0789900909","25/10/2011","30/10/1025",110000.00,"12A"));
+     database.getTenants().add(new Tenant("2","winnie","kimani","0789900909","25/10/2011","30/10/1025",110000.00,"12A"));
+     database.getTenants().add(new Tenant("3","winnie","kimani","0789900909","25/10/2011","30/10/1025",110000.00,"12A"));
+     database.getTenants().add(new Tenant("4A","winnie","kimani","0789900909","25/10/2011","30/10/1025",110000.00,"12A"));
+     database.getTenants().add(new Tenant("5A","winnie","kimani","0789900909","25/10/2011","30/10/1025",110000.00,"12A"));
+     database.getTenants().add(new Tenant("6","winnie","kimani","0789900909","25/10/2011","30/10/1025",110000.00,"12A"));
+     database.getTenants().add(new Tenant("7","winnie","kimani","0789900909","25/10/2011","30/10/1025",110000.00,"12A"));
 
 
 

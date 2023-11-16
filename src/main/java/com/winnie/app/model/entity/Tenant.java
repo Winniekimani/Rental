@@ -10,6 +10,9 @@ import java.util.Date;
 @WinnieHtmlForms(label = "Tenants")
 public class Tenant implements Serializable {
 
+    @WinnieTableColHeader(header="TenantId")
+    @WinnieHtmlFormField(label="Tenant Id")
+    private String tenantId;
     @WinnieTableColHeader(header="FirstName")
     @WinnieHtmlFormField(label="First Name")
     private String firstName;
@@ -37,8 +40,8 @@ public class Tenant implements Serializable {
     public Tenant() {
     }
 
-
-    public Tenant(String firstName, String lastName, String phone, String leaseStartDate, String leaseEndDate, double rentAmount, String houseId) {
+    public Tenant(String tenantId, String firstName, String lastName, String phone, String leaseStartDate, String leaseEndDate, double rentAmount, String houseId) {
+        this.tenantId = tenantId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
@@ -46,6 +49,14 @@ public class Tenant implements Serializable {
         this.leaseEndDate = leaseEndDate;
         this.rentAmount = rentAmount;
         this.houseId = houseId;
+    }
+
+    public String getTenantId() {
+        return tenantId;
+    }
+
+    public void setTenantId(String tenantId) {
+        this.tenantId = tenantId;
     }
 
     public String getFirstName() {
@@ -108,7 +119,7 @@ public class Tenant implements Serializable {
     public String deleteTenant() {
         // Add a button to remove the house
         return "<form action=\"./delete-tenant\" method=\"post\">" +
-                "<input type=\"hidden\" name=\"houseId\" value=\"" + getHouseId() + "\" />" +
+                "<input type=\"hidden\" name=\"tenantId\" value=\"" + getTenantId() + "\" />" +
                 "<input type=\"submit\" value=\"Remove\" />" +
                 "</form>";
     }

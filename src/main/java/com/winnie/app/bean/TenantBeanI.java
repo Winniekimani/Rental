@@ -7,5 +7,5 @@ public interface TenantBeanI {
 
     String listOfTenants();
     Tenant addTenant(Tenant tenant) throws Exception;
-    void deleteTenant(Tenant tenant);
+    void deleteTenant(String tenantId);
 }

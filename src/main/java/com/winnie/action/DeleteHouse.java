@@ -1,5 +1,6 @@
 package com.winnie.action;
 
+import com.winnie.app.bean.HouseBean;
 import com.winnie.database.Database;
 import org.apache.commons.lang3.StringUtils;
 
@@ -12,30 +13,21 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/delete")
-public class DeleteHouse extends HttpServlet {
+public class DeleteHouse extends BaseAction {
 
 
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession httpSession = req.getSession();
 
 
-            Database database = Database.getDbInstance();
-            String houseId = req.getParameter("houseId");
+        String houseId = req.getParameter("houseId");
 
-            // Remove the house from the database
-            database.getHouses().removeIf(house -> house.getHouseId().equals(houseId));
+        // Calling the deleteHouse method from HouseBean
+        HouseBean houseBean = new HouseBean();
+        houseBean.deleteHouse(houseId);
 
-            /*List<House> houses = database.getHouses();
-            for (House house : houses) {
-                if (house.getHouseId().equals(houseId)) {
-                    houses.remove(house);
-                    break;  // Optional - to break the loop after the first removal
-                }
-            }*/
+        resp.sendRedirect("./house-action");
 
-
-            //resp.sendRedirect("./houses");
-            resp.sendRedirect("./house-action");
 
     }
 }

@@ -23,9 +23,7 @@ public class BaseAction extends HttpServlet {
 
         try {
             BeanUtils.populate(bean,requestMap);
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
-        } catch (InvocationTargetException e) {
+        } catch (IllegalAccessException | InvocationTargetException e) {
             throw new RuntimeException(e);
         }
 
