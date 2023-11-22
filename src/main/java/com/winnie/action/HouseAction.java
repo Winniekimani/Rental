@@ -1,5 +1,6 @@
 package com.winnie.action;
 
+import com.winnie.app.View.html.HtmlComponent;
 import com.winnie.app.bean.HouseBean;
 import com.winnie.app.bean.HouseBeanI;
 import com.winnie.app.model.entity.House;
@@ -15,28 +16,21 @@ import java.io.IOException;
 public class HouseAction extends BaseAction {
 
     private HouseBeanI houseBean = new HouseBean();
-    private House house = new House();
+    /*private House house = new House();*/
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession httpSession = req.getSession();
 
-        String addHouseButton =
-                "<div class=\"addHouseButton\" >\n" +
-                        "    <a href=\"./add\">Add House</a>\n" +
-                        "</div>";
 
-
-        String availableHouses = "<h2>List of Available Houses</h2>\n" + houseBean.listOfHousesAvailable();
-
-       renderPage(req,resp,1, addHouseButton + "<br/>"
-                + "<br/>" + availableHouses);
+       renderPage(req,resp,1, House.class, houseBean.list(House.class));
     }
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        serializeForm(house,req.getParameterMap());
+
+        House house = serializeForm(House.class,req.getParameterMap());
 
         try {
-            houseBean.addHouse(house);
+            houseBean.add(house);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

@@ -5,14 +5,11 @@ import com.winnie.app.bean.HouseBeanI;
 import com.winnie.app.model.entity.House;
 import com.winnie.app.model.entity.HouseType;
 import com.winnie.database.Database;
-import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
@@ -24,7 +21,7 @@ import java.util.List;
 @WebServlet("/edit-house")
 public class EditHouse extends BaseAction {
 
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+   /* protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String houseId = req.getParameter("houseId");
         House house = getHouseByIdFromDatabase(houseId);
 
@@ -46,7 +43,7 @@ public class EditHouse extends BaseAction {
             out.println("</form>");
             out.println("</body></html>");
         } else {
-            resp.sendRedirect("./houses");
+            resp.sendRedirect("./house-action");
         }
     }
 
@@ -72,16 +69,16 @@ public class EditHouse extends BaseAction {
 
             updateHouseInDatabase(house);
 
-            resp.sendRedirect("./houses");
+            resp.sendRedirect("./house-action");
         } else {
-            resp.sendRedirect("./houses");
+            resp.sendRedirect("./house-action");
         }
     }
 
     private void updateHouseInDatabase(House updatedHouse) {
         HouseBeanI houseBean = new HouseBean(); // Instantiate HouseBean
-        houseBean.updateHouse(updatedHouse); // Call the updateHouse method in HouseBean
-    }
+        houseBean.update(updatedHouse); // Call the updateHouse method in HouseBean
+    }*/
 }
 
 

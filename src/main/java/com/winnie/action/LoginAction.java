@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.Date;
 
 @WebServlet(urlPatterns = "/login")
@@ -32,11 +33,16 @@ public class LoginAction extends BaseAction {
         public  void doPost(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
 
         User loginUser= new User();
-        serializeForm(loginUser,req.getParameterMap());
+        serializeForm(User.class,req.getParameterMap());
 
-        User userDetails=authBean.authenticate(loginUser);
+            User userDetails= null;
+            try {
+                userDetails = authBean.authenticate(loginUser);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
 
-        if (userDetails!=null){
+            if (userDetails!=null ){
             HttpSession httpSession= req.getSession(true);
             httpSession.setAttribute("loggedIn",new Date().getTime() + "");
             httpSession.setAttribute("username",loginUser.getUsername());
@@ -48,6 +54,7 @@ public class LoginAction extends BaseAction {
 
             PrintWriter print = resp.getWriter();
             print.write("<html><body>invalid login details<a href =\".\">Login again</a></body></html>");
+
 
 
     }

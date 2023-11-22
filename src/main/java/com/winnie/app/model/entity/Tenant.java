@@ -1,47 +1,60 @@
 package com.winnie.app.model.entity;
 
+import com.winnie.app.View.html.HtmlTable;
 import com.winnie.app.View.html.WinnieHtmlFormField;
 import com.winnie.app.View.html.WinnieHtmlForms;
 import com.winnie.app.View.html.WinnieTableColHeader;
+import com.winnie.database.helper.DbTable;
+import com.winnie.database.helper.DbTableColumn;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
+@DbTable(name="tenant")
+@HtmlTable(name = "Tenant",addUrl = "./tenants?action=add")
 @WinnieHtmlForms(label = "Tenants")
-public class Tenant implements Serializable {
+public class Tenant extends BaseEntity{
 
-    @WinnieTableColHeader(header="TenantId")
+  /*  @WinnieTableColHeader(header="TenantId")
     @WinnieHtmlFormField(label="Tenant Id")
-    private String tenantId;
+    @DbTableColumn(name="tenant_id")
+    private String tenantId;*/
     @WinnieTableColHeader(header="FirstName")
     @WinnieHtmlFormField(label="First Name")
+    @DbTableColumn(name="fName")
     private String firstName;
     @WinnieTableColHeader(header="LastNAme")
     @WinnieHtmlFormField(label="Last Name")
+    @DbTableColumn(name="lName")
     private String lastName;
     @WinnieTableColHeader(header="Tenant's Phone No")
     @WinnieHtmlFormField(label="Phone No")
+    @DbTableColumn(name="phone")
     private String phone;
 
     @WinnieTableColHeader(header="LeaseStartDate")
     @WinnieHtmlFormField(label="Lease StartDate")
+    @DbTableColumn(name="startDate")
     private String leaseStartDate;
     @WinnieTableColHeader(header="LeaseEndDate")
     @WinnieHtmlFormField(label="Lease EndDate")
+    @DbTableColumn(name="endDate")
     private String leaseEndDate;
     @WinnieTableColHeader(header="RentAmount")
     @WinnieHtmlFormField(label="Rent Amount")
-    private double rentAmount;
+    @DbTableColumn(name="Amount",type="decimal(10,2)")
+    private BigDecimal rentAmount;
     @WinnieTableColHeader(header="TenantHouseId")
     @WinnieHtmlFormField(label="Tenant HouseId")
+    @DbTableColumn(name="house_id")
     private String houseId;
 
 
     public Tenant() {
     }
 
-    public Tenant(String tenantId, String firstName, String lastName, String phone, String leaseStartDate, String leaseEndDate, double rentAmount, String houseId) {
-        this.tenantId = tenantId;
+    public Tenant(String firstName, String lastName, String phone, String leaseStartDate, String leaseEndDate, BigDecimal rentAmount, String houseId) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
@@ -51,13 +64,14 @@ public class Tenant implements Serializable {
         this.houseId = houseId;
     }
 
+    /*
     public String getTenantId() {
         return tenantId;
     }
 
     public void setTenantId(String tenantId) {
         this.tenantId = tenantId;
-    }
+    }*/
 
     public String getFirstName() {
         return firstName;
@@ -99,11 +113,11 @@ public class Tenant implements Serializable {
         this.leaseEndDate = leaseEndDate;
     }
 
-    public double getRentAmount() {
+    public BigDecimal getRentAmount() {
         return rentAmount;
     }
 
-    public void setRentAmount(double rentAmount) {
+    public void setRentAmount(BigDecimal rentAmount) {
         this.rentAmount = rentAmount;
     }
 
@@ -114,15 +128,25 @@ public class Tenant implements Serializable {
     public void setHouseId(String houseId) {
         this.houseId = houseId;
     }
+/*
 
+    public String getHouseId() {
+        return houseId;
+    }
 
+    public void setHouseId(String houseId) {
+        this.houseId = houseId;
+    }
+*/
+
+/*
     public String deleteTenant() {
         // Add a button to remove the house
         return "<form action=\"./delete-tenant\" method=\"post\">" +
                 "<input type=\"hidden\" name=\"tenantId\" value=\"" + getTenantId() + "\" />" +
                 "<input type=\"submit\" value=\"Remove\" />" +
                 "</form>";
-    }
+    }*/
 
 
     /*public String updateTenant() {

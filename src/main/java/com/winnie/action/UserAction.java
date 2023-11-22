@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.sql.SQLException;
 import java.util.Date;
 
 @WebServlet("/user")
@@ -23,13 +24,24 @@ public class UserAction extends BaseAction {
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 
+        try {
+            userBean.register(serializeForm(User.class, req.getParameterMap()));
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
 
-            User registerUser=new User();
-            serializeForm(registerUser,req.getParameterMap());
+        resp.sendRedirect("./");
 
+            /*User registerUser=new User();
+            serializeForm(User.class,req.getParameterMap());
+
+        try {
             userBean.register(registerUser);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
-            resp.sendRedirect("./");
+        resp.sendRedirect("./");*/
 
 
 

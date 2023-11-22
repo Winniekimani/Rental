@@ -1,33 +1,44 @@
 package com.winnie.app.model.entity;
 
+import com.winnie.app.View.html.HtmlTable;
 import com.winnie.app.View.html.WinnieHtmlFormField;
 import com.winnie.app.View.html.WinnieHtmlForms;
 import com.winnie.app.View.html.WinnieTableColHeader;
+import com.winnie.database.helper.DbTable;
+import com.winnie.database.helper.DbTableColumn;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
+@DbTable
+(name="house")
 @WinnieHtmlForms(label = "House")
-public class House implements Serializable {
+@HtmlTable(name = "House",addUrl = "./house-action?action=add")
+public class House extends BaseEntity{
 
-    @WinnieTableColHeader(header="HouseId")
+  /*  @WinnieTableColHeader(header="HouseId")
     @WinnieHtmlFormField(label="House Id")
-    private String houseId;
+    @DbTableColumn(name="id")
+    private String houseId;*/
     @WinnieTableColHeader(header="HouseName")
     @WinnieHtmlFormField(label="House Name")
+    @DbTableColumn(name="name")
     private String houseName;
     @WinnieTableColHeader(header="HouseType")
     @WinnieHtmlFormField(label="House Type")
+    @DbTableColumn(name="type")
     private HouseType houseType;
 
 
     @WinnieTableColHeader(header="HouseLocation")
     @WinnieHtmlFormField(label="House Location")
+    @DbTableColumn(name="location")
     private String houseLocation;
 
     @WinnieTableColHeader(header="HousePrice")
     @WinnieHtmlFormField(label="House Price")
+    @DbTableColumn(name="price",type="decimal(10,2)")
     private BigDecimal housePrice;
 
 
@@ -36,20 +47,20 @@ public class House implements Serializable {
     }
 
     public House(String houseId, String houseName, HouseType houseType, String houseLocation, BigDecimal housePrice) {
-        this.houseId = houseId;
+        //this.houseId = houseId;
         this.houseName = houseName;
         this.houseType = houseType;
         this.houseLocation = houseLocation;
         this.housePrice = housePrice;
     }
-
+/*
     public String getHouseId() {
         return houseId;
     }
 
     public void setHouseId(String houseId) {
         this.houseId = houseId;
-    }
+    }*/
 
     public String getHouseName() {
         return houseName;
@@ -85,6 +96,7 @@ public class House implements Serializable {
 
 
 
+/*
     public String deleteHouse() {
         // Add a button to remove the house
         return "<form action=\"./delete\" method=\"post\">" +
@@ -100,5 +112,6 @@ public class House implements Serializable {
                 "<input type=\"submit\" value=\"Edit\" />" +
                 "</form>";
     }
+*/
 
 }

@@ -24,7 +24,7 @@ public class DeleteHouse extends BaseAction {
 
         // Calling the deleteHouse method from HouseBean
         HouseBean houseBean = new HouseBean();
-        houseBean.deleteHouse(houseId);
+        houseBean.delete(houseId);
 
         resp.sendRedirect("./house-action");
 

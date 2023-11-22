@@ -26,7 +26,7 @@ public class DeleteTenant extends BaseAction {
 
         // Calling the deleteTenant method from TenantBean
         TenantBean tenantBean = new TenantBean();
-        tenantBean.deleteTenant(tenantId);
+        tenantBean.delete(tenantId);
 
         // Redirect to the tenants page after deletion
         resp.sendRedirect("./tenants");

@@ -10,15 +10,12 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Database implements Serializable {
 
     private String databaseCreateAt;
-    private List<User>users = new ArrayList<>();
-    private List<House>houses= new ArrayList<>();
-    private List<Payment>payments= new ArrayList<>();
-
-    private List<Tenant>tenants= new ArrayList<>();
+    private List<Object> data = new ArrayList<>();
     private static  Database dbInstance;
     private Database(){}
 
@@ -32,36 +29,20 @@ public class Database implements Serializable {
         return dbInstance;
     }
 
-    public List<User> getUsers() {
-        return users;
+    public List<Object> getData() {
+        return data;
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public void setData(List<Object> data) {
+        this.data = data;
     }
+    public List<Object> getData(Class<?> clazz) {
 
-    public List<House> getHouses() {
-        return houses;
-    }
+        return data
+                .stream()
+                .filter(clazz::isInstance)
+                .collect(Collectors.toList());
 
-    public void setHouses(List<House> houses) {
-        this.houses = houses;
-    }
-
-    public List<Tenant> getTenants() {
-        return tenants;
-    }
-
-    public void setTenants(List<Tenant> tenants) {
-        this.tenants = tenants;
-    }
-
-    public List<Payment> getPayments() {
-        return payments;
-    }
-
-    public void setPayments(List<Payment> payments) {
-        this.payments = payments;
     }
 
     public String getDatabaseCreateAt() {

@@ -2,26 +2,29 @@ package com.winnie.app.bean;
 
 import com.winnie.app.model.entity.User;
 import com.winnie.database.Database;
+import com.winnie.database.MysqlDatabase;
 
 import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class UserBean implements Serializable,UserBeanI {
 
-    Database database = Database.getDbInstance();
-    @Override
-    public boolean register(User user) {
-
-        if (user.getPassword().equals(user.getConfirmPassword())){
-            database.getUsers().add(new User(100L, user.getUsername(), user.getConfirmPassword()));
-            return true;
-        }
-
-        return false;
+    public UserBean() {
     }
 
-    @Override
-    public boolean unregister(User user) {
+    public boolean register(User user) throws SQLException {
+        if (user.getPassword().equals(user.getConfirmPassword())) {
+            MysqlDatabase.insert(user);
+            return true;
+        } else {
+            return false;
+        }
+    }
 
+    public boolean unregister(User user) {
         return true;
     }
 }

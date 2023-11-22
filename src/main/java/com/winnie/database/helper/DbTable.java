@@ -1,17 +1,14 @@
-package com.winnie.app.View.html;
+package com.winnie.database.helper;
+
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-
-@Target(ElementType.FIELD)
+@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface WinnieTableColHeader {
-    String header();
+public @interface DbTable {
 
-    String dateFormat() default "";
-
-    String numberFormat() default "";
+    String name();
 }

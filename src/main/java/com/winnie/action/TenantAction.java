@@ -22,25 +22,34 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 @WebServlet("/tenant-action")
-public class TenantAction  extends BaseAction{
+public class TenantAction extends BaseAction {
 
     private TenantBeanI tenantBean = new TenantBean();
-    private Tenant tenant = new Tenant();
+
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        TenantBeanI tenantbean = new TenantBean();
+
+
+        renderPage(req, resp, 2, Tenant.class, tenantbean.list(Tenant.class));
+
+
+    }
 
 
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        serializeForm(tenant,req.getParameterMap());
+        Tenant tenant = serializeForm(Tenant.class, req.getParameterMap());
 
         try {
-            tenantBean.addTenant(tenant);
+            tenantBean.add(tenant);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
-            resp.sendRedirect("./tenants");
+        resp.sendRedirect("./tenants");
 
 
-        }
     }
+}
 

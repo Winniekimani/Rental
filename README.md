@@ -37,37 +37,4 @@
 ### event and listeners
 
 
-package com.winnie.action;
 
-import com.winnie.app.model.entity.House;
-import com.winnie.database.Database;
-import org.apache.commons.lang3.StringUtils;
-
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.math.BigDecimal;
-
-@WebServlet("/houses")
-public class HouseAction extends HttpServlet {
-public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-HttpSession httpSession = req.getSession();
-
-        if (StringUtils.isNotBlank((String) httpSession.getAttribute("loggedIn"))) {
-
-            Database database = Database.getDbInstance();
-
-            database.getHouses().add(new House(req.getParameter("houseType"),
-                    req.getParameter("houseLocation"), new BigDecimal(req.getParameter("housePrice"))));
-
-            resp.sendRedirect("./home");
-
-        } else
-            resp.sendRedirect("./");
-
-    }
-}
