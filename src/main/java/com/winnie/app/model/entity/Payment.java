@@ -6,8 +6,6 @@ import com.winnie.app.View.html.WinnieHtmlForms;
 import com.winnie.app.View.html.WinnieTableColHeader;
 import com.winnie.database.helper.DbTable;
 import com.winnie.database.helper.DbTableColumn;
-
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 @DbTable(name="payment")

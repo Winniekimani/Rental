@@ -16,7 +16,7 @@ import java.io.IOException;
 public class HouseAction extends BaseAction {
 
     private HouseBeanI houseBean = new HouseBean();
-    /*private House house = new House();*/
+
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession httpSession = req.getSession();

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.net.http.HttpRequest;
 
-@WebFilter(urlPatterns="/*")
+@WebFilter(urlPatterns = "/*")
 public class AuthFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -29,37 +29,31 @@ public class AuthFilter implements Filter {
         System.out.println("context path:" + httpRequest.getContextPath());
         System.out.println("context URI:" + httpRequest.getRequestURI());
 
-       if (httpSession.isNew() || StringUtils.isBlank((String) httpSession.getAttribute("loggedIn"))){
+        if (httpSession.isNew() || StringUtils.isBlank((String) httpSession.getAttribute("loggedIn"))) {
             httpSession.invalidate();
-            if (servletPath.equals("/login") || servletPath.equals("/registerUser" ) || servletPath.contains("jsp")|| servletPath.equals("/user")){
-                chain.doFilter(request,response);
-            }
-            else {
+            if (servletPath.equals("/login") || servletPath.equals("/registerUser") || servletPath.contains("jsp") || servletPath.equals("/user")) {
+                chain.doFilter(request, response);
+            } else {
 
-                //httpResponse.sendRedirect(httpRequest.getContextPath()+"/");
-                httpResponse.sendRedirect(httpRequest.getContextPath()+"/home");
+                httpResponse.sendRedirect(httpRequest.getContextPath() + "/home");
                 response.getWriter().flush();
             }
-       }else {
-           if (StringUtils.isNotBlank((String) httpSession.getAttribute("loggedIn"))){
-               chain.doFilter(request,response);
-           }else{
+        } else {
+            if (StringUtils.isNotBlank((String) httpSession.getAttribute("loggedIn"))) {
+                chain.doFilter(request, response);
+            } else {
 
-               httpResponse.sendRedirect(httpRequest.getContextPath()+"/");
-               response.getWriter().flush();
-           }
+                httpResponse.sendRedirect(httpRequest.getContextPath() + "/");
+                response.getWriter().flush();
+            }
 
-       }
-
+        }
 
 
     }
 
 
-
-
-
-        @Override
+    @Override
     public void destroy() {
         Filter.super.destroy();
     }

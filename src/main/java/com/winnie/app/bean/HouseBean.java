@@ -1,13 +1,10 @@
 package com.winnie.app.bean;
 
-import com.winnie.app.View.html.HtmlComponent;
+
 import com.winnie.app.model.entity.House;
 import com.winnie.app.model.entity.HouseType;
-import com.winnie.database.Database;
 import com.winnie.database.MysqlDatabase;
-
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

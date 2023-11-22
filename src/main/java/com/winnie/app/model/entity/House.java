@@ -96,22 +96,4 @@ public class House extends BaseEntity{
 
 
 
-/*
-    public String deleteHouse() {
-        // Add a button to remove the house
-        return "<form action=\"./delete\" method=\"post\">" +
-                "<input type=\"hidden\" name=\"houseId\" value=\"" + getHouseId() + "\" />" +
-                "<input type=\"submit\" value=\"Remove\" />" +
-                "</form>";
-    }
-
-    public String updateHouse() {
-        // Add a button to edit the house
-        return "<form action=\"./edit-house\" method=\"get\">" +
-                "<input type=\"hidden\" name=\"houseId\" value=\"" + getHouseId() + "\" />" +
-                "<input type=\"submit\" value=\"Edit\" />" +
-                "</form>";
-    }
-*/
-
 }
