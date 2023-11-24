@@ -4,6 +4,8 @@ package com.winnie.app.bean;
 import com.winnie.app.model.entity.House;
 import com.winnie.app.model.entity.HouseType;
 import com.winnie.database.MysqlDatabase;
+
+import javax.ejb.Stateless;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,6 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Stateless
 public class HouseBean extends GenericBean<House> implements HouseBeanI, Serializable {
 
 

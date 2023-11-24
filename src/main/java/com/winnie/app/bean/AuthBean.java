@@ -3,12 +3,17 @@ package com.winnie.app.bean;
 import com.winnie.app.model.entity.User;
 import com.winnie.database.Database;
 import com.winnie.database.MysqlDatabase;
+
+import javax.ejb.Remote;
+import javax.ejb.Stateless;
 import java.io.Serializable;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
+@Stateless
+@Remote
 public class AuthBean  implements AuthBeanI,Serializable {
 
     Database database = Database.getDbInstance();

@@ -15,7 +15,6 @@
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/model/entity/User.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/bean/TenantBeanI.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/database/helper/DbTableColumn.java
-/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/EditHouse.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/bean/PaymentBean.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/DeleteHouse.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/database/MysqlDatabase.java
@@ -29,7 +28,6 @@
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/View/toolbar/TopToolBar.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/View/toolbar/BottomToolBar.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/HouseAction.java
-/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/RegisterUser.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/filters/AuthFilter.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/View/html/HtmlTable.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/HomeAction.java
@@ -47,11 +45,12 @@
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/BaseAction.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/event/AppInit.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/LoginAction.java
-/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/AddTenant.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/model/entity/House.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/PaymentStatusConverter.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/model/entity/PaymentStatus.java
+/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/dao/GenericDao.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/View/html/HtmlComponent.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/model/view/MenuLink.java
+/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/dao/GenericDaoI.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/model/view/MenuLinkStatus.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/View/html/WinnieHtmlForms.java

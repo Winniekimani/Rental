@@ -6,7 +6,7 @@ WORKDIR /app
 
 COPY . .
 
-RUN mvn clean install -DskipTests -X
+#RUN mvn clean install -DskipTests -X
 
 
 FROM quay.io/wildfly/wildfly:26.1.3.Final-jdk17 AS deploy

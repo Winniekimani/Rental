@@ -6,6 +6,7 @@ import com.winnie.app.bean.PaymentBeanI;
 import com.winnie.app.model.entity.House;
 import com.winnie.app.model.entity.Payment;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +17,8 @@ import java.io.IOException;
 @WebServlet("/payment-action")
 public class Payments  extends BaseAction {
 
-    private final PaymentBeanI paymentBean = new PaymentBean();
+    @EJB
+    private  PaymentBeanI paymentBean ;
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

@@ -5,6 +5,7 @@ import com.winnie.app.bean.HouseBean;
 import com.winnie.app.bean.HouseBeanI;
 import com.winnie.app.model.entity.House;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +16,7 @@ import java.io.IOException;
 @WebServlet("/house-action")
 public class HouseAction extends BaseAction {
 
-    private HouseBeanI houseBean = new HouseBean();
+    @EJB private HouseBeanI houseBean;
 
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -6,9 +6,11 @@ import com.winnie.app.model.entity.Tenant;
 import com.winnie.database.Database;
 import com.winnie.database.MysqlDatabase;
 
+import javax.ejb.Stateless;
 import java.io.Serializable;
 import java.util.List;
 
+@Stateless
 public class TenantBean extends GenericBean<Tenant> implements TenantBeanI, Serializable {
 
 

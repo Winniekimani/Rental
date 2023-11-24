@@ -10,6 +10,7 @@ import com.winnie.app.model.entity.Tenant;
 import com.winnie.database.Database;
 import org.apache.commons.lang3.StringUtils;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,7 +25,8 @@ import java.text.SimpleDateFormat;
 @WebServlet("/tenant-action")
 public class TenantAction extends BaseAction {
 
-    private TenantBeanI tenantBean = new TenantBean();
+    @EJB
+    private TenantBeanI tenantBean ;
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
