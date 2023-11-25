@@ -18,13 +18,21 @@ import java.util.List;
 public class HouseBean extends GenericBean<House> implements HouseBeanI, Serializable {
 
 
+  /*  HouseBean houseBean = new HouseBean();
+    List<House> houseList = houseBean.list();*/
 
-    public List<House> list(Class<?> entity) {
+    public List<House> list() {
+        // You can directly call the list method from GenericBean
+        return super.list(House.class);
+    }
+
+   /* public List<House> list(Class<?> entity) {
         List<House> houseList = new ArrayList<>();
         String sql = "SELECT name, type, location, price FROM house";
 
         try {
             Connection conn = MysqlDatabase.getInstance().getConnection();
+
 
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
 
@@ -48,6 +56,6 @@ public class HouseBean extends GenericBean<House> implements HouseBeanI, Seriali
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
+    }*/
 }
 

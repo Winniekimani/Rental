@@ -9,6 +9,10 @@ import com.winnie.database.helper.DbTable;
 import com.winnie.database.helper.DbTableColumn;
 import com.winnie.database.helper.DbTableId;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import javax.ejb.Singleton;
+import javax.ejb.Startup;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -21,6 +25,8 @@ import java.sql.*;
 import java.util.*;
 import java.util.Date;
 
+@Singleton
+@Startup
 public class MysqlDatabase implements Serializable {
 
 
@@ -30,19 +36,19 @@ public class MysqlDatabase implements Serializable {
     private static final String USER = "root";
 
     private static final String PASSWORD = "root";*/
-    private static MysqlDatabase database;
+  /*  private static MysqlDatabase database;*/
     private Connection connection;
-    private MysqlDatabase() throws SQLException , NamingException {
+    /*private MysqlDatabase() throws SQLException , NamingException {
         //connection = DriverManager.getConnection(URL, USER, PASSWORD);
 
-       /* //switched from driver manager to data source
+       *//* //switched from driver manager to data source
         connection = DriverManager.getConnection(URL, USER, PASSWORD);
         MysqlDataSource dataSource = new MysqlDataSource();
         dataSource.setUrl(URL);
         dataSource.setUser(USER);
         dataSource.setPassword(PASSWORD);
 
-        connection = dataSource.getConnection();*/
+        connection = dataSource.getConnection();*//*
 
 
 
@@ -51,9 +57,24 @@ public class MysqlDatabase implements Serializable {
 
         connection = dataSource.getConnection();
 
+    }*/
+
+    public Connection getConnection() {
+        return connection;
     }
 
-    public static MysqlDatabase getInstance() throws SQLException {
+    @PostConstruct
+    private void init() throws SQLException, NamingException {
+        Context ctx = new InitialContext();
+        DataSource dataSource = (DataSource) ctx.lookup("java:jboss/datasources/Rentals");
+        connection = dataSource.getConnection();
+
+        System.out.println("Executed. on start up!!");
+
+        this.updateSchema();
+    }
+
+   /* public static MysqlDatabase getInstance() throws SQLException {
         if (database == null) {
             try {
                 database = new MysqlDatabase();
@@ -64,13 +85,13 @@ public class MysqlDatabase implements Serializable {
 
         return database;
 
-    }
+    }*/
 
-    public  static void updateSchema(){
+    public  void updateSchema(){
 
         System.out.println("----------Updating schema database----------------");
-        try {
-            Connection connection = MysqlDatabase.getInstance().getConnection();
+        try {/*
+            Connection connection = MysqlDatabase.getInstance().getConnection();*/
 
 
             List<Class<?>> entities = new ArrayList<>();
@@ -120,7 +141,7 @@ public class MysqlDatabase implements Serializable {
 
 
     }
-    public static void insert(Object entity) {
+    public void insert(Object entity) {
         try {
 
             Class<?> clazz = entity.getClass();
@@ -164,8 +185,10 @@ public class MysqlDatabase implements Serializable {
             String query = queryBuilder.replace(",)", ")");
             System.out.println("Query: " + query);
 
-            PreparedStatement sqlStmt = MysqlDatabase.getInstance().getConnection()
-                    .prepareStatement(query);
+          /*  PreparedStatement sqlStmt = MysqlDatabase.getInstance().getConnection()
+                    .prepareStatement(query);*/
+
+            PreparedStatement sqlStmt = connection.prepareStatement(query);
 
             int paramIdx = 1;
             for (Object param : parameters) {
@@ -187,7 +210,8 @@ public class MysqlDatabase implements Serializable {
             e.printStackTrace();
         }
     }
-    public static <T> List<T> select(Class<T> filter) {
+    public <T> List<T> select(Class<T> filter) {
+        System.out.println("starting select/................");
         try {
             Class<?> clazz = filter;
             System.out.println();
@@ -197,10 +221,15 @@ public class MysqlDatabase implements Serializable {
 
             DbTable dbTable = clazz.getAnnotation(DbTable.class);
             StringBuilder stringBuilder = new StringBuilder();
+
+            System.out.println(stringBuilder.toString());
             stringBuilder.append("SELECT * FROM ")
-                    .append(dbTable.name()).append(";");
+                    .append(dbTable.name()).append(";");/*
             Connection conn = MysqlDatabase.getInstance().getConnection();
-            PreparedStatement preparedStatement = conn.prepareStatement(stringBuilder.toString());
+            PreparedStatement preparedStatement = conn.prepareStatement(stringBuilder.toString());*/
+            PreparedStatement preparedStatement=connection.prepareStatement(stringBuilder.toString());
+
+            System.out.println("executing query begins/................");
             ResultSet resultSet = preparedStatement.executeQuery();
             List<T> result = new ArrayList<>();
 
@@ -241,11 +270,23 @@ public class MysqlDatabase implements Serializable {
         }
     }
 
+    @PreDestroy
+    public void closeConnection(){
+        try {
+            if (connection != null)
+                connection.close();
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+    }
+/*
     public Connection getConnection() {
         return connection;
     }
 
     public void setConnection(Connection connection) {
         this.connection = connection;
-    }
+    }*/
 }

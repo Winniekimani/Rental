@@ -14,7 +14,7 @@ import java.text.DecimalFormat;
 @DbTable
 (name="house")
 @WinnieHtmlForms(label = "House")
-@HtmlTable(name = "House",addUrl = "./house-action?action=add")
+@HtmlTable(name = "House",addUrl = "./house?action=add")
 public class House extends BaseEntity{
 
   /*  @WinnieTableColHeader(header="HouseId")

@@ -81,7 +81,7 @@ public class HtmlComponent implements Serializable {
 
         String htmlForm = "<div class=\"login-container\">" +
                 "<br/>Add " + modelClass.getSimpleName() + "<br/>" +
-                "<form action=\"./" + modelClass.getSimpleName().toLowerCase() + "-action\" method=\"post\">";
+                "<form action=\"./" + modelClass.getSimpleName().toLowerCase() + "\" method=\"post\">";
         //"<div class=\"login-container\">";
 
         Field[] fields = modelClass.getDeclaredFields();

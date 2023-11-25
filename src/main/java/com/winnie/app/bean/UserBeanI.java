@@ -4,8 +4,8 @@ import com.winnie.app.model.entity.User;
 
 import java.sql.SQLException;
 
-public interface UserBeanI {
-    boolean register(User var1) throws SQLException;
+public interface UserBeanI{
+    boolean register(User user) throws SQLException;
 
-    boolean unregister(User var1);
+    boolean unregister(User user);
 }

@@ -28,7 +28,7 @@ public class AppInit implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
 
 
-        MysqlDatabase.updateSchema();
+       /* MysqlDatabase.updateSchema();*/
 
 
     }
@@ -37,14 +37,14 @@ public class AppInit implements ServletContextListener {
     public void contextDestroyed(ServletContextEvent sce) {
 
 
-        try {
+       /* try {
             MysqlDatabase database = MysqlDatabase.getInstance();
             if (database.getConnection() != null) {
                 database.getConnection().close();
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        }
+        }*/
 
     }
 

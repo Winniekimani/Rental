@@ -9,12 +9,12 @@
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/bean/PaymentBeanI.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/bean/UserBean.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/AddHouse.java
-/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/Tenants.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/View/html/WinnieTableColHeader.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/bean/HouseBean.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/model/entity/User.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/bean/TenantBeanI.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/database/helper/DbTableColumn.java
+/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/PaymentAction.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/bean/PaymentBean.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/DeleteHouse.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/database/MysqlDatabase.java
@@ -32,7 +32,6 @@
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/View/html/HtmlTable.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/HomeAction.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/bean/AuthBean.java
-/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/Payments.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/bean/UserBeanI.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/database/helper/DbTableId.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/HouseTypeConverter.java

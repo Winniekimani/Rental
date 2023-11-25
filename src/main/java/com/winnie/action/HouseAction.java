@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet("/house-action")
+@WebServlet("/house")
 public class HouseAction extends BaseAction {
 
     @EJB private HouseBeanI houseBean;
@@ -36,7 +36,7 @@ public class HouseAction extends BaseAction {
             throw new RuntimeException(e);
         }
 
-        resp.sendRedirect("./house-action");
+        resp.sendRedirect("./house");
 
 
 

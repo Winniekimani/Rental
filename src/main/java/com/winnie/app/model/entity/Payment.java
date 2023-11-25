@@ -9,7 +9,7 @@ import com.winnie.database.helper.DbTableColumn;
 import java.math.BigDecimal;
 import java.util.Date;
 @DbTable(name="payment")
-@HtmlTable(name = "Payment",addUrl = "./payment-action?action=add")
+@HtmlTable(name = "Payment",addUrl = "./payment?action=add")
 @WinnieHtmlForms(label = "Payments" )
 public class Payment extends BaseEntity {
 

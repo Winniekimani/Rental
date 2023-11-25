@@ -14,14 +14,16 @@ import java.util.concurrent.ThreadLocalRandom;
 
 @Stateless
 @Remote
-public class UserBean implements Serializable,UserBeanI {
+
+public class UserBean extends GenericBean<User> implements UserBeanI {
 
     public UserBean() {
     }
 
     public boolean register(User user) throws SQLException {
         if (user.getPassword().equals(user.getConfirmPassword())) {
-            MysqlDatabase.insert(user);
+           /* MysqlDatabase.insert(user);*/
+           getDao().add(user);
             return true;
         } else {
             return false;
@@ -31,4 +33,6 @@ public class UserBean implements Serializable,UserBeanI {
     public boolean unregister(User user) {
         return true;
     }
+
+
 }
