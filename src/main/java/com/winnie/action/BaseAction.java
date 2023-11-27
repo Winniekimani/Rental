@@ -52,7 +52,6 @@ public class BaseAction extends HttpServlet {
         return clazzInstance;
     }
 
-
     public void renderPage(HttpServletRequest  req, HttpServletResponse res, int activeMenu,  Class<?> entity, List<?> entityList)
 
             throws ServletException, IOException {

@@ -10,6 +10,7 @@ import com.winnie.database.Database;
 import com.winnie.database.MysqlDatabase;
 
 import javax.ejb.EJB;
+import javax.inject.Inject;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
@@ -20,11 +21,10 @@ public class GenericBean<T> implements GenericBeanI<T> {
     @EJB
     MysqlDatabase database;
 
-/*
-    @EJB
-    private GenericDaoI<T> genericDao;*/
 
-    private final GenericDaoI<T>genericDao=new GenericDao<>();
+
+    @Inject private GenericDaoI<T>genericDao;
+ /*   private final GenericDaoI<T>genericDao=new GenericDao<>();*/
 
 
 
