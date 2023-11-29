@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @DbTable(name="tenant")
-@HtmlTable(name = "Tenant",addUrl = "./tenant?action=add")
+@HtmlTable(name = "Tenant",addUrl = "./tenant?action=add",deleteUrl = "./tenant?action=delete")
 @WinnieHtmlForms(label = "Tenants")
 public class Tenant extends BaseEntity{
 

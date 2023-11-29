@@ -31,8 +31,10 @@ public class AuthBean implements AuthBeanI, Serializable {
 
         ResultSet result=statement.executeQuery();
 
-        User user= new User();
+        //User user= new User();
+        User user = null;
         while (result.next()){
+            user= new User();
             user.setId(result.getLong("id"));
             user.setUsername(result.getString("username"));
         }

@@ -1,5 +1,6 @@
 package com.winnie.action;
 
+/*
 import com.winnie.app.View.html.HtmlComponent;
 import com.winnie.app.bean.HouseBean;
 import com.winnie.app.bean.HouseBeanI;
@@ -19,7 +20,8 @@ import java.io.IOException;
 
 @WebServlet("/delete-tenant")
 public class DeleteTenant extends BaseAction {
-    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+  */
+/*  public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession httpSession = req.getSession();
 
         String tenantId = req.getParameter("tenantId");
@@ -30,11 +32,12 @@ public class DeleteTenant extends BaseAction {
 
         // Redirect to the tenants page after deletion
         resp.sendRedirect("./tenants");
+*//*
 
 
 
 
 
-    }
+   // }
 
-}
+}*/

@@ -21,8 +21,6 @@ public class GenericBean<T> implements GenericBeanI<T> {
     @EJB
     MysqlDatabase database;
 
-
-
     @Inject private GenericDaoI<T>genericDao;
  /*   private final GenericDaoI<T>genericDao=new GenericDao<>();*/
 
@@ -41,19 +39,28 @@ public class GenericBean<T> implements GenericBeanI<T> {
     }
 
     @Override
-    public T add(T entity) {
+    public void  add(T entity) {
 
        /* MysqlDatabase.insert(entity);
         return entity;*/
         genericDao.setDatabase(database);
         genericDao.add(entity);
-        return entity;
+
+
     }
 
+   /* @Override
+    public void delete(T entity) {
+
+        genericDao.setDatabase(database);
+        genericDao.delete(entity);
+    }*/
     @Override
-    public void delete(String entity) {
+        public void delete(Class<?> clazz, Long id) {
+            genericDao.setDatabase(database);
+            genericDao.delete(clazz, id);
 
-    }
+        }
 
     @Override
     public void update(T entity) {

@@ -1,6 +1,7 @@
 package com.winnie.action;
 
 import com.winnie.app.bean.TenantBeanI;
+import com.winnie.app.model.entity.Tenant;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -19,13 +20,13 @@ public class TenantAction extends BaseAction {
           /*  TenantBeanI tenantbean = new TenantBean();*/
 
 
-        renderPage(req,resp,2, com.winnie.app.model.entity.Tenant.class,tenantBean.list(com.winnie.app.model.entity.Tenant.class) );
+        renderPage(req,resp,2, Tenant.class,tenantBean.list(Tenant.class) );
 
 
     }
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        com.winnie.app.model.entity.Tenant tenant = serializeForm(com.winnie.app.model.entity.Tenant.class, req.getParameterMap());
+        com.winnie.app.model.entity.Tenant tenant = serializeForm(Tenant.class, req.getParameterMap());
 
         try {
             tenantBean.add(tenant);

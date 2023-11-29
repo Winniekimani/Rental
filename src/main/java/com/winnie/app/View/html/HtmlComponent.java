@@ -1,10 +1,13 @@
 package com.winnie.app.View.html;
 
 
+import com.winnie.database.helper.DbTableId;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -42,17 +45,27 @@ public class HtmlComponent implements Serializable {
         trBuilder.append("</tr>");
         for (Object model : models) {
             trBuilder.append("<tr>");
+           /* int id =0;*/
             for (Field field : fields) {
                 if (!field.isAnnotationPresent(WinnieTableColHeader.class))
                     continue;
                 try {
                     field.setAccessible(true);
+                   /* if(field.isAnnotationPresent(DbTableId.class))
+                        id=(int)field.get(model);*/
                     trBuilder.append("<td>").append(field.get(model)).append("</td>");
 
                 } catch (IllegalAccessException e) {
                     throw new RuntimeException(e);
                 }
             }
+
+            trBuilder.append("<td>").append( "<div class=\"addHouseButton\" >\n" +
+                    "    <a href=\""+htmlTable.editUrl()+"\">Edit" + htmlTable.name() +"</a>\n" +
+                    "</div></td>");
+            trBuilder.append("<td>").append( "<div class=\"addHouseButton\" >\n" +
+                    "    <a href=\""+htmlTable.deleteUrl()+ "?id=" +"\">Delete" + htmlTable.name() +"</a>\n" +
+                    "</div></td>");
             // Add delete and update buttons// Add delete and update buttons based on the model type
          /*   if (model instanceof House) {
                 trBuilder.append("<td>").append(((House) model).deleteHouse()).append("</td>");
@@ -61,6 +74,7 @@ public class HtmlComponent implements Serializable {
 
                 trBuilder.append("<td>").append(((Tenant) model).deleteTenant()).append("</td>");
             }*/
+
             trBuilder.append("</tr>");
 
         }
@@ -68,6 +82,7 @@ public class HtmlComponent implements Serializable {
         return trBuilder.toString();
 
     }
+
 
     public static String htmlForm(Class<?> modelClass) {
 
@@ -120,6 +135,11 @@ public class HtmlComponent implements Serializable {
                 htmlForm += "<input type=\"number\" step=\"any\" id=\"" + (StringUtils.isBlank(formField.id()) ? fieldName : formField.id())
                         + "\" name=\"" + (StringUtils.isBlank(formField.name()) ? fieldName : formField.name()) + "\"><br><br>";
 
+            }else if(fieldType== Long.class){
+
+                htmlForm += "<input type=\"number\" id=\"" + (StringUtils.isBlank(formField.id()) ? fieldName : formField.id())
+                        + "\" name=\""
+                        + (StringUtils.isBlank(formField.name()) ? fieldName : formField.name()) + "\"><br>";
             }
             // Add additional handling for other data types if needed
         }

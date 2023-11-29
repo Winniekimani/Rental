@@ -12,11 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+/*
 @WebServlet("/delete")
 public class DeleteHouse extends BaseAction {
 
 
-    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+  */
+/*  public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession httpSession = req.getSession();
 
 
@@ -29,5 +31,6 @@ public class DeleteHouse extends BaseAction {
         resp.sendRedirect("./house-action");
 
 
-    }
-}
+    }*//*
+
+}*/

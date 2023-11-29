@@ -1,10 +1,7 @@
 package com.winnie.database;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
-import com.winnie.app.model.entity.House;
-import com.winnie.app.model.entity.Payment;
-import com.winnie.app.model.entity.Tenant;
-import com.winnie.app.model.entity.User;
+import com.winnie.app.model.entity.*;
 import com.winnie.database.helper.DbTable;
 import com.winnie.database.helper.DbTableColumn;
 import com.winnie.database.helper.DbTableId;
@@ -30,34 +27,8 @@ import java.util.Date;
 public class MysqlDatabase implements Serializable {
 
 
-
-  /*  private static final String URL = "jdbc:mysql://localhost:3306/Rentals";
-
-    private static final String USER = "root";
-
-    private static final String PASSWORD = "root";*/
-  /*  private static MysqlDatabase database;*/
     private Connection connection;
-    /*private MysqlDatabase() throws SQLException , NamingException {
-        //connection = DriverManager.getConnection(URL, USER, PASSWORD);
 
-       *//* //switched from driver manager to data source
-        connection = DriverManager.getConnection(URL, USER, PASSWORD);
-        MysqlDataSource dataSource = new MysqlDataSource();
-        dataSource.setUrl(URL);
-        dataSource.setUser(USER);
-        dataSource.setPassword(PASSWORD);
-
-        connection = dataSource.getConnection();*//*
-
-
-
-        Context ctx = new InitialContext();
-        DataSource dataSource= (DataSource) ctx.lookup("java:jboss/datasources/Rentals");
-
-        connection = dataSource.getConnection();
-
-    }*/
 
     public Connection getConnection() {
         return connection;
@@ -74,18 +45,6 @@ public class MysqlDatabase implements Serializable {
         this.updateSchema();
     }
 
-   /* public static MysqlDatabase getInstance() throws SQLException {
-        if (database == null) {
-            try {
-                database = new MysqlDatabase();
-            } catch (SQLException| NamingException e) {
-                throw new RuntimeException(e);
-            }
-        }
-
-        return database;
-
-    }*/
 
     public  void updateSchema(){
 
@@ -99,6 +58,7 @@ public class MysqlDatabase implements Serializable {
             entities.add(House.class);
             entities.add(Tenant.class);
             entities.add(Payment.class);
+            entities.add(Billing.class);
 
 
 
@@ -270,6 +230,64 @@ public class MysqlDatabase implements Serializable {
         }
     }
 
+
+
+    public void delete(Class<?> clazz, Object id) {
+        if (!clazz.isAnnotationPresent(DbTable.class))
+            return;
+
+        DbTable dbTable = clazz.getAnnotation(DbTable.class);
+
+
+        String sqlStm = "DELETE FROM " + dbTable.name() + " WHERE id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sqlStm)) {
+            if (id instanceof Long)
+                preparedStatement.setLong(1, (Long) id);
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+  /*  public <T> void delete(Object id, T entity) {
+        Class<?> clazz = entity.getClass();
+        PreparedStatement preparedStatement = null;
+
+        try {
+            if (!clazz.isAnnotationPresent(DbTable.class)) {
+                throw new IllegalArgumentException("Entity class is not annotated with @DbTable");
+            }
+
+            DbTable dbTable = clazz.getAnnotation(DbTable.class);
+            String idColumnName = "id";  // Change this if your ID column has a different name
+
+            StringBuilder deleteQuery = new StringBuilder();
+            deleteQuery.append("DELETE FROM ").append(dbTable.name())
+                    .append(" WHERE ").append(idColumnName).append(" = ?");
+
+            preparedStatement = connection.prepareStatement(deleteQuery.toString());
+            preparedStatement.setObject(1, id);
+
+            System.out.println("THE SQL QUERY FOR DELETE IS #### "+deleteQuery);
+            // Execute the delete statement
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error while deleting entity", e);
+        } finally {
+            // Close the PreparedStatement in a finally block
+            if (preparedStatement != null) {
+                try {
+                    preparedStatement.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+    }*/
+
+
+
+
     @PreDestroy
     public void closeConnection(){
         try {
@@ -281,6 +299,8 @@ public class MysqlDatabase implements Serializable {
         }
 
     }
+
+
 /*
     public Connection getConnection() {
         return connection;

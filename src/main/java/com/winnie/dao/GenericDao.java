@@ -20,17 +20,24 @@ private MysqlDatabase database;
     }
 
     @Override
-    public T add(T entity) {
+    public void  add(T entity) {
 
         database.insert(entity);
-        return entity;
+
     }
+
+  /*  @Override
+    public void delete(T entity) {
+
+        database.delete();
+
+    }*/
 
     @Override
-    public void delete(String entity) {
+    public void delete(Class<?> clazz,Long id){
+        database.delete(clazz, id);
 
     }
-
     @Override
     public void update(T entity) {
 

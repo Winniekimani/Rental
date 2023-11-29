@@ -1,6 +1,7 @@
 package com.winnie.action;
 
 import com.winnie.app.bean.PaymentBeanI;
+import com.winnie.app.model.entity.Payment;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -19,7 +20,7 @@ public class PaymentAction extends BaseAction {
 
 
 
-        renderPage(req, resp, 3, com.winnie.app.model.entity.Payment.class,paymentBean.list(com.winnie.app.model.entity.Payment.class));
+        renderPage(req, resp, 3, Payment.class,paymentBean.list(Payment.class));
 
 
 
@@ -27,7 +28,7 @@ public class PaymentAction extends BaseAction {
 
 
         public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-            paymentBean.add(serializeForm(com.winnie.app.model.entity.Payment.class, req.getParameterMap()));
+            paymentBean.add(serializeForm(Payment.class, req.getParameterMap()));
 
             resp.sendRedirect("./payment");
 

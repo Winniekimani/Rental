@@ -14,7 +14,7 @@ import java.text.DecimalFormat;
 @DbTable
 (name="house")
 @WinnieHtmlForms(label = "House")
-@HtmlTable(name = "House",addUrl = "./house?action=add")
+@HtmlTable(name = "House",addUrl = "./house?action=add",deleteUrl = "./house?action=delete&id=")
 public class House extends BaseEntity{
 
   /*  @WinnieTableColHeader(header="HouseId")
@@ -41,8 +41,12 @@ public class House extends BaseEntity{
     @DbTableColumn(name="price",type="decimal(10,2)")
     private BigDecimal housePrice;
 
-
-
+/*
+    // New field for calculated rent
+    @WinnieTableColHeader(header = "CalculatedRent")
+    @WinnieHtmlFormField(label = "Calculated Rent")
+    @DbTableColumn(name = "calculatedRent", type = "decimal(10,2)")*/
+    private BigDecimal calculatedRent;
     public House() {
     }
 
@@ -96,4 +100,11 @@ public class House extends BaseEntity{
 
 
 
+    public BigDecimal getCalculatedRent() {
+        return calculatedRent;
+    }
+
+    public void setCalculatedRent(BigDecimal calculatedRent) {
+        this.calculatedRent = calculatedRent;
+    }
 }

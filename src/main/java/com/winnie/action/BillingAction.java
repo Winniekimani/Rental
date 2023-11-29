@@ -1,9 +1,10 @@
 package com.winnie.action;
 
-import com.winnie.app.View.html.HtmlComponent;
-import com.winnie.app.bean.HouseBean;
+import com.winnie.app.bean.BillingBeanI;
 import com.winnie.app.bean.HouseBeanI;
+import com.winnie.app.model.entity.Billing;
 import com.winnie.app.model.entity.House;
+import com.winnie.app.model.entity.Payment;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -13,48 +14,36 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet("/house")
-public class HouseAction extends BaseAction {
+@WebServlet("/billing")
+public class BillingAction extends BaseAction {
 
-    @EJB private HouseBeanI houseBean;
+    @EJB
+    private BillingBeanI billingBean;
 
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession httpSession = req.getSession();
 
-
-/*
-        // TODO Auto-generated method stub
-        String action = req.getParameter("action");
-        int id = Integer.parseInt(req.getParameter("id"));
-
-        if(action.equals("delete"))
-            // get the user element by Id
-            houseBean.delete((House)houseBean.getByID(id, new House()),id);
-*/
+        renderPage(req,resp,4, Billing.class, billingBean.list(Billing.class));
 
 
-        renderPage(req,resp,1, House.class, houseBean.list(House.class));
     }
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        /* billingBean.add(serializeForm(Billing.class, req.getParameterMap()));*/
+       Billing billing = serializeForm(Billing.class,req.getParameterMap());
 
-        House house = serializeForm(House.class,req.getParameterMap());
 
+        System.out.println("billing = " + billing);
         try {
-            houseBean.add(house);
+            billingBean.add(billing);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
-        resp.sendRedirect("./house");
+        resp.sendRedirect("./billing");
 
 
 
     }
-
-
-
 }
-
-

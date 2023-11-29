@@ -34,28 +34,35 @@ public class LoginAction extends BaseAction {
     }
         public  void doPost(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
 
-        User loginUser= new User();
-        serializeForm(User.class,req.getParameterMap());
+        User loginUser= serializeForm(User.class,req.getParameterMap());
+        String username = req.getParameter("username");
 
-            User userDetails= null;
+          /*  User userDetails= null;*/
             try {
-                userDetails = authBean.authenticate(loginUser);
+               User  userDetails = authBean.authenticate(loginUser);
+
+                if (userDetails!=null ){
+                    HttpSession httpSession= req.getSession(true);
+                    httpSession.setAttribute("loggedIn",new Date().getTime() + "");
+                    httpSession.setAttribute("username",loginUser.getUsername());
+                    httpSession.setAttribute("activeMenu",0);
+
+
+
+                    if ("Admin".equals(username)) {
+                        resp.sendRedirect("./admin.jsp");
+                    } else {
+                        resp.sendRedirect("./home");
+                    }
+
+                }
+
+                PrintWriter print = resp.getWriter();
+                print.write("<html><body>invalid login details<a href =\".\">Login again</a></body></html>");
+
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
-
-            if (userDetails!=null ){
-            HttpSession httpSession= req.getSession(true);
-            httpSession.setAttribute("loggedIn",new Date().getTime() + "");
-            httpSession.setAttribute("username",loginUser.getUsername());
-            httpSession.setAttribute("activeMenu",0);
-
-            resp.sendRedirect("./home");
-
-        }
-
-            PrintWriter print = resp.getWriter();
-            print.write("<html><body>invalid login details<a href =\".\">Login again</a></body></html>");
 
 
 
