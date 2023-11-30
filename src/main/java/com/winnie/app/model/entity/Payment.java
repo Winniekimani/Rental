@@ -26,6 +26,11 @@ public class Payment extends BaseEntity {
     @DbTableColumn(name="date",type = "Date")
     private Date paymentDate;
 
+
+    @WinnieTableColHeader(header="PaymentNumber")
+    @WinnieHtmlFormField(label="Payment No")
+    @DbTableColumn(name="payment_no")
+    private String paymentNo;
     @WinnieTableColHeader(header = "PaymentMethod")
     @WinnieHtmlFormField(label = "Payment Method")
     @DbTableColumn(name="payment_method")
@@ -39,14 +44,22 @@ public class Payment extends BaseEntity {
     public Payment() {
     }
 
-    public Payment(BigDecimal amount, Date paymentDate, String paymentMethod, PaymentStatus paymentStatus) {
+  /*  public Payment(BigDecimal amount, Date paymentDate, String paymentMethod, PaymentStatus paymentStatus) {
         this.amount = amount;
         this.paymentDate = paymentDate;
         this.paymentMethod = paymentMethod;
         this.paymentStatus = paymentStatus;
+    }*/
+
+    public Payment(BigDecimal amount, Date paymentDate, String paymentNo, String paymentMethod, PaymentStatus paymentStatus) {
+        this.amount = amount;
+        this.paymentDate = paymentDate;
+        this.paymentNo = paymentNo;
+        this.paymentMethod = paymentMethod;
+        this.paymentStatus = paymentStatus;
     }
 
-   /*
+    /*
     public String getPaymentId() {
         return paymentId;
     }
@@ -87,4 +100,11 @@ public class Payment extends BaseEntity {
         this.paymentStatus = paymentStatus;
     }
 
+    public String getPaymentNo() {
+        return paymentNo;
+    }
+
+    public void setPaymentNo(String paymentNo) {
+        this.paymentNo = paymentNo;
+    }
 }

@@ -2,7 +2,9 @@ package com.winnie.app.bean;
 
 import com.winnie.app.model.entity.Billing;
 import com.winnie.app.model.entity.House;
+import com.winnie.utility.BillNo;
 import com.winnie.utility.BillNoGenerator;
+import com.winnie.utility.TransactIonNoGenerator;
 
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
@@ -18,8 +20,10 @@ public class BillingBean extends GenericBean<Billing> implements BillingBeanI,Se
         return super.list(Billing.class);
     }*/
 
+
     @Inject
-    private BillNoGenerator billNoGenerator;
+    @BillNo
+    private TransactIonNoGenerator txnNoGenerator;
 
     @Override
     public void add(Billing billing) {
@@ -28,7 +32,7 @@ public class BillingBean extends GenericBean<Billing> implements BillingBeanI,Se
         }
 
         // Generate and set the bill number
-        billing.setBillNo(billNoGenerator.generate());
+        billing.setBillNo(txnNoGenerator.generate());
 
         getDao().add(billing);
 

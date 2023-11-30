@@ -34,8 +34,7 @@ public class AppInit implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
 
 
-       Payment payment = new Payment(BigDecimal.valueOf(4600),new Date(12/4/2019),"mpesa",PaymentStatus.PAID);
-        paymentBean.add(payment);
+
 
 
     }
