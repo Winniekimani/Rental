@@ -1,6 +1,5 @@
 package com.winnie.database;
 
-import com.mysql.cj.jdbc.MysqlDataSource;
 import com.winnie.app.model.entity.*;
 import com.winnie.database.helper.DbTable;
 import com.winnie.database.helper.DbTableColumn;
@@ -230,62 +229,45 @@ public class MysqlDatabase implements Serializable {
         }
     }
 
-
-
-    public void delete(Class<?> clazz, Object id) {
-        if (!clazz.isAnnotationPresent(DbTable.class))
-            return;
-
-        DbTable dbTable = clazz.getAnnotation(DbTable.class);
-
-
-        String sqlStm = "DELETE FROM " + dbTable.name() + " WHERE id = ?";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(sqlStm)) {
-            if (id instanceof Long)
-                preparedStatement.setLong(1, (Long) id);
-
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-  /*  public <T> void delete(Object id, T entity) {
-        Class<?> clazz = entity.getClass();
-        PreparedStatement preparedStatement = null;
-
+    public void deleteById(Class<?> entityClass, long id) {
+        System.out.println("starting deletebyid/................");
         try {
-            if (!clazz.isAnnotationPresent(DbTable.class)) {
-                throw new IllegalArgumentException("Entity class is not annotated with @DbTable");
+
+            System.out.println("inside delete/................");
+            // Get the ID column name using the helper method
+            String idColumnName = getIdColumnName(entityClass);
+
+            if (idColumnName == null) {
+                throw new RuntimeException("ID column not found for entity " + entityClass.getName());
             }
 
-            DbTable dbTable = clazz.getAnnotation(DbTable.class);
-            String idColumnName = "id";  // Change this if your ID column has a different name
+            System.out.println("execute delete query begins/................");
+            // Construct the SQL query
+            String query = "DELETE FROM " + entityClass.getAnnotation(DbTable.class).name() +
+                    " WHERE " + idColumnName + " = ?";
 
-            StringBuilder deleteQuery = new StringBuilder();
-            deleteQuery.append("DELETE FROM ").append(dbTable.name())
-                    .append(" WHERE ").append(idColumnName).append(" = ?");
+            // Prepare and execute the statement
+            try (PreparedStatement preparedStatement = getConnection().prepareStatement(query)) {
+                preparedStatement.setLong(1, id);
 
-            preparedStatement = connection.prepareStatement(deleteQuery.toString());
-            preparedStatement.setObject(1, id);
+                preparedStatement.executeUpdate();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-            System.out.println("THE SQL QUERY FOR DELETE IS #### "+deleteQuery);
-            // Execute the delete statement
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException("Error while deleting entity", e);
-        } finally {
-            // Close the PreparedStatement in a finally block
-            if (preparedStatement != null) {
-                try {
-                    preparedStatement.close();
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                }
+    }
+
+    // Helper method to get the ID column name
+    private String getIdColumnName(Class<?> entityClass) {
+        Field[] fields = entityClass.getDeclaredFields();
+        for (Field field : fields) {
+            if (field.isAnnotationPresent(DbTableId.class)) {
+                return field.getAnnotation(DbTableColumn.class).name();
             }
         }
-    }*/
-
-
+        return null;
+    }
 
 
     @PreDestroy

@@ -11,7 +11,8 @@ import java.io.IOException;
 public class HomeAction extends BaseAction {
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
-        resp.sendRedirect("./home.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("./home.jsp");
+       dispatcher.forward(req,resp);
 
     }
 }

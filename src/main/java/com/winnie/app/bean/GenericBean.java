@@ -49,18 +49,33 @@ public class GenericBean<T> implements GenericBeanI<T> {
 
     }
 
+    @Override
+    public void deleteById(Class<?> entityClass, long id) {
+        genericDao.setDatabase(database);
+        genericDao.deleteById(entityClass, id);
+    }
+
+   /* @Override
+    public boolean deleteById(Class<?> entityClass, long id) {
+        genericDao.setDatabase(database);
+        return genericDao.deleteById(entityClass, id);
+    }*/
+
    /* @Override
     public void delete(T entity) {
 
         genericDao.setDatabase(database);
         genericDao.delete(entity);
     }*/
-    @Override
-        public void delete(Class<?> clazz, Long id) {
-            genericDao.setDatabase(database);
-            genericDao.delete(clazz, id);
 
-        }
+    /*@Override
+    public void delete(T entity, long entityID) {
+        genericDao.setDatabase(database);
+        genericDao.delete(entity,entityID);
+    }*/
+
+
+
 
     @Override
     public void update(T entity) {
@@ -71,4 +86,7 @@ public class GenericBean<T> implements GenericBeanI<T> {
         genericDao.setDatabase(database);
         return(GenericDaoI<T>) genericDao;
     }
+
+
+
 }

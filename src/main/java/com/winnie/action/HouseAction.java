@@ -4,6 +4,7 @@ import com.winnie.app.View.html.HtmlComponent;
 import com.winnie.app.bean.HouseBean;
 import com.winnie.app.bean.HouseBeanI;
 import com.winnie.app.model.entity.House;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -23,18 +24,30 @@ public class HouseAction extends BaseAction {
         HttpSession httpSession = req.getSession();
 
 
-/*
-        // TODO Auto-generated method stub
         String action = req.getParameter("action");
-        int id = Integer.parseInt(req.getParameter("id"));
 
-        if(action.equals("delete"))
-            // get the user element by Id
-            houseBean.delete((House)houseBean.getByID(id, new House()),id);
-*/
+        if ("delete".equals(action)) {
+            String idParameter = req.getParameter("id");
+
+            if (StringUtils.isNotBlank(idParameter)) {
+                try {
+                    Long id = Long.parseLong(idParameter);
+
+                    // Use the ID to delete the house using GenericBean
+                    houseBean.deleteById(House.class, id);
+
+                } catch (NumberFormatException e) {
+                    // Handle the case where idParameter is not a valid Long
+                    e.printStackTrace(); // Log the exception or handle it appropriately
+                }
+            }
+        }
+
 
 
         renderPage(req,resp,1, House.class, houseBean.list(House.class));
+
+
     }
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -43,11 +56,14 @@ public class HouseAction extends BaseAction {
 
         try {
             houseBean.add(house);
+            renderPage(req,resp,1, House.class, houseBean.list(House.class));
+          /*  resp.sendRedirect("./house");*/
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
-        resp.sendRedirect("./house");
+
+
 
 
 

@@ -11,8 +11,12 @@ public interface GenericDaoI <T> extends Serializable {
 
    void add(T entity);
 
-   /* void delete(T entity);*/
-    void delete(Class<?> clazz,Long id);
+    void deleteById(Class<?> entityClass, long id);
+
+    /*void delete(T entity,long id);*/
+/*
+    boolean deleteById(Class<?> entityClass, long id);*/
+
 
     void update(T entity);
 

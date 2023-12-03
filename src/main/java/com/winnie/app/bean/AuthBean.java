@@ -41,17 +41,7 @@ public class AuthBean implements AuthBeanI, Serializable {
         return user;
 
 
-/*
-        List<User> users = database.select(User.class);
 
-        for (User user : users) {
-            if (user.getUsername().equals(loginUser.getUsername()) && user.getPassword().equals(loginUser.getPassword())) {
-                return user;
-            }
-        }
-
-        return null; // User not found
-    }*/
 
 
 }}

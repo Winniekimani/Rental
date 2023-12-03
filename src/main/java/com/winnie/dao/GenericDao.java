@@ -26,18 +26,24 @@ private MysqlDatabase database;
 
     }
 
-  /*  @Override
-    public void delete(T entity) {
+    @Override
+    public void deleteById(Class<?> entityClass, long id) {
+        database.deleteById(entityClass, id);
+    }
 
-        database.delete();
+ /*   @Override
+    public boolean deleteById(Class<?> entityClass, long id) {
+        return database.deleteById(entityClass, id);
+    }*/
+
+  /*  @Override
+    public void delete(T entity,long id) {
+
+        database.delete(entity,id);
 
     }*/
 
-    @Override
-    public void delete(Class<?> clazz,Long id){
-        database.delete(clazz, id);
 
-    }
     @Override
     public void update(T entity) {
 

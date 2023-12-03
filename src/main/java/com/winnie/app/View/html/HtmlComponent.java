@@ -18,7 +18,7 @@ public class HtmlComponent implements Serializable {
 
 
 
-       // Class<?> clazz = models.get(0).getClass();
+        // Class<?> clazz = models.get(0).getClass();
         if (!clazz.isAnnotationPresent(HtmlTable.class))
             return StringUtils.EMPTY;
 
@@ -38,14 +38,14 @@ public class HtmlComponent implements Serializable {
             if (!field.isAnnotationPresent(WinnieTableColHeader.class))
                 continue;
             else
-            trBuilder.append("<th>" + field.getAnnotation(WinnieTableColHeader.class).header() + "</th>");
+                trBuilder.append("<th>" + field.getAnnotation(WinnieTableColHeader.class).header() + "</th>");
 
         }
 
         trBuilder.append("</tr>");
         for (Object model : models) {
             trBuilder.append("<tr>");
-           /* int id =0;*/
+            /* int id =0;*/
             for (Field field : fields) {
                 if (!field.isAnnotationPresent(WinnieTableColHeader.class))
                     continue;
@@ -64,7 +64,7 @@ public class HtmlComponent implements Serializable {
                     "    <a href=\""+htmlTable.editUrl()+"\">Edit" + htmlTable.name() +"</a>\n" +
                     "</div></td>");
             trBuilder.append("<td>").append( "<div class=\"addHouseButton\" >\n" +
-                    "    <a href=\""+htmlTable.deleteUrl()+ "?id=" +"\">Delete" + htmlTable.name() +"</a>\n" +
+                    "    <a href=\""+htmlTable.deleteUrl()+ "?id=" + getIdFromModel(model)  +"\">Delete" + htmlTable.name() +"</a>\n" +
                     "</div></td>");
             // Add delete and update buttons// Add delete and update buttons based on the model type
          /*   if (model instanceof House) {
@@ -82,6 +82,38 @@ public class HtmlComponent implements Serializable {
         return trBuilder.toString();
 
     }
+
+    private static String getIdFromModel(Object model) {
+        try {
+            // Assuming that the ID field is named "id" in the base entity - modify as needed
+            Field idField = findIdField(model.getClass());
+            idField.setAccessible(true);
+            Object idValue = idField.get(model);
+            return idValue != null ? idValue.toString() : "";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "";
+        }
+    }
+
+    private static Field findIdField(Class<?> modelClass) {
+        while (modelClass != null) {
+            try {
+                Field[] fields = modelClass.getDeclaredFields();
+                for (Field field : fields) {
+                    if (field.isAnnotationPresent(DbTableId.class)) {
+                        return field;
+                    }
+                }
+                modelClass = modelClass.getSuperclass();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+        return null;
+    }
+
 
 
     public static String htmlForm(Class<?> modelClass) {

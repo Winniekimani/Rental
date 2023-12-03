@@ -1,0 +1,22 @@
+---
+- name: Deploy rental on GCP
+  hosts: all
+  become: true
+  tasks:
+    - name: Recursively Change Ownership
+      file:
+        path: /home/winnie/Rental
+        state: directory
+        recurse: yes
+        owner: winnie
+
+    - name: Copy Docker Compose file
+      copy:
+        src: /home/winnie/java-ee-training/Rental/docker-compose.yml
+        dest: /home/winnie/Rental/docker-compose.yml
+        owner: winnie
+        group: winnie
+        mode: 0755
+
+    - name: Start Docker Compose
+      command: docker-compose -f /home/winnie/Rental/docker-compose.yml up -d

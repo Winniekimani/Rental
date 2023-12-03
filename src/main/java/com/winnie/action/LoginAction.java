@@ -48,11 +48,11 @@ public class LoginAction extends BaseAction {
                     httpSession.setAttribute("activeMenu",0);
 
 
-
+//do logic here
                     if ("Admin".equals(username)) {
                         resp.sendRedirect("./admin.jsp");
                     } else {
-                        resp.sendRedirect("./home");
+                        resp.sendRedirect("./home.jsp");
                     }
 
                 }

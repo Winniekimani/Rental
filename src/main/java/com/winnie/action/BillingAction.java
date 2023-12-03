@@ -30,7 +30,6 @@ public class BillingAction extends BaseAction {
     }
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        /* billingBean.add(serializeForm(Billing.class, req.getParameterMap()));*/
        Billing billing = serializeForm(Billing.class,req.getParameterMap());
 
 
@@ -39,7 +38,8 @@ public class BillingAction extends BaseAction {
             billingBean.add(billing);
         } catch (Exception e) {
             throw new RuntimeException(e);
-        }
+        }/*
+        renderPage(req,resp,4, Billing.class, billingBean.list(Billing.class));*/
 
         resp.sendRedirect("./billing");
 

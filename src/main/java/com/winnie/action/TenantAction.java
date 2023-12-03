@@ -34,7 +34,10 @@ public class TenantAction extends BaseAction {
             throw new RuntimeException(e);
         }
 
-        resp.sendRedirect("./tenant");
+      resp.sendRedirect("./tenant");
+    /*
+        renderPage(req,resp,2, Tenant.class,tenantBean.list(Tenant.class) );*/
+
 
 
     }

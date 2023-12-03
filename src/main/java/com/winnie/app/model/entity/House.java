@@ -14,7 +14,7 @@ import java.text.DecimalFormat;
 @DbTable
 (name="house")
 @WinnieHtmlForms(label = "House")
-@HtmlTable(name = "House",addUrl = "./house?action=add",deleteUrl = "./house?action=delete&id=")
+@HtmlTable(name = "House",addUrl = "./house?action=add",deleteUrl = "./house?action=delete")
 public class House extends BaseEntity{
 
   /*  @WinnieTableColHeader(header="HouseId")
@@ -50,15 +50,25 @@ public class House extends BaseEntity{
     public House() {
     }
 
+
     public House(String houseId, String houseName, HouseType houseType, String houseLocation, BigDecimal housePrice) {
         //this.houseId = houseId;
+        super();
         this.houseName = houseName;
         this.houseType = houseType;
         this.houseLocation = houseLocation;
         this.housePrice = housePrice;
     }
-/*
-    public String getHouseId() {
+
+    public Long getHouseId() {
+        return getId(); // Using the getId() method from BaseEntity
+    }
+
+
+
+
+
+   /* public String getHouseId() {
         return houseId;
     }
 

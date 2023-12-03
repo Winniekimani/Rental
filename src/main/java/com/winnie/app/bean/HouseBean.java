@@ -31,6 +31,13 @@ public class HouseBean extends GenericBean<House> implements HouseBeanI, Seriali
     }
 
 
+
+  /*  @Override
+    public boolean deleteById(Class<?> entityClass, long id) {
+        // Add specific behavior for HouseBean delete, if needed
+        return super.deleteById(entityClass, id);
+    }*/
+
     @Inject
     public void tryMethodInjection(){
         System.out.println("method injection trial............");

@@ -1,11 +1,13 @@
 package com.winnie.utility;
 
 
+import javax.inject.Named;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.ThreadLocalRandom;
 
-@BillNo
+@Named("bill")
+/*@BillNo*/
 public class BillNoGenerator implements TransactIonNoGenerator{
 
     public String generate() {

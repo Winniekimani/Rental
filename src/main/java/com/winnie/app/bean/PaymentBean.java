@@ -10,6 +10,7 @@ import com.winnie.utility.TransactIonNoGenerator;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -20,7 +21,8 @@ public class PaymentBean extends GenericBean<Payment> implements PaymentBeanI, S
 
 
     @Inject
-    @PaymentNo
+   /* @PaymentNo*/
+    @Named("payment")
     TransactIonNoGenerator txnNoGenerator;
 
     @Override

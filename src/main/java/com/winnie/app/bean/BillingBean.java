@@ -9,6 +9,7 @@ import com.winnie.utility.TransactIonNoGenerator;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -22,7 +23,8 @@ public class BillingBean extends GenericBean<Billing> implements BillingBeanI,Se
 
 
     @Inject
-    @BillNo
+  /*  @BillNo*/
+    @Named("bill")
     private TransactIonNoGenerator txnNoGenerator;
 
     @Override

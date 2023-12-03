@@ -45,7 +45,7 @@ public class AuthFilter implements Filter {
             if (StringUtils.isNotBlank((String) httpSession.getAttribute("loggedIn"))) {
                 chain.doFilter(request, response);
 
-                //check if user is admin
+                /*//check if user is admin
                 String username = (String) httpSession.getAttribute("username");
                 if ("Admin".equals(username)) {
                     // User is an admin, allow access to /admin pages
@@ -61,7 +61,7 @@ public class AuthFilter implements Filter {
                     } else {
                         chain.doFilter(request, response);
                     }
-                }
+                }*/
             } else {
 
                 httpResponse.sendRedirect(httpRequest.getContextPath() + "/");

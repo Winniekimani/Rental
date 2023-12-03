@@ -14,6 +14,9 @@ public class BaseEntity implements Serializable {
 
     private Long id;
 
+    public BaseEntity() {
+    }
+
     public Long getId() {
         return id;
     }

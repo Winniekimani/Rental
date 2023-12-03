@@ -41,6 +41,8 @@ public class Payment extends BaseEntity {
     @DbTableColumn(name="type")
     private PaymentStatus paymentStatus;
 
+    //should have tenant id
+
     public Payment() {
     }
 

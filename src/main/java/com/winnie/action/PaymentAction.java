@@ -30,7 +30,11 @@ public class PaymentAction extends BaseAction {
         public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
             paymentBean.add(serializeForm(Payment.class, req.getParameterMap()));
 
-            resp.sendRedirect("./payment");
+            try {
+                renderPage(req, resp, 3, Payment.class,paymentBean.list(Payment.class));
+            } catch (ServletException e) {
+                throw new RuntimeException(e);
+            }
 
         }
 
