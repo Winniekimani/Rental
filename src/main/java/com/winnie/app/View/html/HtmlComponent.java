@@ -50,9 +50,10 @@ public class HtmlComponent implements Serializable {
                 if (!field.isAnnotationPresent(WinnieTableColHeader.class))
                     continue;
                 try {
+
                     field.setAccessible(true);
-                   /* if(field.isAnnotationPresent(DbTableId.class))
-                        id=(int)field.get(model);*/
+                    //getting the fieldnames,it's not printing the id.
+                    System.out.println(field.getName());
                     trBuilder.append("<td>").append(field.get(model)).append("</td>");
 
                 } catch (IllegalAccessException e) {
@@ -64,7 +65,7 @@ public class HtmlComponent implements Serializable {
                     "    <a href=\""+htmlTable.editUrl()+"\">Edit" + htmlTable.name() +"</a>\n" +
                     "</div></td>");
             trBuilder.append("<td>").append( "<div class=\"addHouseButton\" >\n" +
-                    "    <a href=\""+htmlTable.deleteUrl()+ "?id=" + getIdFromModel(model)  +"\">Delete" + htmlTable.name() +"</a>\n" +
+                    "    <a href=\""+htmlTable.deleteUrl()+ "\">Delete" + htmlTable.name() +"</a>\n" +
                     "</div></td>");
             // Add delete and update buttons// Add delete and update buttons based on the model type
          /*   if (model instanceof House) {
@@ -83,18 +84,7 @@ public class HtmlComponent implements Serializable {
 
     }
 
-    private static String getIdFromModel(Object model) {
-        try {
-            // Assuming that the ID field is named "id" in the base entity - modify as needed
-            Field idField = findIdField(model.getClass());
-            idField.setAccessible(true);
-            Object idValue = idField.get(model);
-            return idValue != null ? idValue.toString() : "";
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "";
-        }
-    }
+
 
     private static Field findIdField(Class<?> modelClass) {
         while (modelClass != null) {

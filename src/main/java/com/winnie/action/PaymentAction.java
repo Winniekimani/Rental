@@ -20,7 +20,7 @@ public class PaymentAction extends BaseAction {
 
 
 
-        renderPage(req, resp, 3, Payment.class,paymentBean.list(Payment.class));
+        renderPage(req, resp, 3, Payment.class,paymentBean.list(new Payment()));
 
 
 
@@ -31,7 +31,7 @@ public class PaymentAction extends BaseAction {
             paymentBean.add(serializeForm(Payment.class, req.getParameterMap()));
 
             try {
-                renderPage(req, resp, 3, Payment.class,paymentBean.list(Payment.class));
+                renderPage(req, resp, 3, Payment.class,paymentBean.list(new Payment()));
             } catch (ServletException e) {
                 throw new RuntimeException(e);
             }

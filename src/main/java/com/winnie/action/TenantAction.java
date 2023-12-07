@@ -19,9 +19,7 @@ public class TenantAction extends BaseAction {
 
           /*  TenantBeanI tenantbean = new TenantBean();*/
 
-
-        renderPage(req,resp,2, Tenant.class,tenantBean.list(Tenant.class) );
-
+        renderPage(req,resp,2, Tenant.class,tenantBean.list(new Tenant()) );
 
     }
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

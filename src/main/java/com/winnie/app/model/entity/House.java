@@ -4,77 +4,96 @@ import com.winnie.app.View.html.HtmlTable;
 import com.winnie.app.View.html.WinnieHtmlFormField;
 import com.winnie.app.View.html.WinnieHtmlForms;
 import com.winnie.app.View.html.WinnieTableColHeader;
-import com.winnie.database.helper.DbTable;
-import com.winnie.database.helper.DbTableColumn;
-import org.apache.commons.lang3.StringUtils;
 
-import java.io.Serializable;
+import javax.persistence.*;
 import java.math.BigDecimal;
-import java.text.DecimalFormat;
-@DbTable
-(name="house")
+@Entity
+@Table(name="house")
 @WinnieHtmlForms(label = "House")
-@HtmlTable(name = "House",addUrl = "./house?action=add",deleteUrl = "./house?action=delete")
+@HtmlTable(name = "House",addUrl = "./house?action=add")
 public class House extends BaseEntity{
 
-  /*  @WinnieTableColHeader(header="HouseId")
-    @WinnieHtmlFormField(label="House Id")
-    @DbTableColumn(name="id")
-    private String houseId;*/
+    @WinnieTableColHeader(header="HouseNo")
+    @WinnieHtmlFormField(label="House No")
+    @Column(name = "house_no")
+    private String houseNo;
+
     @WinnieTableColHeader(header="HouseName")
     @WinnieHtmlFormField(label="House Name")
-    @DbTableColumn(name="name")
+    @Column(name="house_name")
     private String houseName;
+    @WinnieTableColHeader(header="HouseStatus")
+    @WinnieHtmlFormField(label="House Status")
+    @Column(name = "house_status")
+    private String houseStatus;
+
+    @WinnieTableColHeader(header="HouseDescription")
+    @WinnieHtmlFormField(label="House Description")
+    @Column(name = "house_description",columnDefinition = "text")
+    private String houseDescription;
+
+
     @WinnieTableColHeader(header="HouseType")
     @WinnieHtmlFormField(label="House Type")
-    @DbTableColumn(name="type")
+    @Column(name="house_type")
+    @Enumerated(value = EnumType.STRING)
     private HouseType houseType;
 
 
     @WinnieTableColHeader(header="HouseLocation")
     @WinnieHtmlFormField(label="House Location")
-    @DbTableColumn(name="location")
+    @Column(name="house_location")
     private String houseLocation;
 
     @WinnieTableColHeader(header="HousePrice")
     @WinnieHtmlFormField(label="House Price")
-    @DbTableColumn(name="price",type="decimal(10,2)")
+    @Column(name="house_price")
     private BigDecimal housePrice;
 
-/*
-    // New field for calculated rent
-    @WinnieTableColHeader(header = "CalculatedRent")
-    @WinnieHtmlFormField(label = "Calculated Rent")
-    @DbTableColumn(name = "calculatedRent", type = "decimal(10,2)")*/
-    private BigDecimal calculatedRent;
+
     public House() {
     }
 
 
-    public House(String houseId, String houseName, HouseType houseType, String houseLocation, BigDecimal housePrice) {
-        //this.houseId = houseId;
-        super();
+    public House(String houseNo, String houseStatus, String houseDescription, String houseName, HouseType houseType, String houseLocation, BigDecimal housePrice) {
+        this.houseNo = houseNo;
+        this.houseStatus = houseStatus;
+        this.houseDescription = houseDescription;
         this.houseName = houseName;
         this.houseType = houseType;
         this.houseLocation = houseLocation;
         this.housePrice = housePrice;
+
     }
 
-    public Long getHouseId() {
-        return getId(); // Using the getId() method from BaseEntity
+    public long getHouseId() {
+        return this.getId();
     }
 
 
-
-
-
-   /* public String getHouseId() {
-        return houseId;
+    public String getHouseNo() {
+        return houseNo;
     }
 
-    public void setHouseId(String houseId) {
-        this.houseId = houseId;
-    }*/
+    public void setHouseNo(String houseNo) {
+        this.houseNo = houseNo;
+    }
+
+    public String getHouseStatus() {
+        return houseStatus;
+    }
+
+    public void setHouseStatus(String houseStatus) {
+        this.houseStatus = houseStatus;
+    }
+
+    public String getHouseDescription() {
+        return houseDescription;
+    }
+
+    public void setHouseDescription(String houseDescription) {
+        this.houseDescription = houseDescription;
+    }
 
     public String getHouseName() {
         return houseName;
@@ -110,11 +129,4 @@ public class House extends BaseEntity{
 
 
 
-    public BigDecimal getCalculatedRent() {
-        return calculatedRent;
-    }
-
-    public void setCalculatedRent(BigDecimal calculatedRent) {
-        this.calculatedRent = calculatedRent;
-    }
 }

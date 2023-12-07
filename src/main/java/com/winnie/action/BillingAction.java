@@ -24,7 +24,7 @@ public class BillingAction extends BaseAction {
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession httpSession = req.getSession();
 
-        renderPage(req,resp,4, Billing.class, billingBean.list(Billing.class));
+        renderPage(req,resp,4, Billing.class, billingBean.list(new Billing()));
 
 
     }

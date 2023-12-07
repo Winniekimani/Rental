@@ -1,4 +1,4 @@
----
+          ---
 - name: Deploy rental on GCP
   hosts: all
   become: true

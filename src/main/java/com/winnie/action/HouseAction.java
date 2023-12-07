@@ -24,28 +24,7 @@ public class HouseAction extends BaseAction {
         HttpSession httpSession = req.getSession();
 
 
-        String action = req.getParameter("action");
-
-        if ("delete".equals(action)) {
-            String idParameter = req.getParameter("id");
-
-            if (StringUtils.isNotBlank(idParameter)) {
-                try {
-                    Long id = Long.parseLong(idParameter);
-
-                    // Use the ID to delete the house using GenericBean
-                    houseBean.deleteById(House.class, id);
-
-                } catch (NumberFormatException e) {
-                    // Handle the case where idParameter is not a valid Long
-                    e.printStackTrace(); // Log the exception or handle it appropriately
-                }
-            }
-        }
-
-
-
-        renderPage(req,resp,1, House.class, houseBean.list(House.class));
+        renderPage(req,resp,1, House.class, houseBean.list(new House()));
 
 
     }
@@ -56,7 +35,7 @@ public class HouseAction extends BaseAction {
 
         try {
             houseBean.add(house);
-            renderPage(req,resp,1, House.class, houseBean.list(House.class));
+            renderPage(req,resp,1, House.class, houseBean.list(new House()));
           /*  resp.sendRedirect("./house");*/
         } catch (Exception e) {
             throw new RuntimeException(e);

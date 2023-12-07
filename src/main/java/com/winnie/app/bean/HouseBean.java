@@ -2,8 +2,7 @@ package com.winnie.app.bean;
 
 
 import com.winnie.app.model.entity.House;
-import com.winnie.app.model.entity.HouseType;
-import com.winnie.database.MysqlDatabase;
+
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -22,21 +21,10 @@ import java.util.List;
 public class HouseBean extends GenericBean<House> implements HouseBeanI, Serializable {
 
 
-  /*  HouseBean houseBean = new HouseBean();
-    List<House> houseList = houseBean.list();*/
-
     public List<House> list() {
-        // You can directly call the list method from GenericBean
-        return super.list(House.class);
+        return super.list(new House());
     }
 
-
-
-  /*  @Override
-    public boolean deleteById(Class<?> entityClass, long id) {
-        // Add specific behavior for HouseBean delete, if needed
-        return super.deleteById(entityClass, id);
-    }*/
 
     @Inject
     public void tryMethodInjection(){

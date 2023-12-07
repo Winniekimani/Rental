@@ -1,3 +1,4 @@
+/*
 package com.winnie.database;
 
 import com.winnie.app.model.entity.*;
@@ -48,8 +49,10 @@ public class MysqlDatabase implements Serializable {
     public  void updateSchema(){
 
         System.out.println("----------Updating schema database----------------");
-        try {/*
-            Connection connection = MysqlDatabase.getInstance().getConnection();*/
+        try {*/
+/*
+            Connection connection = MysqlDatabase.getInstance().getConnection();*//*
+
 
 
             List<Class<?>> entities = new ArrayList<>();
@@ -144,8 +147,10 @@ public class MysqlDatabase implements Serializable {
             String query = queryBuilder.replace(",)", ")");
             System.out.println("Query: " + query);
 
-          /*  PreparedStatement sqlStmt = MysqlDatabase.getInstance().getConnection()
-                    .prepareStatement(query);*/
+          */
+/*  PreparedStatement sqlStmt = MysqlDatabase.getInstance().getConnection()
+                    .prepareStatement(query);*//*
+
 
             PreparedStatement sqlStmt = connection.prepareStatement(query);
 
@@ -183,9 +188,11 @@ public class MysqlDatabase implements Serializable {
 
             System.out.println(stringBuilder.toString());
             stringBuilder.append("SELECT * FROM ")
-                    .append(dbTable.name()).append(";");/*
+                    .append(dbTable.name()).append(";");*/
+/*
             Connection conn = MysqlDatabase.getInstance().getConnection();
-            PreparedStatement preparedStatement = conn.prepareStatement(stringBuilder.toString());*/
+            PreparedStatement preparedStatement = conn.prepareStatement(stringBuilder.toString());*//*
+
             PreparedStatement preparedStatement=connection.prepareStatement(stringBuilder.toString());
 
             System.out.println("executing query begins/................");
@@ -283,6 +290,7 @@ public class MysqlDatabase implements Serializable {
     }
 
 
+*/
 /*
     public Connection getConnection() {
         return connection;
@@ -290,5 +298,7 @@ public class MysqlDatabase implements Serializable {
 
     public void setConnection(Connection connection) {
         this.connection = connection;
-    }*/
+    }*//*
+
 }
+*/

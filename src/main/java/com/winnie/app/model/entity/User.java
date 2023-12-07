@@ -3,24 +3,31 @@ package com.winnie.app.model.entity;
 import com.winnie.database.helper.DbTable;
 import com.winnie.database.helper.DbTableColumn;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.io.Serializable;
 
 
-@DbTable( name="users")
+@Entity
+@Table( name="users")
 public class User extends BaseEntity {
 
-  /*  @DbTableColumn(name="id" ,type="int")
-    private Long id;
-*/
-   @DbTableColumn(name="username")
+   @Column(name="username")
    private String username;
 
-    @DbTableColumn(name="password")
+    @Column(name="password")
     private String password;
 
+    @Transient
     private String confirmPassword;
 
     public User(){}
+
+    public User(String username) {
+        this.username = username;
+    }
 
     public User(Long id, String username, String password) {
        // this.id = id;
@@ -29,14 +36,7 @@ public class User extends BaseEntity {
         this.password = password;
     }
 
- /* public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-*/
+ 
     public String getUsername() {
         return username;
     }

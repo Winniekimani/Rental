@@ -1,7 +1,6 @@
 com/winnie/dao/GenericDaoI.class
 com/winnie/app/View/toolbar/BottomToolBar.class
-com/winnie/utility/RentCalculator$1.class
-com/winnie/utility/RentCalculator.class
+com/winnie/utility/EncryptMD5.class
 com/winnie/app/model/view/MenuLink.class
 com/winnie/app/bean/AuthBeanI.class
 com/winnie/app/model/entity/Payment.class
@@ -39,7 +38,6 @@ com/winnie/app/model/entity/User.class
 com/winnie/app/View/toolbar/TopToolBar.class
 com/winnie/utility/BillNo.class
 com/winnie/app/View/html/HtmlTable.class
-com/winnie/database/MysqlDatabase.class
 com/winnie/app/View/html/WinnieHtmlFormField.class
 com/winnie/app/model/view/MenuLinkStatus.class
 com/winnie/app/bean/UserBean.class
@@ -51,9 +49,11 @@ com/winnie/app/bean/BillingBean.class
 com/winnie/action/UserAction.class
 com/winnie/app/bean/AuthBean.class
 com/winnie/app/View/html/WinnieTableColHeader.class
+com/winnie/utility/EncryptSha256.class
 com/winnie/utility/TransactIonNoGenerator.class
 com/winnie/action/PaymentStatusConverter.class
 com/winnie/app/bean/UserBeanI.class
+com/winnie/utility/EncryptText.class
 com/winnie/utility/BillNoGenerator.class
 com/winnie/utility/PaymentNoGenerator.class
 com/winnie/app/model/entity/HouseType.class
@@ -63,4 +63,5 @@ com/winnie/app/model/entity/BaseEntity.class
 com/winnie/action/HouseTypeConverter.class
 com/winnie/app/bean/TenantBeanI.class
 com/winnie/app/View/html/WinnieHtmlForms.class
+com/winnie/app/model/entity/Admin.class
 com/winnie/utility/PaymentNo.class

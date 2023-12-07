@@ -18,8 +18,6 @@ import java.util.List;
 @Stateless
 public class PaymentBean extends GenericBean<Payment> implements PaymentBeanI, Serializable {
 
-
-
     @Inject
    /* @PaymentNo*/
     @Named("payment")

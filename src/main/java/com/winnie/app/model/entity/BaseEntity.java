@@ -3,19 +3,21 @@ package com.winnie.app.model.entity;
 import com.winnie.database.helper.DbTableColumn;
 import com.winnie.database.helper.DbTableId;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 import java.lang.annotation.Inherited;
 
 
-public class BaseEntity implements Serializable {
+@MappedSuperclass
+public abstract class BaseEntity implements Serializable {
 
-    @DbTableId
-    @DbTableColumn(name = "id", type = "int")
+    @Id
+    @GeneratedValue(strategy = GenerationType.TABLE)
 
     private Long id;
-
-    public BaseEntity() {
-    }
 
     public Long getId() {
         return id;

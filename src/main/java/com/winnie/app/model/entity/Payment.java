@@ -6,9 +6,12 @@ import com.winnie.app.View.html.WinnieHtmlForms;
 import com.winnie.app.View.html.WinnieTableColHeader;
 import com.winnie.database.helper.DbTable;
 import com.winnie.database.helper.DbTableColumn;
+
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
-@DbTable(name="payment")
+@Entity
+@Table(name="payment")
 @HtmlTable(name = "Payment",addUrl = "./payment?action=add",deleteUrl = "./payment?action=delete")
 @WinnieHtmlForms(label = "Payments" )
 public class Payment extends BaseEntity {
@@ -19,26 +22,28 @@ public class Payment extends BaseEntity {
     private String paymentId;*/
     @WinnieTableColHeader(header = "PaymentAmount")
     @WinnieHtmlFormField(label = "Amount to Pay")
-    @DbTableColumn(name="amount",type="decimal(10,2)")
+    @Column(name="amount")
     private BigDecimal amount;
     @WinnieTableColHeader(header = "PaymentDate")
     @WinnieHtmlFormField(label = "Payment Date")
-    @DbTableColumn(name="date",type = "Date")
+    @Column(name="date")
+    @Temporal(TemporalType.DATE)
     private Date paymentDate;
 
 
     @WinnieTableColHeader(header="PaymentNumber")
     @WinnieHtmlFormField(label="Payment No")
-    @DbTableColumn(name="payment_no")
+    @Column(name="payment_no")
     private String paymentNo;
     @WinnieTableColHeader(header = "PaymentMethod")
     @WinnieHtmlFormField(label = "Payment Method")
-    @DbTableColumn(name="payment_method")
+    @Column(name="payment_method")
     private String paymentMethod;
 
     @WinnieTableColHeader(header = "PaymentStatus")
     @WinnieHtmlFormField(label = "Payment Status")
-    @DbTableColumn(name="type")
+    @Column(name="payment_status")
+    @Enumerated(value = EnumType.STRING)
     private PaymentStatus paymentStatus;
 
     //should have tenant id

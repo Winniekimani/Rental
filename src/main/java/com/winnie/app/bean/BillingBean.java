@@ -16,11 +16,6 @@ import java.util.List;
 
 @Stateless
 public class BillingBean extends GenericBean<Billing> implements BillingBeanI,Serializable {
-    /*public List<Billing> list() {
-        // You can directly call the list method from GenericBean
-        return super.list(Billing.class);
-    }*/
-
 
     @Inject
   /*  @BillNo*/

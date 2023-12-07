@@ -4,8 +4,7 @@ import com.winnie.app.bean.HouseBean;
 import com.winnie.app.bean.HouseBeanI;
 import com.winnie.app.bean.PaymentBeanI;
 import com.winnie.app.model.entity.*;
-import com.winnie.database.Database;
-import com.winnie.database.MysqlDatabase;
+
 import com.winnie.database.helper.DbTable;
 import com.winnie.database.helper.DbTableColumn;
 import com.winnie.database.helper.DbTableId;
