@@ -10,7 +10,7 @@ public interface GenericDaoI <T> extends Serializable {
 
     List<T> list(T entity);
 
-    void add(T entity);
+    T add(T entity);
     void delete(T entity);
     EntityManager getEm();
 

@@ -14,14 +14,17 @@ com/winnie/action/BaseAction.class
 com/winnie/database/helper/DbTableId.class
 com/winnie/action/HomeAction.class
 com/winnie/utility/ReferenceNumberGenerator$EntityType.class
+com/winnie/utility/cdievents/HouseCreatedObserver.class
 com/winnie/app/model/entity/PaymentStatus.class
 com/winnie/action/TenantAction.class
 com/winnie/action/LogoutAction.class
 com/winnie/app/bean/BillingBeanI.class
 com/winnie/utility/ReferenceNumberGenerator.class
 com/winnie/app/model/entity/Billing.class
+com/winnie/app/bean/AuditLogBeanI.class
 com/winnie/action/HouseAction.class
 com/winnie/action/LoginAction.class
+com/winnie/app/bean/AuditLogBean.class
 com/winnie/app/bean/PaymentBean.class
 com/winnie/database/helper/DbTableColumn.class
 com/winnie/app/bean/GenericBean.class
@@ -36,8 +39,10 @@ com/winnie/app/userbean/ContentBean.class
 com/winnie/app/model/entity/Tenant.class
 com/winnie/app/model/entity/User.class
 com/winnie/app/View/toolbar/TopToolBar.class
+com/winnie/app/model/entity/AuditLog.class
 com/winnie/utility/BillNo.class
 com/winnie/app/View/html/HtmlTable.class
+com/winnie/utility/cdievents/HouseCreatedEvent.class
 com/winnie/app/View/html/WinnieHtmlFormField.class
 com/winnie/app/model/view/MenuLinkStatus.class
 com/winnie/app/bean/UserBean.class
@@ -63,5 +68,4 @@ com/winnie/app/model/entity/BaseEntity.class
 com/winnie/action/HouseTypeConverter.class
 com/winnie/app/bean/TenantBeanI.class
 com/winnie/app/View/html/WinnieHtmlForms.class
-com/winnie/app/model/entity/Admin.class
 com/winnie/utility/PaymentNo.class

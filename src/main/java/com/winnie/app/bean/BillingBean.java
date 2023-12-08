@@ -23,7 +23,7 @@ public class BillingBean extends GenericBean<Billing> implements BillingBeanI,Se
     private TransactIonNoGenerator txnNoGenerator;
 
     @Override
-    public void add(Billing billing) {
+    public Billing add(Billing billing) {
         if (billing.getPaymentDate() == null) {
             billing.setPaymentDate(new Date());
         }
@@ -31,7 +31,7 @@ public class BillingBean extends GenericBean<Billing> implements BillingBeanI,Se
         // Generate and set the bill number
         billing.setBillNo(txnNoGenerator.generate());
 
-        getDao().add(billing);
+        return getDao().add(billing);
 
     }
 }

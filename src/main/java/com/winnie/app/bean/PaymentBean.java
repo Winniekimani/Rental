@@ -24,7 +24,7 @@ public class PaymentBean extends GenericBean<Payment> implements PaymentBeanI, S
     TransactIonNoGenerator txnNoGenerator;
 
     @Override
-    public void add(Payment payment) {
+    public Payment add(Payment payment) {
         if (payment.getPaymentDate() == null) {
             payment.setPaymentDate(new Date());
         }
@@ -32,7 +32,7 @@ public class PaymentBean extends GenericBean<Payment> implements PaymentBeanI, S
         // Generate and set the bill number
        payment.setPaymentNo(txnNoGenerator.generate());
 
-        getDao().add(payment);
+        return getDao().add(payment);
 
     }
 }

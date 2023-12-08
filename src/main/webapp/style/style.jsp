@@ -94,7 +94,7 @@
       background-color: #dddddd;
     }
 
-    //login css
+    login css
      /* login-css(from webapp index.jsp) */
     body {
           font-family: Arial, sans-serif;

@@ -43,6 +43,20 @@ public class HtmlComponent implements Serializable {
         }
 
         trBuilder.append("</tr>");
+        /*//impementing delete functionality
+        if (models!=null && !models.isEmpty())
+        {
+            for (Object data:models){
+                Object id= null;
+                try {
+                    id = clazz.getMethod("getId").invoke(data);
+                } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException
+                         | NoSuchMethodException | SecurityException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        }*/
         for (Object model : models) {
             trBuilder.append("<tr>");
             /* int id =0;*/
@@ -65,7 +79,7 @@ public class HtmlComponent implements Serializable {
                     "    <a href=\""+htmlTable.editUrl()+"\">Edit" + htmlTable.name() +"</a>\n" +
                     "</div></td>");
             trBuilder.append("<td>").append( "<div class=\"addHouseButton\" >\n" +
-                    "    <a href=\""+htmlTable.deleteUrl()+ "\">Delete" + htmlTable.name() +"</a>\n" +
+                    "    <a href=\""+htmlTable.deleteUrl()+  "\">Delete" + htmlTable.name() +"</a>\n" +
                     "</div></td>");
             // Add delete and update buttons// Add delete and update buttons based on the model type
          /*   if (model instanceof House) {
@@ -86,23 +100,6 @@ public class HtmlComponent implements Serializable {
 
 
 
-    private static Field findIdField(Class<?> modelClass) {
-        while (modelClass != null) {
-            try {
-                Field[] fields = modelClass.getDeclaredFields();
-                for (Field field : fields) {
-                    if (field.isAnnotationPresent(DbTableId.class)) {
-                        return field;
-                    }
-                }
-                modelClass = modelClass.getSuperclass();
-            } catch (Exception e) {
-                e.printStackTrace();
-                return null;
-            }
-        }
-        return null;
-    }
 
 
 

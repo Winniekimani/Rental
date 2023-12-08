@@ -33,12 +33,11 @@ public class GenericBean<T> implements GenericBeanI<T> {
     }
 
     @Override
-    public void  add(T entity) {
+    public T add(T entity) {
 
-      /*
-        genericDao.setDatabase(database);*/
+
         genericDao.setEm(em);
-        genericDao.add(entity);
+         return genericDao.add(entity);
 
 
     }

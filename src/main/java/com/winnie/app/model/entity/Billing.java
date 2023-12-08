@@ -6,6 +6,7 @@ import com.winnie.app.View.html.WinnieHtmlForms;
 import com.winnie.app.View.html.WinnieTableColHeader;
 import com.winnie.database.helper.DbTable;
 import com.winnie.database.helper.DbTableColumn;
+import org.hibernate.annotations.Formula;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -17,10 +18,17 @@ import java.util.Date;
 public class Billing extends BaseEntity {
 
 
-    @WinnieTableColHeader(header="TenantId")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "tenant_id")
+    private Tenant tenant;
+
+    @WinnieHtmlFormField(label = "Tenant ID")
+    @Formula("(tenant_id)")
+    private Long tenantId;
+   /* @WinnieTableColHeader(header="TenantId")
     @WinnieHtmlFormField(label="Tenant id")
     @Column (name="tenantId", columnDefinition = "BigInt")
-    private Long tenantId;
+    private Long tenantId;*/
 
     @WinnieTableColHeader(header="BillNo")
     @WinnieHtmlFormField(label="Bill No")
@@ -43,6 +51,14 @@ public class Billing extends BaseEntity {
     @Column(name="payment_date")
     @Temporal(TemporalType.DATE)
     private Date paymentDate;
+
+    public Tenant getTenant() {
+        return tenant;
+    }
+
+    public void setTenant(Tenant tenant) {
+        this.tenant = tenant;
+    }
 
     public Long getTenantId() {
         return tenantId;

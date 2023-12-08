@@ -57,7 +57,7 @@ public class Tenant extends BaseEntity{
 
     public Tenant() {
     }
-
+/*
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "house_id")
     private House house;
@@ -82,7 +82,7 @@ public class Tenant extends BaseEntity{
 
     public void setHouse(House house) {
         this.house = house;
-    }
+    }*/
 
     public String getFirstName() {
         return firstName;
