@@ -8,7 +8,6 @@
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/View/html/WinnieHtmlFormField.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/bean/PaymentBeanI.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/bean/UserBean.java
-/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/utility/cdievents/HouseCreatedObserver.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/utility/PaymentNo.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/View/html/WinnieTableColHeader.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/bean/HouseBean.java
@@ -24,6 +23,7 @@
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/database/MysqlDatabase.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/model/entity/HouseType.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/model/entity/Tenant.java
+/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/utility/cdievents/BillingEmailObserver.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/bean/TenantBean.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/model/entity/BaseEntity.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/bean/AuthBeanI.java
@@ -31,7 +31,6 @@
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/model/entity/Payment.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/View/toolbar/TopToolBar.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/View/toolbar/BottomToolBar.java
-/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/utility/cdievents/HouseCreatedEvent.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/HouseAction.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/BillingAction.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/filters/AuthFilter.java
@@ -51,6 +50,7 @@
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/userbean/ActiveMenuBean.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/BaseAction.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/utility/TransactIonNoGenerator.java
+/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/utility/cdievents/BillingEmailEvent.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/bean/AuditLogBeanI.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/event/AppInit.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/LoginAction.java

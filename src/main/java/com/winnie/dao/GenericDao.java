@@ -84,9 +84,10 @@ public class GenericDao <T> implements GenericDaoI<T> {
     }
 
     @Override
-    public void delete(T entity) {
-
-        em.remove(entity);
+    public void delete(Class<?> klass, Long id) {
+        Object record = em.find(klass, id);
+        if (record != null)
+            em.remove(record);
     }
 
     @Override

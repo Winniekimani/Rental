@@ -1,11 +1,8 @@
 package com.winnie.app.model.entity;
-
 import com.winnie.app.View.html.HtmlTable;
 import com.winnie.app.View.html.WinnieHtmlFormField;
 import com.winnie.app.View.html.WinnieHtmlForms;
 import com.winnie.app.View.html.WinnieTableColHeader;
-import com.winnie.database.helper.DbTable;
-import com.winnie.database.helper.DbTableColumn;
 import org.hibernate.annotations.Formula;
 
 import javax.persistence.*;
@@ -17,18 +14,20 @@ import java.util.Date;
 @HtmlTable(name = "Bill",addUrl = "./billing?action=add",deleteUrl = "./billing?action=delete")
 public class Billing extends BaseEntity {
 
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "tenant_id")
     private Tenant tenant;
 
+
     @WinnieHtmlFormField(label = "Tenant ID")
     @Formula("(tenant_id)")
     private Long tenantId;
-   /* @WinnieTableColHeader(header="TenantId")
-    @WinnieHtmlFormField(label="Tenant id")
-    @Column (name="tenantId", columnDefinition = "BigInt")
-    private Long tenantId;*/
+
+    @WinnieTableColHeader(header="Name")
+    @Formula("(select t.fName from tenant t where t.id=tenant_id)")
+    private String firstName;
+
+
 
     @WinnieTableColHeader(header="BillNo")
     @WinnieHtmlFormField(label="Bill No")
@@ -70,6 +69,14 @@ public class Billing extends BaseEntity {
 
     public String getBillNo() {
         return billNo;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public void setBillNo(String billNo) {

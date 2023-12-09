@@ -47,5 +47,7 @@ public class HouseBean extends GenericBean<House> implements HouseBeanI, Seriali
 
 
 
+
+
 }
 

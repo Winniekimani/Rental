@@ -24,6 +24,7 @@ public class HouseAction extends BaseAction {
         HttpSession httpSession = req.getSession();
 
 
+
         renderPage(req,resp,1, House.class, houseBean.list(new House()));
 
 
@@ -41,6 +42,21 @@ public class HouseAction extends BaseAction {
             throw new RuntimeException(e);
         }
 
+
+      /*  try {
+            String idParam = req.getParameter("id");
+
+            if (StringUtils.isNotBlank(idParam)) {
+                Long id = Long.parseLong(idParam);
+                houseBean.delete(House.class, id);
+                renderPage(req, resp, 1, House.class, houseBean.list(new House()));
+            } else {
+                // Handle missing or invalid ID parameter
+                resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid or missing ID parameter");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }*/
 
 
 
