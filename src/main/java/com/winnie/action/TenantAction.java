@@ -24,7 +24,7 @@ public class TenantAction extends BaseAction {
     }
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        Tenant tenant = serializeForm(Tenant.class, req.getParameterMap());
+        com.winnie.app.model.entity.Tenant tenant = serializeForm(Tenant.class, req.getParameterMap());
 
         try {
             tenantBean.add(tenant);

@@ -2,7 +2,6 @@ package com.winnie.app.bean;
 
 import com.winnie.app.model.entity.Billing;
 import com.winnie.app.model.entity.House;
-import com.winnie.app.model.entity.Tenant;
 import com.winnie.utility.BillNo;
 import com.winnie.utility.BillNoGenerator;
 import com.winnie.utility.TransactIonNoGenerator;
@@ -29,19 +28,10 @@ public class BillingBean extends GenericBean<Billing> implements BillingBeanI,Se
             billing.setPaymentDate(new Date());
         }
 
-        if (billing.getTenantId()==null){
-            throw new RuntimeException("tenant is required");
-        }
-
         // Generate and set the bill number
         billing.setBillNo(txnNoGenerator.generate());
 
-        billing.setTenant(getDao().getEm().find(Tenant.class,billing.getTenantId()));
-
-        billing= getDao().add(billing);
         return getDao().add(billing);
-
-
 
     }
 }

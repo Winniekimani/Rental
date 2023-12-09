@@ -42,12 +42,6 @@ public class GenericBean<T> implements GenericBeanI<T> {
 
     }
 
-    @Override
-    public void delete(Class<?> klass, Long id) {
-
-        genericDao.setEm(em);
-        genericDao.delete(klass,id);
-    }
 
 
     @Override

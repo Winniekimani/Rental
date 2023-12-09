@@ -9,8 +9,6 @@ public interface GenericBeanI <T> extends Serializable {
 
    T add(T entity);
 
-    void delete(Class<?> klass, Long id);
-
     void update(T entity);
 
 

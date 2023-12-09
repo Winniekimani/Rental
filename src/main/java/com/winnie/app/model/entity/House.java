@@ -7,17 +7,11 @@ import com.winnie.app.View.html.WinnieTableColHeader;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.List;
-
 @Entity
 @Table(name="house")
 @WinnieHtmlForms(label = "House")
-@HtmlTable(name = "House",addUrl = "./house?action=add",deleteUrl = "./house?action=delete&mode=delete&houseId")
-
+@HtmlTable(name = "House",addUrl = "./house?action=add")
 public class House extends BaseEntity{
-
-    @OneToMany(mappedBy = "house", cascade = CascadeType.ALL)
-    private List<Tenant> tenants;
 
     @WinnieTableColHeader(header="HouseNo")
     @WinnieHtmlFormField(label="House No")
@@ -37,6 +31,7 @@ public class House extends BaseEntity{
     @WinnieHtmlFormField(label="House Description")
     @Column(name = "house_description",columnDefinition = "text")
     private String houseDescription;
+
 
     @WinnieTableColHeader(header="HouseType")
     @WinnieHtmlFormField(label="House Type")
