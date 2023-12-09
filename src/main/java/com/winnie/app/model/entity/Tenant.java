@@ -10,6 +10,7 @@ import org.hibernate.annotations.Formula;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="tenant")
@@ -17,6 +18,22 @@ import java.util.Date;
 @WinnieHtmlForms(label = "Tenants")
 public class Tenant extends BaseEntity{
 
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "house_id")
+    private House house;
+
+    @OneToMany(mappedBy = "tenant", cascade = CascadeType.ALL)
+    private List<Billing> billings;
+   /* @Transient
+    private Long houseId;*/
+    @WinnieHtmlFormField(label = "House ID")
+    @Formula("(House_id)")
+    private Long houseId;
+
+    @WinnieTableColHeader(header = "House")
+    @Formula("(select h.house_name from house h where h.id=house_id)")
+    private String houseName;
     @WinnieTableColHeader(header="FirstName")
     @WinnieHtmlFormField(label="First Name")
     @Column(name="fName")
@@ -49,23 +66,24 @@ public class Tenant extends BaseEntity{
     @WinnieHtmlFormField(label="Rent Amount")
     @Column(name="Amount")
     private BigDecimal rentAmount;
+
   /*  @WinnieTableColHeader(header="TenantHouseId")
     @WinnieHtmlFormField(label="Tenant HouseId")
     @Column(name="house_id")
     private String houseId;*/
 
 
+
     public Tenant() {
     }
-/*
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "house_id")
-    private House house;
 
-    @WinnieHtmlFormField (label = "House ID")
-    @Formula("(house_id)")
-    private Long houseId;
+    public House getHouse() {
+        return house;
+    }
 
+    public void setHouse(House house) {
+        this.house = house;
+    }
 
     public Long getHouseId() {
         return houseId;
@@ -75,14 +93,13 @@ public class Tenant extends BaseEntity{
         this.houseId = houseId;
     }
 
-
-    public House getHouse() {
-        return house;
+    public String getHouseName() {
+        return houseName;
     }
 
-    public void setHouse(House house) {
-        this.house = house;
-    }*/
+    public void setHouseName(String houseName) {
+        this.houseName = houseName;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -141,13 +158,5 @@ public class Tenant extends BaseEntity{
     }
 
 
-    /*
-    public String getHouseId() {
-        return houseId;
-    }
-
-    public void setHouseId(String houseId) {
-        this.houseId = houseId;
-    }*/
 
 }

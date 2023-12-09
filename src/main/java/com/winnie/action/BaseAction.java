@@ -1,6 +1,7 @@
 package com.winnie.action;
 
 import com.winnie.app.View.html.HtmlComponent;
+import com.winnie.app.View.html.WinnieHtmlFormField;
 import com.winnie.app.model.entity.HouseType;
 import com.winnie.app.model.entity.PaymentStatus;
 import org.apache.commons.beanutils.BeanUtils;
@@ -35,6 +36,7 @@ public class BaseAction extends HttpServlet {
         T clazzInstance;
 
         try {
+
             clazzInstance = (T) clazz.getDeclaredConstructor().newInstance();
 
             DateConverter converter = new DateConverter( null );
@@ -57,14 +59,14 @@ public class BaseAction extends HttpServlet {
             throws ServletException, IOException {
 
         req.setAttribute("activeMenu",activeMenu);
-      /*  req.setAttribute("content",content);*/
+        /*  req.setAttribute("content",content);*/
 
         if (StringUtils.trimToEmpty(req.getParameter("action")).equals("add") )
             req.setAttribute("content", HtmlComponent.htmlForm(entity));
         else
             req.setAttribute("content", HtmlComponent.table(entity, entityList));
-       RequestDispatcher dispatcher=req.getRequestDispatcher("./app/index.jsp");
-       dispatcher.forward(req,res);
+        RequestDispatcher dispatcher=req.getRequestDispatcher("./app/index.jsp");
+        dispatcher.forward(req,res);
 
 
     }
