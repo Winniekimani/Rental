@@ -35,6 +35,15 @@ public class HouseBean extends GenericBean<House> implements HouseBeanI, Seriali
 
         logger.fire(log);
 
+
+
+        List<House> HouseByType = getDao().getEm().createNamedQuery(House.HouseByType, House.class).getResultList();
+        System.out.println("Number of houses with type 'Mansion': " + HouseByType.size());
+        System.out.println(HouseByType);
+
+        List<House> HouseByLocation = getDao().getEm().createNamedQuery(House.HouseByLocation, House.class).getResultList();
+        System.out.println("Number of houses located in 'roysambu': " + HouseByLocation.size());
+        System.out.println(HouseByLocation);
         return house;
     }
 

@@ -17,11 +17,6 @@ public class GenericDao <T> implements GenericDaoI<T> {
     @Override
     public List<T> list(T entity) {
 
-       /* String jpql  = "FROM " + entity.getClass().getSimpleName() + " e";
-
-        List<T> results = (List<T>) em.createQuery(jpql, entity.getClass()).getResultList();
-
-        return results;*/
 
         Class<?> clazz = entity.getClass();
 
@@ -74,6 +69,12 @@ public class GenericDao <T> implements GenericDaoI<T> {
 
         return query.getResultList();
 
+
+    }
+
+    @Override
+    public List<Object[]> nativeQuery(String sql) {
+        return getEm().createNativeQuery(sql).getResultList();
 
     }
 

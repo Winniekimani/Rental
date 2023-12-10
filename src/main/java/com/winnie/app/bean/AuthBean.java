@@ -47,6 +47,7 @@ public class AuthBean extends GenericBean<User> implements AuthBeanI, Serializab
         if (users.isEmpty() || users.get(0) == null)
             throw new RuntimeException("Invalid user!!");
 
+
         AuditLog log = new AuditLog();
         log.setLogDetails("User logged in at " + DateFormat.getDateTimeInstance().format(new Date())
                 + ", " + users.get(0).getUsername());

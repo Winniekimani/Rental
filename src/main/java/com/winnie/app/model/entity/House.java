@@ -9,12 +9,21 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
 
+
+@NamedQueries({
+        @NamedQuery(name = House.HouseByType, query = "FROM House h  WHERE h.houseType = 'Mansion'"),
+        @NamedQuery(name = House.HouseByLocation, query = "FROM House h WHERE h.houseLocation = 'roysambu'")
+})
+
 @Entity
 @Table(name="house")
 @WinnieHtmlForms(label = "House")
 @HtmlTable(name = "House",addUrl = "./house?action=add",deleteUrl = "./house?action=delete&mode=delete&houseId")
 
 public class House extends BaseEntity{
+
+    public static final String HouseByType = "House.FindByType";
+    public static final String HouseByLocation = "House.FindByLocation";
 
     @OneToMany(mappedBy = "house", cascade = CascadeType.ALL)
     private List<Tenant> tenants;

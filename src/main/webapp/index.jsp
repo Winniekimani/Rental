@@ -1,84 +1,58 @@
-
-
 <%@ page isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Login</title>
+<%@ include file="./header.jsp" %>
+<div class="row">
+    <div class="col-md-12">
+        <br/><br/><br/><br/><br/><br/><br/><br/>
+        <div class="panel panel-default login">
+            <div class="panel-heading logintitle">Login</div>
+            <div class="panel-body">
+                <form class="form-horizontal center-block" role="form" action="./login" method="post">
+                    <input type="hidden" name="action" value="login">
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-warning-sign"
+                                                                                 aria-hidden="true"></span></span>
+                        <select class="form-control" name="userrole">
+                            <option value="none" selected="selected" hidden>Select User</option>
+                            <option value="admin">Admin</option>
+                            <option value="patient">Tenant</option>
+                        </select>
+                    </div>
+                    <br/>
+                    <div>
+                    </div>
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-user"
+                                                                                 aria-hidden="true"></span></span>
+                        <input type="text" maxlength="200" class="form-control" name="username"
+                               placeholder="username" required aria-describedby="sizing-addon1">
+                    </div>
+                    <br/>
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-lock"
+                                                                                 aria-hidden="true"></span></span>
+                        <input type="password" name="password" maxlength="200" class="form-control"
+                               placeholder="Password" required aria-describedby="sizing-addon1">
+                    </div>
+                    <br/>
+                    <div class="col-sm-7 col-sm-offset-2">
+                        <button type="submit" class="btn btn-primary btn-block btn-lg">Login</button>
+                    </div>
+                </form>
+            </div>
+            <div style="text-align:center;font-weight:bold;color:red">
+                <%
+                    String loginError = (String) application.getAttribute("loginError");
 
-  <style>
+                    if (loginError != null && !loginError.equals("")) {
 
-    <jsp:include page="./style/style.jsp"/>
+                %>
+                <span style="color:red"> <%= application.getAttribute("loginError") %> </span><br/>
 
-    <%--
-     <%@ include file="./style/style.jsp"%>
-     ---%>
-
-  </style>
-</head>
-<body>
-
-<h2>Rental Software</h2>
-
-<h2>${initParam.AppName}</h2>
-
-<c:set var="pagelink" value="Home/<a href='index.jsp'>Login</a>Register" scope="application"/>
-
-<%---
-<h2><%= application.getInitParameter("AppName")%></h2>
-
-<%
-    application.setAttribute("pagelink", "Home/<a href='index.jsp'>Login</a>Register");
-%>
-----%>
-
-
-
-
-<%--
-<%
-    int hundred=100;
-    int oneThousand=1000;
-    int sum=newCalculator.addNumbers(hundred,oneThousand);
-
-        out.println("the sum is:" +sum);
-
-        Request.setAttribute("MyName","WinnieKimani");
-    %>
-
-    <br>
-    <h2><%=justAnotherNo %></h2>
-
-    <br>
-    <h2><%=newCalculator.addNumbers(2000,4000) %></h2>
-
-   --%>
-
-
- <jsp:useBean id="loginForm"  class="com.winnie.app.userbean.LoginForm" />
-
- <jsp:setProperty name="loginForm" property="usernamePlaceHolder" value="Enter Unique Username"/>
-<div class="login-container">
-  <h2>Login</h2>
-   Time to Login ${loginForm.timeToLogin}
-  <form action="./login" method="post">
-    <label for="username">Username:</label>
-    <!---<input type="text" placeholder="username" name="username" required /> --->
-    <input type="text" placeholder="${loginForm.usernamePlaceHolder}" name="username" required />
-
-    <label for="password">Password:</label>
-    <!----<input type="password" placeholder="password" name="password" required>-->
-    <input type="password" placeholder="${loginForm.passwordPlaceHolder}" name="password" required>
-    <input type="submit" value="submit" />
-
-
-  </form>
-
-</br>
-   <%---<a href="./registerUser">Register User</a>-----%>
-    <a href="register.jsp">Register User</a>
-
+                <% } %>
+            </div>
+            <a href="./register.jsp" style="text-align:Center;font-weight:bold;font-size:120%;padding: 0 2%">Register</a>
+        </div>
+    </div>
 </div>
-</body>
-</html>
+<%@ include file="./footer.jsp" %>
