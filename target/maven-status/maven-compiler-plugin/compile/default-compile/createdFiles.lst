@@ -7,6 +7,7 @@ com/winnie/app/model/entity/Payment.class
 com/winnie/utility/ReferenceNumberGenerator$1.class
 com/winnie/rest/api/RestResponseWrapper.class
 com/winnie/dao/GenericDao.class
+com/winnie/utility/SelectBoxStore.class
 com/winnie/app/userbean/LoginForm.class
 com/winnie/app/model/entity/House.class
 com/winnie/app/bean/HouseBeanI.class

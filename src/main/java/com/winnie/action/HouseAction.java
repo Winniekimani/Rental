@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet("/house")
+@WebServlet("/house/*")
 public class HouseAction extends BaseAction {
 
     @EJB private HouseBeanI houseBean;
@@ -23,8 +23,12 @@ public class HouseAction extends BaseAction {
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession httpSession = req.getSession();
 
+        String deleteHouseId = req.getParameter("deleteHouseId");
 
-
+        if (deleteHouseId != null && !deleteHouseId.isEmpty()) {
+            Long houseId = Long.valueOf(deleteHouseId);
+            houseBean.delete(House.class, houseId);
+        }
         renderPage(req,resp,1, House.class, houseBean.list(new House()));
 
 
@@ -42,21 +46,6 @@ public class HouseAction extends BaseAction {
             throw new RuntimeException(e);
         }
 
-
-      /*  try {
-            String idParam = req.getParameter("id");
-
-            if (StringUtils.isNotBlank(idParam)) {
-                Long id = Long.parseLong(idParam);
-                houseBean.delete(House.class, id);
-                renderPage(req, resp, 1, House.class, houseBean.list(new House()));
-            } else {
-                // Handle missing or invalid ID parameter
-                resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid or missing ID parameter");
-            }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }*/
 
 
 

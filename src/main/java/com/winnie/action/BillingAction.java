@@ -24,6 +24,13 @@ public class BillingAction extends BaseAction {
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession httpSession = req.getSession();
 
+
+        String deleteBillingId = req.getParameter("deleteBillingId");
+
+        if (deleteBillingId != null && !deleteBillingId.isEmpty()) {
+            Long billingId = Long.valueOf(deleteBillingId);
+            billingBean.delete(Billing.class, billingId);
+        }
         renderPage(req,resp,4, Billing.class, billingBean.list(new Billing()));
 
 

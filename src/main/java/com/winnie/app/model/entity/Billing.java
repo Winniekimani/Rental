@@ -11,7 +11,7 @@ import java.util.Date;
 @Entity
 @Table(name = "bills")
 @WinnieHtmlForms(label = "Bills")
-@HtmlTable(name = "Bill",addUrl = "./billing?action=add",deleteUrl = "./billing?action=delete")
+@HtmlTable(name = "Bill",addUrl = "./billing?action=add",deleteUrl = "./billing?deleteBilling.Id=")
 public class Billing extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -19,7 +19,7 @@ public class Billing extends BaseEntity {
     private Tenant tenant;
 
 
-    @WinnieHtmlFormField(label = "Tenant ID")
+    @WinnieHtmlFormField(label = "Tenant",selectList = "tenants", selectValue = "id", selectValueInSuper=true, selectDisplay = "firstName")
     @Formula("(tenant_id)")
     private Long tenantId;
 

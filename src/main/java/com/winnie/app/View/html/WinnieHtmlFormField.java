@@ -18,8 +18,7 @@ public @interface WinnieHtmlFormField {
 
     String selectName() default "";
 
-
-  /*  String selectList() default "";
+    String selectList() default "";
 
     String selectValue() default "";
 
@@ -27,6 +26,8 @@ public @interface WinnieHtmlFormField {
 
     String selectDisplay() default "";
 
-    boolean selectDisplayInSuper() default false;*/
+    boolean selectDisplayInSuper() default false;
+
+    boolean required() default false;
 
 }

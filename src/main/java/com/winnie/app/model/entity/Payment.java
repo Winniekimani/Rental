@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 @Entity
 @Table(name="payment")
-@HtmlTable(name = "Payment",addUrl = "./payment?action=add",deleteUrl = "./payment?action=delete")
+@HtmlTable(name = "Payment",addUrl = "./payment?action=add",deleteUrl = "./payment?deletePaymentId=")
 @WinnieHtmlForms(label = "Payments" )
 public class Payment extends BaseEntity {
 
@@ -50,14 +50,6 @@ public class Payment extends BaseEntity {
 
     public Payment() {
     }
-
-  /*  public Payment(BigDecimal amount, Date paymentDate, String paymentMethod, PaymentStatus paymentStatus) {
-        this.amount = amount;
-        this.paymentDate = paymentDate;
-        this.paymentMethod = paymentMethod;
-        this.paymentStatus = paymentStatus;
-    }*/
-
     public Payment(BigDecimal amount, Date paymentDate, String paymentNo, String paymentMethod, PaymentStatus paymentStatus) {
         this.amount = amount;
         this.paymentDate = paymentDate;
@@ -66,14 +58,7 @@ public class Payment extends BaseEntity {
         this.paymentStatus = paymentStatus;
     }
 
-    /*
-    public String getPaymentId() {
-        return paymentId;
-    }
 
-    public void setPaymentId(String paymentId) {
-        this.paymentId = paymentId;
-    }*/
 
     public BigDecimal getAmount() {
         return amount;

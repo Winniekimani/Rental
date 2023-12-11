@@ -2,13 +2,17 @@ package com.winnie.app.View.html;
 
 
 import com.winnie.database.helper.DbTableId;
+import com.winnie.utility.SelectBoxStore;
 import org.apache.commons.lang3.StringUtils;
 
+import javax.enterprise.inject.spi.CDI;
 import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -25,7 +29,9 @@ public class HtmlComponent implements Serializable {
 
         HtmlTable htmlTable = clazz.getAnnotation(HtmlTable.class);
 
-        Field[] fields = clazz.getDeclaredFields();
+
+        List<Field> fields = new ArrayList<>(Arrays.asList(clazz.getSuperclass().getDeclaredFields()));
+        fields.addAll(Arrays.asList(clazz.getDeclaredFields()));
 
         StringBuilder trBuilder = new StringBuilder();
         trBuilder.append("<table><tr>");
@@ -74,23 +80,21 @@ public class HtmlComponent implements Serializable {
                     throw new RuntimeException(e);
                 }
             }
+            try {
 
-            trBuilder.append("<td>").append( "<div class=\"addHouseButton\" >\n" +
-                    "    <a href=\""+htmlTable.editUrl()+"\">Edit" + htmlTable.name() +"</a>\n" +
-                    "</div></td>");
-            trBuilder.append("<td>").append( "<div class=\"addHouseButton\" >\n" +
-                    "    <a href=\""+htmlTable.deleteUrl()+  "\">Delete" + htmlTable.name() +"</a>\n" +
-                    "</div></td>");
-            // Add delete and update buttons// Add delete and update buttons based on the model type
-         /*   if (model instanceof House) {
-                trBuilder.append("<td>").append(((House) model).deleteHouse()).append("</td>");
-                trBuilder.append("<td>").append(((House) model).updateHouse()).append("</td>");
-            } else if (model instanceof Tenant) {
+                Object id = clazz.getMethod("getId").invoke(model);
+                trBuilder.append("<td>").append("<div class=\"addHouseButton\" >\n" +
+                        "    <a href=\"" + htmlTable.editUrl() + "\">Edit" + htmlTable.name() + "</a>\n" +
+                        "</div></td>");
+                trBuilder.append("<td>").append("<div class=\"addHouseButton\" >\n" +
+                        "    <a href=\"" + htmlTable.deleteUrl()).append(id); trBuilder.append("\">Delete" + htmlTable.name() + "</a>\n" +
+                        "</div></td>");
 
-                trBuilder.append("<td>").append(((Tenant) model).deleteTenant()).append("</td>");
-            }*/
 
-            trBuilder.append("</tr>");
+                trBuilder.append("</tr>");
+            } catch (InvocationTargetException | IllegalAccessException | NoSuchMethodException e) {
+                throw new RuntimeException(e);
+            }
 
         }
         trBuilder.append("</table>");
@@ -132,6 +136,48 @@ public class HtmlComponent implements Serializable {
 
             Class<?> fieldType = field.getType();
 
+             if (StringUtils.isNotBlank(formField.selectList())
+                    && StringUtils.isNotBlank(formField.selectValue())
+                    && StringUtils.isNotBlank(formField.selectDisplay())) {
+                try {
+
+                    StringBuilder stringBuilder =new StringBuilder().
+                            append("<select")
+                            .append(" id=\"").append( fieldName)
+                            .append("\" name=\"").append( fieldName).append("\" ")
+                            .append(formField.required()?"required" : "")
+                            .append(">");
+
+                    SelectBoxStore genericCombo = CDI.current().select(SelectBoxStore.class).get();
+
+                    Method selectListMethod = SelectBoxStore.class.getDeclaredMethod(formField.selectList());
+
+                    List<?> options = (List<?>) selectListMethod.invoke(genericCombo);
+
+                    System.out.println("TENANT>>>>>>>>>" + options.toString());
+                    for (Object option : options) {
+                        Field valueField = formField.selectValueInSuper()?
+                                option.getClass().getSuperclass().getDeclaredField(formField.selectValue()) :
+                                option.getClass().getDeclaredField(formField.selectValue());
+                        valueField.setAccessible(true);
+
+                        Field displayField = formField.selectDisplayInSuper()?
+                                option.getClass().getSuperclass().getDeclaredField(formField.selectDisplay()) :
+                                option.getClass().getDeclaredField(formField.selectDisplay());
+                        displayField.setAccessible(true);
+                        stringBuilder.append("htmlForm.append(<option value=\"")
+                                .append(valueField.get(option)).append("\">")
+                                .append(displayField.get(option)).append("</option>)");
+                    }
+
+                    stringBuilder.append("</select> <br>");
+                    htmlForm += stringBuilder.toString();
+                    continue;
+                } catch (NoSuchFieldException | NoSuchMethodException | IllegalAccessException | InvocationTargetException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+            }
             if (fieldType.isEnum()) {
                 htmlForm += "<select name=\"" + (StringUtils.isBlank(formField.selectName()) ? fieldName : formField.selectName())
                         + "\" id=\"" + (StringUtils.isBlank(formField.id()) ? fieldName : formField.id()) + "\">";

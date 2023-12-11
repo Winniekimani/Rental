@@ -18,7 +18,7 @@ import java.util.List;
 @Entity
 @Table(name="house")
 @WinnieHtmlForms(label = "House")
-@HtmlTable(name = "House",addUrl = "./house?action=add",deleteUrl = "./house?action=delete&mode=delete&houseId")
+@HtmlTable(name = "House",addUrl = "./house?action=add",deleteUrl = "./house?deleteHouseId=")
 
 public class House extends BaseEntity{
 

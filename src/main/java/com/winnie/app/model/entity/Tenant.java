@@ -15,7 +15,7 @@ import java.util.List;
 
 @Entity
 @Table(name="tenant")
-@HtmlTable(name = "Tenant",addUrl = "./tenant?action=add",deleteUrl = "./tenant?action=delete")
+@HtmlTable(name = "Tenant",addUrl = "./tenant?action=add",deleteUrl = "./tenant?deleteTenantId=")
 @WinnieHtmlForms(label = "Tenants")
 public class Tenant extends BaseEntity{
 
@@ -24,7 +24,7 @@ public class Tenant extends BaseEntity{
     @JoinColumn(name = "house_id")
     private House house;
 
-    @OneToMany(mappedBy = "tenant", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "tenant", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private List<Billing> billings;
    /* @Transient
     private Long houseId;*/
@@ -154,6 +154,20 @@ public class Tenant extends BaseEntity{
         this.rentAmount = rentAmount;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Tenant{" +
+                "house=" + house +
+                ", billings=" + billings +
+                ", houseId=" + houseId +
+                ", houseName='" + houseName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", leaseStartDate=" + leaseStartDate +
+                ", leaseEndDate=" + leaseEndDate +
+                ", rentAmount=" + rentAmount +
+                '}';
+    }
 }

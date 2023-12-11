@@ -32,4 +32,11 @@ public class HouseRestApi extends BaseRestApi{
         return respond(houseBean.list(new House()));
     }
 
+    @Path("/delete/{id}")
+    @DELETE
+    public Response delete(@PathParam("id") Long id){
+        houseBean.delete(House.class,id);
+        return Response.status(Response.Status.OK).entity("Delete Successful").build();
+    }
 }
+
