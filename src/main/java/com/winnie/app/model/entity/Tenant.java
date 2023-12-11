@@ -1,5 +1,6 @@
 package com.winnie.app.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.winnie.app.View.html.HtmlTable;
 import com.winnie.app.View.html.WinnieHtmlFormField;
 import com.winnie.app.View.html.WinnieHtmlForms;
@@ -67,16 +68,12 @@ public class Tenant extends BaseEntity{
     @Column(name="Amount")
     private BigDecimal rentAmount;
 
-  /*  @WinnieTableColHeader(header="TenantHouseId")
-    @WinnieHtmlFormField(label="Tenant HouseId")
-    @Column(name="house_id")
-    private String houseId;*/
-
 
 
     public Tenant() {
     }
 
+    @JsonIgnore
     public House getHouse() {
         return house;
     }
