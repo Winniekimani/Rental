@@ -29,7 +29,6 @@ public class BaseAction extends HttpServlet {
     }
 
 
-
     @SuppressWarnings("unchecked")
     public <T> T serializeForm(Class<?> clazz, Map<String, String[]> requestMap) {
 

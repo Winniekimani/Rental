@@ -136,6 +136,7 @@ public class HtmlComponent implements Serializable {
 
             Class<?> fieldType = field.getType();
 
+            //=========================================================================================
              if (StringUtils.isNotBlank(formField.selectList())
                     && StringUtils.isNotBlank(formField.selectValue())
                     && StringUtils.isNotBlank(formField.selectDisplay())) {
@@ -176,6 +177,8 @@ public class HtmlComponent implements Serializable {
                 } catch (NoSuchFieldException | NoSuchMethodException | IllegalAccessException | InvocationTargetException ex) {
                     System.out.println(ex.getMessage());
                 }
+
+                 //=========================================================================================
 
             }
             if (fieldType.isEnum()) {

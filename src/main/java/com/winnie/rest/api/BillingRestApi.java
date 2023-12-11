@@ -25,7 +25,6 @@ public class BillingRestApi extends BaseRestApi{
         return respond();
 
     }
-
     @Path("/list")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -33,4 +32,11 @@ public class BillingRestApi extends BaseRestApi{
         return respond(billingBean.list(new Billing()));
     }
 
+    @Path("/delete/{id}")
+    @DELETE
+    public Response delete(@PathParam("id") Long id){
+        billingBean.delete(Billing.class,id);
+        return Response.status(Response.Status.OK).entity("Delete Successful").build();
+
+    }
 }

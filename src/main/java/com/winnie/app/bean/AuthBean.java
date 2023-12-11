@@ -24,9 +24,6 @@ import java.util.List;
 @Remote
 public class AuthBean extends GenericBean<User> implements AuthBeanI, Serializable {
 
-   /* @PersistenceContext
-    EntityManager em;*/
-
 
     @Inject
     private EncryptText encryptText;
