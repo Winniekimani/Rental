@@ -28,7 +28,7 @@ public class Tenant extends BaseEntity{
     private List<Billing> billings;
    /* @Transient
     private Long houseId;*/
-    @WinnieHtmlFormField(label = "House ID")
+    @WinnieHtmlFormField(label = "House ",selectList = "houses", selectValue = "id", selectValueInSuper=true, selectDisplay = "houseName")
     @Formula("(House_id)")
     private Long houseId;
 

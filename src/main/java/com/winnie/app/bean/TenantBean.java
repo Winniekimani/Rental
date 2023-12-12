@@ -1,12 +1,7 @@
 package com.winnie.app.bean;
 import com.winnie.app.model.entity.House;
 import com.winnie.app.model.entity.Tenant;
-import org.apache.commons.lang3.StringUtils;
-
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.PersistenceContext;
 import java.io.Serializable;
 @Stateless
 public class TenantBean extends GenericBean<Tenant> implements TenantBeanI, Serializable {

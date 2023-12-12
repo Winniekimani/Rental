@@ -1,10 +1,6 @@
 package com.winnie.action;
-
-import com.winnie.app.View.html.HtmlComponent;
-import com.winnie.app.bean.HouseBean;
 import com.winnie.app.bean.HouseBeanI;
 import com.winnie.app.model.entity.House;
-import org.apache.commons.lang3.StringUtils;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -22,8 +18,8 @@ public class HouseAction extends BaseAction {
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession httpSession = req.getSession();
-
         String deleteHouseId = req.getParameter("deleteHouseId");
+
 
         if (deleteHouseId != null && !deleteHouseId.isEmpty()) {
             Long houseId = Long.valueOf(deleteHouseId);
@@ -45,7 +41,6 @@ public class HouseAction extends BaseAction {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
 
 
 

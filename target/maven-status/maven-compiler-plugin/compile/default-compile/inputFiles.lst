@@ -13,7 +13,6 @@
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/utility/PaymentNo.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/View/html/WinnieTableColHeader.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/bean/HouseBean.java
-/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/model/entity/Admin.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/model/entity/User.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/bean/TenantBeanI.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/utility/EncryptSha256.java

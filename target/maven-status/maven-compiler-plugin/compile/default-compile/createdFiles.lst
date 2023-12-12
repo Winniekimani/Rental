@@ -75,5 +75,4 @@ com/winnie/action/HouseTypeConverter.class
 com/winnie/rest/api/BaseRestApi.class
 com/winnie/app/bean/TenantBeanI.class
 com/winnie/app/View/html/WinnieHtmlForms.class
-com/winnie/app/model/entity/Admin.class
 com/winnie/utility/PaymentNo.class

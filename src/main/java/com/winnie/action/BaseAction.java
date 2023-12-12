@@ -1,7 +1,6 @@
 package com.winnie.action;
 
 import com.winnie.app.View.html.HtmlComponent;
-import com.winnie.app.View.html.WinnieHtmlFormField;
 import com.winnie.app.model.entity.HouseType;
 import com.winnie.app.model.entity.PaymentStatus;
 import org.apache.commons.beanutils.BeanUtils;

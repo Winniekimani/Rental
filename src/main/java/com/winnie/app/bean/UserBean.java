@@ -7,7 +7,6 @@ import com.winnie.utility.EncryptText;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.List;
 

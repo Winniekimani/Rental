@@ -84,7 +84,7 @@ public class HtmlComponent implements Serializable {
 
                 Object id = clazz.getMethod("getId").invoke(model);
                 trBuilder.append("<td>").append("<div class=\"addHouseButton\" >\n" +
-                        "    <a href=\"" + htmlTable.editUrl() + "\">Edit" + htmlTable.name() + "</a>\n" +
+                        "    <a href=\"" + htmlTable.editUrl()).append(id);trBuilder.append( "\">Edit" + htmlTable.name() + "</a>\n" +
                         "</div></td>");
                 trBuilder.append("<td>").append("<div class=\"addHouseButton\" >\n" +
                         "    <a href=\"" + htmlTable.deleteUrl()).append(id); trBuilder.append("\">Delete" + htmlTable.name() + "</a>\n" +
