@@ -19,6 +19,7 @@ com/winnie/utility/ReferenceNumberGenerator$EntityType.class
 com/winnie/rest/api/HouseRestApi.class
 com/winnie/app/model/entity/PaymentStatus.class
 com/winnie/action/TenantAction.class
+com/winnie/common/CommonMethods.class
 com/winnie/action/LogoutAction.class
 com/winnie/app/bean/BillingBeanI.class
 com/winnie/utility/ReferenceNumberGenerator.class
@@ -50,6 +51,7 @@ com/winnie/app/View/html/WinnieHtmlFormField.class
 com/winnie/app/model/view/MenuLinkStatus.class
 com/winnie/app/bean/UserBean.class
 com/winnie/app/View/toolbar/Menu.class
+com/winnie/listeners/SessionListener.class
 com/winnie/app/bean/GenericBeanI.class
 com/winnie/app/bean/HouseBean.class
 com/winnie/filters/AuthFilter.class

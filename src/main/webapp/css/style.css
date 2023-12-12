@@ -15,8 +15,8 @@ body
 .logo img
 {
 	overflow:hidden;
-	height:80px;
-	width:80px;
+	height:100px;
+	width:100px;
 	padding-bottom:10px;
 	position:relative;
 	top:-10px;
@@ -36,7 +36,7 @@ body
 }
 .header
 {
-	background-color: #8f33b7;
+	background-color: #0C1C2B;
 	color:#fff;
     padding: 10px;
 }
@@ -51,12 +51,12 @@ body
 }
 
 .panel{
-	background-color:#d4ebff;
+	background-color: #a5cfe0;
 }
 
 .row .logintitle
 {
-	background-color:#8f33b7;
+	background-color: #0C1C2B;
 	color:white;
 	font-size:20px;
 }
@@ -75,7 +75,7 @@ body
 .footer div div
 {	
 	padding:7px 0px;
-	background-color:#8f33b7;
+	background-color:#0C1C2B;
 	color:#fff;
 	font-size:20px;
 	text-align: center;

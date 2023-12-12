@@ -19,17 +19,17 @@ public class HouseAction extends BaseAction {
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession httpSession = req.getSession();
         String deleteHouseId = req.getParameter("deleteHouseId");
-
-
         if (deleteHouseId != null && !deleteHouseId.isEmpty()) {
             Long houseId = Long.valueOf(deleteHouseId);
             houseBean.delete(House.class, houseId);
         }
-        renderPage(req,resp,1, House.class, houseBean.list(new House()));
+            renderPage(req,resp,1, House.class, houseBean.list(new House()));
 
 
     }
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+
 
 
         House house = serializeForm(House.class,req.getParameterMap());

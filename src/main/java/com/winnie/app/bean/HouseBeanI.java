@@ -6,4 +6,5 @@ import javax.ejb.Remote;
 
 @Remote
 public interface HouseBeanI extends GenericBeanI<House>{
+
 }

@@ -8,4 +8,5 @@ import javax.ejb.Stateless;
 
 @Remote
 public interface BillingBeanI extends GenericBeanI<Billing>{
+
 }

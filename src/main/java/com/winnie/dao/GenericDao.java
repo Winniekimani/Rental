@@ -85,6 +85,13 @@ public class GenericDao <T> implements GenericDaoI<T> {
     }
 
     @Override
+    public T edit(T entity,Long id) {
+
+        return em.find((Class<T>) entity.getClass(), id);
+
+    }
+
+    @Override
     public void delete(Class<?> klass, Long id) {
         Object record = em.find(klass, id);
         if (record != null)

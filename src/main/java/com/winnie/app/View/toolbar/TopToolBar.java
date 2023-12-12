@@ -18,12 +18,12 @@ public class TopToolBar  implements Serializable ,Menu{
     private final List<MenuLink> links = new ArrayList<>();
 
     {
-        links.add(new MenuLink("./home", "Home", MenuLinkStatus.ACTIVE));
-        links.add(new MenuLink("./house", "Houses", MenuLinkStatus.NOT_ACTIVE));
-        links.add(new MenuLink("./tenant", "Tenants", MenuLinkStatus.NOT_ACTIVE));
-        links.add(new MenuLink("./payment", "Payments", MenuLinkStatus.NOT_ACTIVE));
-        links.add(new MenuLink("./billing", "Billings", MenuLinkStatus.NOT_ACTIVE));
-        links.add(new MenuLink("./logout", "Logout", MenuLinkStatus.NOT_ACTIVE));
+        links.add(new MenuLink("./home", "Home", "glyphicon glyphicon-home", MenuLinkStatus.ACTIVE));
+        links.add(new MenuLink("./house", "Houses", "glyphicon glyphicon-tasks", MenuLinkStatus.NOT_ACTIVE));
+        links.add(new MenuLink("./tenant", "Tenants", "glyphicon glyphicon-user", MenuLinkStatus.NOT_ACTIVE));
+        links.add(new MenuLink("./payment", "Payments", "glyphicon glyphicon-usd", MenuLinkStatus.NOT_ACTIVE));
+        links.add(new MenuLink("./billing", "Billings", "glyphicon glyphicon-bold", MenuLinkStatus.NOT_ACTIVE));
+        links.add(new MenuLink("./logout", "Logout", "glyphicon glyphicon-log-out", MenuLinkStatus.NOT_ACTIVE));
     }
 
 
@@ -31,15 +31,18 @@ public class TopToolBar  implements Serializable ,Menu{
     public String menu(int activeLinkIndex) {
         this.activateLink(activeLinkIndex);
 
-        String menuBar="<ul class=\"topnav\">";
+        String menuBar="<div class=\"col-md-2 menucontent\">\n" +
+                "      <a href=\"#\">\n" +
+                "          <h1>Dashboard</h1>\n" +
+                "      </a>\n" +
+                "      <ul class=\"nav nav-pills nav-stacked\">";
 
         for (MenuLink link:links)
-            menuBar+= "<li><a "+(link.getStatus()== MenuLinkStatus.ACTIVE? "Class=\"active\"" : "")
-                    + "href=\"" + link.getUrl() + "\">"+link.getLabel() + "</a></li>\n" ;
-        //"<li><a href=\"./homejournals\">HouseJournals</a></li>\n" +
-        //"<li><a href=\"#tenants\">Tenants</a></li>\n" +
+            menuBar+= "<li role=\"presentation\"><a "+(link.getStatus()== MenuLinkStatus.ACTIVE? "Class=\"active\"" : "")
+                    + "href=\"" + link.getUrl() + "\"> <span class=\""+link.getIcon()+"\"></span> "+link.getLabel() + "</a></li>\n" ;
 
-        menuBar+="</ul>\n" ;
+        menuBar+="</ul>\n" +
+                "  </div>" ;
         return menuBar;
     }
 

@@ -11,13 +11,22 @@ public class MenuLink implements Serializable {
 
     private MenuLinkStatus status;
 
-    public MenuLink(String url, String label, MenuLinkStatus status){
+    private String icon;
+
+    public MenuLink(String url, String label, String icon, MenuLinkStatus status){
         this.url = url;
         this.label = label;
         this.status = status;
-
+        this.icon = icon;
     }
 
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
 
     public String getUrl() {
         return url;

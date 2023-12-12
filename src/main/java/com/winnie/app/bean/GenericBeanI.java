@@ -12,7 +12,7 @@ public interface GenericBeanI <T> extends Serializable {
     void delete(Class<?> klass, Long id);
 
 
-    void update(T entity);
+    T edit(T entity,Long id);
 
 
 

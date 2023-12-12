@@ -51,8 +51,10 @@ public class GenericBean<T> implements GenericBeanI<T> {
 
 
     @Override
-    public void update(T entity) {
+    public T edit(T entity,Long id) {
 
+        genericDao.setEm(em);
+      return genericDao.edit(entity,id);
     }
 
     public GenericDaoI<T> getDao() {

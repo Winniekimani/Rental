@@ -16,6 +16,8 @@ public interface GenericDaoI <T> extends Serializable {
     T add(T entity);
 
     void delete(Class<?> klass, Long id);
+
+    T edit(T entity,Long id);
     EntityManager getEm();
 
     void setEm(EntityManager em);

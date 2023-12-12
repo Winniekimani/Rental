@@ -14,7 +14,6 @@ import java.util.List;
 @Remote
 
 public class UserBean extends GenericBean<User> implements UserBeanI {
-
     @Inject
     private EncryptText encryptText;
 

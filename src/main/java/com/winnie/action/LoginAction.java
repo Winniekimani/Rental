@@ -58,7 +58,10 @@ public class LoginAction extends BaseAction {
 
                     if ("Admin".equals(username)) {
                         resp.sendRedirect("./admin.jsp");
-                    } else {
+                    } else if ("Tenant".equals(username)) {
+                        resp.sendRedirect("./tenant_page.jsp");
+                        
+                    } else  {
                         resp.sendRedirect("./home.jsp");
                     }
 
