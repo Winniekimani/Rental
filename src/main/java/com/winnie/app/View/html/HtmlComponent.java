@@ -1,7 +1,5 @@
 package com.winnie.app.View.html;
 
-
-import com.winnie.database.helper.DbTableId;
 import com.winnie.utility.SelectBoxStore;
 import org.apache.commons.lang3.StringUtils;
 
@@ -49,20 +47,7 @@ public class HtmlComponent implements Serializable {
         }
 
         trBuilder.append("</tr>");
-        /*//impementing delete functionality
-        if (models!=null && !models.isEmpty())
-        {
-            for (Object data:models){
-                Object id= null;
-                try {
-                    id = clazz.getMethod("getId").invoke(data);
-                } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException
-                         | NoSuchMethodException | SecurityException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-        }*/
+
         for (Object model : models) {
             trBuilder.append("<tr>");
             /* int id =0;*/

@@ -17,5 +17,3 @@ public class CommonMethods {
         }
     }
 }
-
-// System.out.println("\n\nRooom ID: "+patient.getAdmissionDate()+"\n\n");

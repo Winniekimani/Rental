@@ -57,7 +57,7 @@ public class BaseAction extends HttpServlet {
             throws ServletException, IOException {
 
         req.setAttribute("activeMenu",activeMenu);
-        /*  req.setAttribute("content",content);*/
+
 
         if (StringUtils.trimToEmpty(req.getParameter("action")).equals("add") )
             req.setAttribute("content", HtmlComponent.htmlForm(entity));
@@ -65,7 +65,6 @@ public class BaseAction extends HttpServlet {
             req.setAttribute("content", HtmlComponent.table(entity, entityList));
         RequestDispatcher dispatcher=req.getRequestDispatcher("./app/index.jsp");
         dispatcher.forward(req,res);
-
 
     }
 

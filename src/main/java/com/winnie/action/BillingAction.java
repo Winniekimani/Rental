@@ -27,9 +27,11 @@ public class BillingAction extends BaseAction {
 
         String deleteBillingId = req.getParameter("deleteBillingId");
 
-        if (deleteBillingId != null && !deleteBillingId.isEmpty()) {
-            Long billingId = Long.valueOf(deleteBillingId);
-            billingBean.delete(Billing.class, billingId);
+        System.out.println(deleteBillingId);
+
+        if (deleteBillingId != null ) {
+            billingBean.delete(Billing.class, Long.valueOf(deleteBillingId));
+
         }
         renderPage(req,resp,4, Billing.class, billingBean.list(new Billing()));
 

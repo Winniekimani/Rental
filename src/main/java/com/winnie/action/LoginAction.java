@@ -45,7 +45,7 @@ public class LoginAction extends BaseAction {
         User loginUser= serializeForm(User.class,req.getParameterMap());
         String username = req.getParameter("username");
 
-          /*  User userDetails= null;*/
+
             try {
                 servletCtx.setAttribute("loginError" , "");
                User  userDetails = authBean.authenticate(loginUser);
@@ -56,14 +56,14 @@ public class LoginAction extends BaseAction {
                     httpSession.setAttribute("username",loginUser.getUsername());
                     httpSession.setAttribute("activeMenu",0);
 
-                    if ("Admin".equals(username)) {
+                   /* if ("Admin".equals(username)) {
                         resp.sendRedirect("./admin.jsp");
                     } else if ("Tenant".equals(username)) {
                         resp.sendRedirect("./tenant_page.jsp");
                         
-                    } else  {
+                    } else  {*/
                         resp.sendRedirect("./home.jsp");
-                    }
+                   /* }*/
 
                 }
             } catch (SQLException | RuntimeException e) {

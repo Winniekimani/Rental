@@ -24,7 +24,7 @@ public class Tenant extends BaseEntity{
     @JoinColumn(name = "house_id")
     private House house;
 
-    @OneToMany(mappedBy = "tenant", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "tenant", fetch = FetchType.EAGER)
     private List<Billing> billings;
 
     @WinnieHtmlFormField(label = "House ",selectList = "houses", selectValue = "id", selectValueInSuper=true, selectDisplay = "houseName")

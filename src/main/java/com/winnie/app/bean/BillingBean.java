@@ -6,6 +6,8 @@ import com.winnie.utility.TransactIonNoGenerator;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -13,6 +15,8 @@ import java.util.Date;
 @Stateless
 public class BillingBean extends GenericBean<Billing> implements BillingBeanI,Serializable {
 
+    @PersistenceContext
+    EntityManager em;
     @Inject
   /*  @BillNo*/
     @Named("bill")
@@ -38,6 +42,11 @@ public class BillingBean extends GenericBean<Billing> implements BillingBeanI,Se
         return getDao().add(billing);
 
 
-
     }
+    @Override
+    public void delete (Class<?> klass, Long id){
+        Billing o = em.find(Billing.class, id);
+        em.remove(o);
+    }
+
 }

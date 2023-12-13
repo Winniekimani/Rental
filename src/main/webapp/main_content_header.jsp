@@ -16,7 +16,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link href="images/logo.png" rel="icon" />
       <title>Rental  Management System</title>
-        <jsp:include page="../style/style.jsp"/>
+        <jsp:include page="./style/style.jsp"/>
       <!-- Bootstrap -->
       <link href="css/bootstrap.min.css" rel="stylesheet">
       <link href="css/style.css" rel="stylesheet">
@@ -46,7 +46,7 @@
                           <img alt="Logo" src="images/logo.png">
                       </a>
                       <div class="navbar-text title">
-                          <p>Hospital Management System</p>
+                          <p>Rental Management System</p>
                           <p style="font-family: Arial; font-size: 15px; margin:0%;" >Current Logged In Users: <%= SessionListener.CurrentLoggedInUsers %></p>
                       </div>
                   </div>
