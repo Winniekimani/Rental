@@ -103,7 +103,7 @@
 
         .login-container {
           background-color: #fff;
-          width: 400px;
+          width: 95%;
           margin: 50px auto;
           padding: 20px;
           border-radius: 5px;
