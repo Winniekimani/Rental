@@ -1,6 +1,7 @@
 com/winnie/dao/GenericDaoI.class
 com/winnie/app/View/toolbar/BottomToolBar.class
 com/winnie/utility/EncryptMD5.class
+com/winnie/action/EditTenantAction.class
 com/winnie/app/model/view/MenuLink.class
 com/winnie/app/bean/AuthBeanI.class
 com/winnie/app/model/entity/Payment.class
@@ -13,6 +14,7 @@ com/winnie/app/model/entity/House.class
 com/winnie/app/bean/HouseBeanI.class
 com/winnie/database/Database.class
 com/winnie/action/BaseAction.class
+com/winnie/action/SendMailAction.class
 com/winnie/database/helper/DbTableId.class
 com/winnie/action/HomeAction.class
 com/winnie/utility/ReferenceNumberGenerator$EntityType.class
@@ -55,6 +57,7 @@ com/winnie/listeners/SessionListener.class
 com/winnie/app/bean/GenericBeanI.class
 com/winnie/app/bean/HouseBean.class
 com/winnie/filters/AuthFilter.class
+com/winnie/action/EditHouseAction.class
 com/winnie/app/bean/BillingBean.class
 com/winnie/rest/api/BillingRestApi.class
 com/winnie/action/UserAction.class
@@ -64,6 +67,7 @@ com/winnie/utility/EncryptSha256.class
 com/winnie/utility/TransactIonNoGenerator.class
 com/winnie/action/PaymentStatusConverter.class
 com/winnie/app/bean/UserBeanI.class
+com/winnie/utility/Email.class
 com/winnie/utility/EncryptText.class
 com/winnie/utility/BillNoGenerator.class
 com/winnie/rest/api/TenantRestApi.class
@@ -71,6 +75,7 @@ com/winnie/utility/PaymentNoGenerator.class
 com/winnie/utility/cdievents/BillingEmailObserver.class
 com/winnie/app/model/entity/HouseType.class
 com/winnie/app/View/html/HtmlComponent.class
+com/winnie/utility/Email$1.class
 com/winnie/action/PaymentAction.class
 com/winnie/app/model/entity/BaseEntity.class
 com/winnie/action/HouseTypeConverter.class

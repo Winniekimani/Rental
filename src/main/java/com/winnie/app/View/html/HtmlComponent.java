@@ -204,4 +204,128 @@ public class HtmlComponent implements Serializable {
 
         return htmlForm;
     }
+    private static Object getFieldValue(Object entity, Field field) {
+        try {
+            field.setAccessible(true);
+            return field.get(entity);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static  String editHtmlForm(Class<?> modelClass,Object entity) {
+
+        WinnieHtmlForms winnieHtmlForms = null;
+        if (modelClass.isAnnotationPresent(WinnieHtmlForms.class))
+            winnieHtmlForms = modelClass.getAnnotation(WinnieHtmlForms.class);
+
+        if (winnieHtmlForms == null)
+            return StringUtils.EMPTY;
+
+
+        String htmlForm = "<div class=\"login-container\">" +
+                "<br/>Edit " + modelClass.getSimpleName() + "<br/>" +
+                "<form action=\"./" + modelClass.getSimpleName().toLowerCase() + "\" method=\"post\">";
+        //"<div class=\"login-container\">";
+
+        Field[] fields = modelClass.getDeclaredFields();
+
+        for (Field field : fields) {
+            if (!field.isAnnotationPresent(WinnieHtmlFormField.class))
+                continue;
+            WinnieHtmlFormField formField = field.getAnnotation(WinnieHtmlFormField.class);
+            field.setAccessible(true);
+            String fieldName = field.getName();
+            htmlForm += "<label for=\"" + (StringUtils.isBlank(formField.labelFor()) ? fieldName : formField.labelFor())
+                    + "\">"
+                    + (StringUtils.isBlank(formField.label()) ? fieldName : formField.label()) + ":</label><br>";
+
+            Class<?> fieldType = field.getType();
+
+            //=========================================================================================
+            if (StringUtils.isNotBlank(formField.selectList())
+                    && StringUtils.isNotBlank(formField.selectValue())
+                    && StringUtils.isNotBlank(formField.selectDisplay())) {
+                try {
+
+                    StringBuilder stringBuilder =new StringBuilder().
+                            append("<select")
+                            .append(" id=\"").append( fieldName)
+                            .append("\" name=\"").append( fieldName).append("\" ")
+                            .append(formField.required()?"required" : "")
+                            .append(">");
+
+                    SelectBoxStore genericCombo = CDI.current().select(SelectBoxStore.class).get();
+
+                    Method selectListMethod = SelectBoxStore.class.getDeclaredMethod(formField.selectList());
+
+                    List<?> options = (List<?>) selectListMethod.invoke(genericCombo);
+
+                    System.out.println("TENANT>>>>>>>>>" + options.toString());
+                    for (Object option : options) {
+                        Field valueField = formField.selectValueInSuper()?
+                                option.getClass().getSuperclass().getDeclaredField(formField.selectValue()) :
+                                option.getClass().getDeclaredField(formField.selectValue());
+                        valueField.setAccessible(true);
+
+                        Field displayField = formField.selectDisplayInSuper()?
+                                option.getClass().getSuperclass().getDeclaredField(formField.selectDisplay()) :
+                                option.getClass().getDeclaredField(formField.selectDisplay());
+                        displayField.setAccessible(true);
+                        stringBuilder.append("htmlForm.append(<option value=\"")
+                                .append(valueField.get(option)).append("\">")
+                                .append(displayField.get(option)).append("</option>)");
+                    }
+
+                    stringBuilder.append("</select> <br>");
+                    htmlForm += stringBuilder.toString();
+                    continue;
+                } catch (NoSuchFieldException | NoSuchMethodException | IllegalAccessException | InvocationTargetException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+                //=========================================================================================
+
+            }
+            if (fieldType.isEnum()) {
+                htmlForm += "<select name=\"" + (StringUtils.isBlank(formField.selectName()) ? fieldName : formField.selectName())
+                        + "\" id=\"" + (StringUtils.isBlank(formField.id()) ? fieldName : formField.id()) + "\">";
+                Object[] enumConstants = fieldType.getEnumConstants();
+                for (Object enumConstant : enumConstants) {
+                  //  htmlForm += "<option value=\"" + enumConstant.toString() + "\">" + enumConstant.toString() + "</option>";
+                    htmlForm += "<option value=\"" + enumConstant.toString() + "\" " + (getFieldValue(entity, field).equals(enumConstant.toString()) ? "selected" : "") + ">" + enumConstant.toString() + "</option>";
+                }
+                htmlForm += "</select><br>";
+            } else if (fieldType == String.class) {
+                htmlForm += "<input type=\"text\" id=\"" + (StringUtils.isBlank(formField.id()) ? fieldName : formField.id())
+                        + "\" name=\""
+                        + (StringUtils.isBlank(formField.name()) ? fieldName : formField.name()) + "\" value=\"" + getFieldValue(entity, field) +"\"><br>";
+            } else if (fieldType == int.class || fieldType == Integer.class || fieldType == double.class || fieldType == Double.class) {
+                htmlForm += "<input type=\"number\" step=\"any\" id=\"" + (StringUtils.isBlank(formField.id()) ? fieldName : formField.id())
+                        + "\" name=\"" + (StringUtils.isBlank(formField.name()) ? fieldName : formField.name())+ "\" value=\"" + getFieldValue(entity, field) +"\"><br>";
+            } else if (fieldType == Date.class) {
+                htmlForm += "<input type=\"date\" id=\"" + (StringUtils.isBlank(formField.id()) ? fieldName : formField.id())
+                        + "\" name=\"" + (StringUtils.isBlank(formField.name()) ? fieldName : formField.name()) + "\" value=\"" + getFieldValue(entity, field) + "\"><br>";
+            }else if (fieldType == BigDecimal.class) {
+                htmlForm += "<input type=\"number\" step=\"any\" id=\"" + (StringUtils.isBlank(formField.id()) ? fieldName : formField.id())
+                        + "\" name=\"" + (StringUtils.isBlank(formField.name()) ? fieldName : formField.name()) + "\" value=\"" + getFieldValue(entity, field) +"\"><br>";
+
+            }else if(fieldType== Long.class){
+
+                htmlForm += "<input type=\"number\" id=\"" + (StringUtils.isBlank(formField.id()) ? fieldName : formField.id())
+                        + "\" name=\""
+                        + (StringUtils.isBlank(formField.name()) ? fieldName : formField.name())+ "\" value=\"" + getFieldValue(entity, field) +"\"><br>";
+            }
+            // Add additional handling for other data types if needed
+        }
+
+        htmlForm += "<input type=\"submit\" value=\"Edit " + modelClass.getSimpleName() + "\">";
+        htmlForm += "</div>" +
+                "</form>" +
+                "<br/><hr/><br/>";
+
+        return htmlForm;
+    }
+
 }

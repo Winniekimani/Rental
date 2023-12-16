@@ -49,13 +49,20 @@ public class GenericBean<T> implements GenericBeanI<T> {
         genericDao.delete(klass,id);
     }
 
-
     @Override
-    public T edit(T entity,Long id) {
+    public void edit(Object entity, String columnName, Object columnValue) {
+
+        genericDao.setEm(em);
+        genericDao.edit(entity,columnName,columnValue);
+    }
+
+
+   /* @Override
+    public T edit(T entity,Long id,) {
 
         genericDao.setEm(em);
       return genericDao.edit(entity,id);
-    }
+    }*/
 
     public GenericDaoI<T> getDao() {
        /* genericDao.setDatabase(database);*/

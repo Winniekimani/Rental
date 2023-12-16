@@ -59,12 +59,15 @@ public class BaseAction extends HttpServlet {
         req.setAttribute("activeMenu",activeMenu);
 
 
-        if (StringUtils.trimToEmpty(req.getParameter("action")).equals("add") )
+        if (StringUtils.trimToEmpty(req.getParameter("action")).equals("add"))
             req.setAttribute("content", HtmlComponent.htmlForm(entity));
+     /*   else if (StringUtils.trimToEmpty(req.getParameter("action")).equals("edit"))
+            req.setAttribute("content", HtmlComponent.htmlForm(entity));*/
         else
             req.setAttribute("content", HtmlComponent.table(entity, entityList));
         RequestDispatcher dispatcher=req.getRequestDispatcher("./app/index.jsp");
         dispatcher.forward(req,res);
+
 
     }
 

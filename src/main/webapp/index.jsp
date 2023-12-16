@@ -15,7 +15,7 @@
                         <select class="form-control" name="userrole">
                             <option value="none" selected="selected" hidden>Select User</option>
                             <option value="admin">Admin</option>
-                            <option value="patient">Tenant</option>
+                            <option value="tenant">Tenant</option>
                         </select>
                     </div>
                     <br/>
@@ -28,6 +28,12 @@
                                placeholder="username" required aria-describedby="sizing-addon1">
                     </div>
                     <br/>
+                     <%-- <div class="input-group input-group-lg">
+                                            <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-user"
+                                                                                                     aria-hidden="true"></span></span>
+                                            <input type="text" maxlength="200" class="form-control" name="email"
+                                                   placeholder="email" required aria-describedby="sizing-addon1">
+                                        </div>--%>
                     <div class="input-group input-group-lg">
                         <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-lock"
                                                                                  aria-hidden="true"></span></span>

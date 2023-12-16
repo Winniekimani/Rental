@@ -41,4 +41,10 @@ public class TenantRestApi extends BaseRestApi{
         return Response.status(Response.Status.OK).entity("Delete Successful").build();
 
     }
+    @Path("/list/email/{email}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response listByEmail(@PathParam("email") String  email){
+        return respond(tenantBean.tenantByEmail(email));
+    }
 }

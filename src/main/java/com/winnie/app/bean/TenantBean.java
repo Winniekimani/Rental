@@ -2,10 +2,17 @@ package com.winnie.app.bean;
 import com.winnie.app.model.entity.House;
 import com.winnie.app.model.entity.Tenant;
 import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.PersistenceContext;
 import java.io.Serializable;
+import java.util.List;
+
 @Stateless
 public class TenantBean extends GenericBean<Tenant> implements TenantBeanI, Serializable {
 
+    @PersistenceContext
+    EntityManager em;
     @Override
     public Tenant add(Tenant tenant){
         if (tenant==null)
@@ -24,6 +31,24 @@ public class TenantBean extends GenericBean<Tenant> implements TenantBeanI, Seri
 
         return tenant;
     }
+    @Override
+    public Tenant tenantByEmail(String email) {
+        try {
+            return em.createQuery("FROM Tenant t WHERE t.email=:email", Tenant.class)
+                    .setParameter("email", email)
+                    .getSingleResult();
+        } catch (NoResultException e) {
+            // Handle the case when no result is found, for example, return null or throw a custom exception.
+            return null; // or throw a custom exception if needed
+        }
+    }
+
+
+    @Override
+    public List<Tenant> getList() {
+        return em.createQuery("FROM Tenant t", Tenant.class).getResultList();
+    }
+
 
 
 }

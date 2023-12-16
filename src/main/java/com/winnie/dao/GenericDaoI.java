@@ -15,9 +15,11 @@ public interface GenericDaoI <T> extends Serializable {
 
     T add(T entity);
 
+    void edit(Object entity, String columnName, Object columnValue);
+
     void delete(Class<?> klass, Long id);
 
-    T edit(T entity,Long id);
+  /*  T edit(T entity,Long id);*/
     EntityManager getEm();
 
     void setEm(EntityManager em);

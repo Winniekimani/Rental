@@ -39,4 +39,13 @@ public class BillingRestApi extends BaseRestApi{
         return Response.status(Response.Status.OK).entity("Delete Successful").build();
 
     }
+
+    @Path("/tenant/{id}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response tenantBill(@PathParam("id") Long id){
+        return respond(billingBean.getBillingByTenantId(id));
+
+    }
+
 }

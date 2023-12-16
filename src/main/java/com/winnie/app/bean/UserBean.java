@@ -1,9 +1,11 @@
 package com.winnie.app.bean;
 
+import com.winnie.app.model.entity.Tenant;
 import com.winnie.app.model.entity.User;
 import com.winnie.utility.EncryptText;
 
 
+import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -16,6 +18,9 @@ import java.util.List;
 public class UserBean extends GenericBean<User> implements UserBeanI {
     @Inject
     private EncryptText encryptText;
+
+    @EJB
+    TenantBeanI tenantBean;
 
     @Override
     public boolean register(User user) throws SQLException {
@@ -30,17 +35,26 @@ public class UserBean extends GenericBean<User> implements UserBeanI {
         try {
             user.setPassword(encryptText.encrypt(user.getPassword()));
 
-        } catch (Exception ex){
+        } catch (Exception ex) {
             throw new RuntimeException(ex.getMessage());
 
         }
 
         //3. initiate event to send email ...Observer design pattern
-        getDao().add(user);
+
+        Tenant tenant = tenantBean.tenantByEmail(user.getEmail());
+        if (tenant != null) {
+            user.setUserRole("tenant");
+            user.setTenant(tenant);
+            getDao().add(user);
+        } else {
+            user.setUserRole("admin");
+            getDao().add(user);
+        }
+
 
         return false;
     }
-
 
 
     public boolean unregister(User user) {

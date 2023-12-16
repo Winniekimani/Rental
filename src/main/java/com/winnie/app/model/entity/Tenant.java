@@ -10,12 +10,13 @@ import org.hibernate.annotations.Formula;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name="tenant")
-@HtmlTable(name = "Tenant",addUrl = "./tenant?action=add",deleteUrl = "./tenant?deleteTenantId=")
+@HtmlTable(name = "Tenant",addUrl = "./tenant?action=add",deleteUrl = "./tenant?deleteTenantId=",editUrl = "./edit-tenant?editTenantId=")
 @WinnieHtmlForms(label = "Tenants")
 public class Tenant extends BaseEntity{
 
@@ -49,7 +50,7 @@ public class Tenant extends BaseEntity{
 
     @WinnieTableColHeader(header="TenantEmail")
     @WinnieHtmlFormField(label="Tenant Email")
-    @Column
+    @Column(unique = true)
     private String email;
 
     @WinnieTableColHeader(header="LeaseStartDate")
@@ -68,8 +69,24 @@ public class Tenant extends BaseEntity{
     private BigDecimal rentAmount;
 
 
+    @OneToMany(mappedBy = "tenant",fetch = FetchType.LAZY)
+    private List<User> users ;
+
+
+    @Transient
+    private String password;
+
+    @Transient
+    private String confirmPassword;
 
     public Tenant() {
+    }
+
+
+
+    // Add this method to set billings
+    public void setBillings(List<Billing> billings) {
+        this.billings = billings;
     }
 
     @JsonIgnore

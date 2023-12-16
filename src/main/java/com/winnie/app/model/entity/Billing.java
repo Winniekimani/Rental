@@ -30,7 +30,7 @@ public class Billing extends BaseEntity {
 
 
     @WinnieTableColHeader(header="BillNo")
-    @WinnieHtmlFormField(label="Bill No")
+   /* @WinnieHtmlFormField(label="Bill No")*/
     @Column(name="bill_no")
     private String billNo;
 

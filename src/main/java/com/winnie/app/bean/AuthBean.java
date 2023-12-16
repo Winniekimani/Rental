@@ -52,6 +52,24 @@ public class AuthBean extends GenericBean<User> implements AuthBeanI, Serializab
 
     }
 
+    @Override
+    public User auntheticate(User tenantUser) throws Exception {
+
+        if (tenantUser.getUsername() == null || tenantUser.getPassword() == null)
+            throw new Exception("Invalid password or username");
+
+
+        tenantUser.setPassword(encryptText.encrypt(tenantUser.getPassword()));
+
+        List<User> users = list(tenantUser);
+        if (users == null || users.isEmpty() || users.get(0) == null)
+            throw new Exception("Invalid username or password");
+
+        return users.get(0);
+
+
+    }
+
 
 }
 

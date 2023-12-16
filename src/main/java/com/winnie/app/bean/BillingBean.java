@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 
 @Stateless
@@ -48,5 +49,24 @@ public class BillingBean extends GenericBean<Billing> implements BillingBeanI,Se
         Billing o = em.find(Billing.class, id);
         em.remove(o);
     }
+
+    @Override
+    public List<Billing> getBillingListByEmail(String email) {
+        return em.createQuery("FROM Billing billing WHERE billing.tenant.email = :email", Billing.class)
+                .setParameter("email", email)
+                .getResultList();
+
+
+    }
+
+    @Override
+    public List<Billing> getBillingByTenantId(Long tenantId) {
+        return em.createQuery("FROM Billing billing WHERE billing.tenantId =:tenantId", Billing.class)
+                .setParameter("tenantId", tenantId)
+                .getResultList();
+
+
+    }
+
 
 }

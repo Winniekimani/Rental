@@ -15,4 +15,13 @@ public class HomeAction extends BaseAction {
        dispatcher.forward(req,resp);
 
     }
+
+    /*public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+
+        if (req.getParameter("userrole").equals("tenant")) {
+            resp.sendRedirect("./tenant_page.jsp");
+        }
+    }*/
+
 }

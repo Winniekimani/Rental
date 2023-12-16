@@ -37,7 +37,7 @@
                           <img alt="Logo" src="images/logo.png">
                       </a>
                       <div class="navbar-text title">
-                          <p>Hospital Management System</p>                          
+                          <p>Rental Management System</p>
                       </div>
                   </div>
               </div>

@@ -12,8 +12,8 @@ public interface GenericBeanI <T> extends Serializable {
     void delete(Class<?> klass, Long id);
 
 
-    T edit(T entity,Long id);
+  /*  T edit(T entity,Long id);*/
 
-
+    void edit(Object entity, String columnName, Object columnValue);
 
 }
