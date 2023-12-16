@@ -24,17 +24,14 @@ public class TopToolBar  implements Serializable ,Menu{
         links.add(new MenuLink("./payment", "Payments", "glyphicon glyphicon-usd", MenuLinkStatus.NOT_ACTIVE));
         links.add(new MenuLink("./billing", "Billings", "glyphicon glyphicon-bold", MenuLinkStatus.NOT_ACTIVE));
         links.add(new MenuLink("./logout", "Logout", "glyphicon glyphicon-log-out", MenuLinkStatus.NOT_ACTIVE));
+        links.add(new MenuLink("./send_mail.jsp","Send Email","glyphicon glyphicon-envelope",MenuLinkStatus.ACTIVE));
     }
-
 
     @Override
     public String menu(int activeLinkIndex) {
         this.activateLink(activeLinkIndex);
 
         String menuBar="<div class=\"col-md-2 menucontent\">\n" +
-                "      <a href=\"#\">\n" +
-                "          <h1>Dashboard</h1>\n" +
-                "      </a>\n" +
                 "      <ul class=\"nav nav-pills nav-stacked\">";
 
         for (MenuLink link:links)
@@ -55,8 +52,5 @@ public class TopToolBar  implements Serializable ,Menu{
         }
 
     }
-
-
-
 
 }

@@ -1,3 +1,4 @@
+/*
 package com.winnie.action;
 
 import com.winnie.app.View.html.HtmlComponent;
@@ -40,24 +41,47 @@ public class EditHouseAction extends BaseAction{
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 
-        House house = serializeForm(House.class,req.getParameterMap());
+        House house = serializeForm(House.class, req.getParameterMap());
+        House existingHouse = em.find(House.class, house.getId());
+        if (existingHouse != null) {
+            // Update the Employee properties
+            existingHouse.setHouseNo(house.getHouseNo());
+            existingHouse.setHouseName(house.getHouseName());
+            existingHouse.setHouseDescription(house.getHouseDescription());
+            existingHouse.setHouseLocation(house.getHouseLocation());
+            existingHouse.setHousePrice(house.getHousePrice());
+            existingHouse.setHouseStatus(house.getHouseStatus());
+            existingHouse.setHouseType(house.getHouseType());
 
+            // Use the same EntityManager to persist the changes to the Employee
+            houseBean.add(existingHouse);
+            em.flush();
+            renderPage(req,resp,1, House.class, houseBean.list(new House()));
+
+
+            // Flush changes to the database
+
+      */
+/*  House existingHouse=em.find(House.class,house.getId());
 
         try {
-            houseBean.edit(house,"id",house.getId());
+           houseBean.edit(existingHouse,"id",existingHouse.getId());
             renderPage(req,resp,1, House.class, houseBean.list(new House()));
-            /*  resp.sendRedirect("./house");*/
+            *//*
+*/
+/*  resp.sendRedirect("./house");*//*
+*/
+/*
         } catch (Exception e) {
             throw new RuntimeException(e);
-        }
+        }*//*
 
 
 
         }
 
 
-
-
-
+    }
 
 }
+*/

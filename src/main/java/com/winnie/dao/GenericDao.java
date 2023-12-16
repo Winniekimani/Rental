@@ -70,6 +70,8 @@ public class GenericDao <T> implements GenericDaoI<T> {
 
     }
 
+
+
     @Override
     public List<Object[]> nativeQuery(String sql) {
         return getEm().createNativeQuery(sql).getResultList();
@@ -142,6 +144,11 @@ public class GenericDao <T> implements GenericDaoI<T> {
         Object record = em.find(klass, id);
         if (record != null)
             em.remove(record);
+    }
+
+    @Override
+    public T getById(Class<T> type, Long id) {
+        return em.find(type, id);
     }
 
     @Override

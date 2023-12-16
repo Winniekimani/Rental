@@ -37,17 +37,6 @@ public class TenantAction extends BaseAction {
             tenantBean.delete(Tenant.class, tenantId);
         }
 
-        /*// Retrieve logged-in tenant
-        String username = (String) httpSession.getAttribute("username");
-        Tenant loggedInTenant = tenantBean.tenantByEmail(username);
-
-        // Retrieve billing information for the logged-in tenant
-        List<Billing> billingList = billingBean.getBillingListByEmail(username);
-        System.out.println("Billing List: " + billingList);
-
-        // Set both tenant and billing information in the request scope
-        req.setAttribute("loggedInTenant", loggedInTenant);
-        req.setAttribute("billingList", billingList);*/
 
         renderPage(req,resp,2, Tenant.class,tenantBean.list(new Tenant()) );
 

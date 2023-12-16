@@ -34,7 +34,6 @@
                     <th>House Type</th>
                     <th>House Location</th>
                     <th>House Price</th>
-                    <th>Book</th>
                 </tr>
                 </thead>
                 <tbody>

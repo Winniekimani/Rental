@@ -1,4 +1,3 @@
-/*
 package com.winnie.action;
 
 
@@ -33,4 +32,3 @@ public class AvailableHousesAction extends HttpServlet {
         dispatcher.forward(request, response);
     }
 }
-*/

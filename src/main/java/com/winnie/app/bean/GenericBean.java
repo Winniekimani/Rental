@@ -5,6 +5,7 @@ import com.winnie.dao.GenericDao;
 import com.winnie.dao.GenericDaoI;
 
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -56,6 +57,12 @@ public class GenericBean<T> implements GenericBeanI<T> {
         genericDao.edit(entity,columnName,columnValue);
     }
 
+    @PostConstruct
+    public void initialize() {
+        if (genericDao == null) {
+            throw new IllegalStateException("genericDao has not been injected.");
+        }
+    }
 
    /* @Override
     public T edit(T entity,Long id,) {

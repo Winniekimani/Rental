@@ -1,11 +1,9 @@
 com/winnie/dao/GenericDaoI.class
 com/winnie/app/View/toolbar/BottomToolBar.class
 com/winnie/utility/EncryptMD5.class
-com/winnie/action/EditTenantAction.class
 com/winnie/app/model/view/MenuLink.class
 com/winnie/app/bean/AuthBeanI.class
 com/winnie/app/model/entity/Payment.class
-com/winnie/utility/ReferenceNumberGenerator$1.class
 com/winnie/rest/api/RestResponseWrapper.class
 com/winnie/dao/GenericDao.class
 com/winnie/utility/SelectBoxStore.class
@@ -13,18 +11,17 @@ com/winnie/app/userbean/LoginForm.class
 com/winnie/app/model/entity/House.class
 com/winnie/app/bean/HouseBeanI.class
 com/winnie/database/Database.class
+com/winnie/app/bean/BookingBean.class
 com/winnie/action/BaseAction.class
 com/winnie/action/SendMailAction.class
 com/winnie/database/helper/DbTableId.class
 com/winnie/action/HomeAction.class
-com/winnie/utility/ReferenceNumberGenerator$EntityType.class
 com/winnie/rest/api/HouseRestApi.class
 com/winnie/app/model/entity/PaymentStatus.class
 com/winnie/action/TenantAction.class
 com/winnie/common/CommonMethods.class
 com/winnie/action/LogoutAction.class
 com/winnie/app/bean/BillingBeanI.class
-com/winnie/utility/ReferenceNumberGenerator.class
 com/winnie/app/model/entity/Billing.class
 com/winnie/app/bean/AuditLogBeanI.class
 com/winnie/action/HouseAction.class
@@ -57,7 +54,6 @@ com/winnie/listeners/SessionListener.class
 com/winnie/app/bean/GenericBeanI.class
 com/winnie/app/bean/HouseBean.class
 com/winnie/filters/AuthFilter.class
-com/winnie/action/EditHouseAction.class
 com/winnie/app/bean/BillingBean.class
 com/winnie/rest/api/BillingRestApi.class
 com/winnie/action/UserAction.class
@@ -67,6 +63,7 @@ com/winnie/utility/EncryptSha256.class
 com/winnie/utility/TransactIonNoGenerator.class
 com/winnie/action/PaymentStatusConverter.class
 com/winnie/app/bean/UserBeanI.class
+com/winnie/app/model/entity/Booking.class
 com/winnie/utility/Email.class
 com/winnie/utility/EncryptText.class
 com/winnie/utility/BillNoGenerator.class
@@ -75,6 +72,7 @@ com/winnie/utility/PaymentNoGenerator.class
 com/winnie/utility/cdievents/BillingEmailObserver.class
 com/winnie/app/model/entity/HouseType.class
 com/winnie/app/View/html/HtmlComponent.class
+com/winnie/app/bean/BookingBeanI.class
 com/winnie/utility/Email$1.class
 com/winnie/action/PaymentAction.class
 com/winnie/app/model/entity/BaseEntity.class

@@ -11,4 +11,6 @@ public interface TenantBeanI extends GenericBeanI<Tenant> {
 
     Tenant tenantByEmail(String email);
     List<Tenant> getList();
+
+    List<Tenant> tenantListByEmail(String email);
 }

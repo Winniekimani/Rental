@@ -39,8 +39,11 @@ public class HouseAction extends BaseAction {
 
         try {
             houseBean.add(house);
+            // Add a JavaScript alert for a successful addition
+            String alertScript = "<script>alert('House added successfully!');</script>";
+            resp.getWriter().write(alertScript);
+
             renderPage(req,resp,1, House.class, houseBean.list(new House()));
-          /*  resp.sendRedirect("./house");*/
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

@@ -1,3 +1,6 @@
+<%@ page import="com.winnie.app.View.toolbar.TopToolBar" %>
+<%@ page import="com.winnie.app.userbean.ActiveMenuBean" %>
+<%@ page import="com.winnie.common.CommonMethods" %>
 
 
 <%@ page isELIgnored="false" %>
@@ -11,18 +14,20 @@
 
 <%@ include file="./main_content_header.jsp" %>
 <div class="row">
-    <%@ page import="com.winnie.app.View.toolbar.TopToolBar" %>
-    <%@ page import="com.winnie.app.userbean.ActiveMenuBean" %>
-    <%@ page import="com.winnie.common.CommonMethods" %>
+    <jsp:useBean id="toolbar" class="com.winnie.app.View.toolbar.TopToolBar" />
+    <jsp:useBean id="activeMenuBean" class="com.winnie.app.userbean.ActiveMenuBean" />
+    <jsp:setProperty name="activeMenuBean" property="activeMenu" value="${requestScope.activeMenu}"/>
+    ${toolbar.menu(activeMenuBean.activeMenu)}
+
     <!---- Content Ares Start  -------->
     <div class="col-md-10 maincontent">
         <!----------------   Menu Tab   --------------->
         <div class="panel panel-default contentinside">
-            <div class="panel-heading">Send Emails</div>
+            <div class="panel-heading">Send Billing Info via Emails</div>
             <!----------------   Panel body Start   --------------->
             <div class="panel-body">
                 <ul class="nav nav-tabs panelBodyItem">
-                    <li role="presentation"><a href="#panelBodyItemlist">Tenant Email</a></li>
+                    <li role="presentation"><a href="#panelBodyItemlist">Tenant Bill Email</a></li>
                     <li role="presentation"><a href="#addpanelBodyItem"> General Email</a></li>
                 </ul>
 
@@ -39,7 +44,7 @@
                                             <option value="none" selected disabled hidden>Select a Tenant</option>
                                             <c:forEach items="${tenantBean.list}" var="tenant">
                                                 <option value="${tenant.email}">
-                                                    (${tenant.id})${tenant.name}
+                                                    ${tenant.firstName}
                                                 </option>
                                             </c:forEach>
                                         </select>
@@ -63,7 +68,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Attach file</label>
+                                    <label class="col-sm-2 control-label">Attach Bill</label>
                                     <div class="col-sm-6">
                                         <input type="file" class="form-control" name="file" size="50" />
                                     </div>
