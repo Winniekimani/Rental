@@ -1,6 +1,7 @@
 package com.winnie.action;
 
 import com.winnie.app.bean.BillingBeanI;
+import com.winnie.app.bean.HouseBeanI;
 import com.winnie.app.bean.TenantBeanI;
 import com.winnie.app.model.entity.Billing;
 import com.winnie.app.model.entity.House;
@@ -15,18 +16,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-@WebServlet("/tenant")
+@WebServlet(urlPatterns = {"/tenant", "/tenant-edit-as-tenant"})
 public class TenantAction extends BaseAction {
 
     @EJB
-    private TenantBeanI tenantBean ;
+    private TenantBeanI tenantBean;
     @EJB
     private BillingBeanI billingBean;
-    public void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
+
+  /*  @EJB
+    private HouseBeanI houseBean;*/
+
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         HttpSession httpSession = req.getSession();
 
@@ -38,19 +44,17 @@ public class TenantAction extends BaseAction {
         }
 
 
-        renderPage(req,resp,2, Tenant.class,tenantBean.list(new Tenant()) );
-
-
-
+        renderPage(req, resp, 2, Tenant.class, tenantBean.list(new Tenant()));
 
 
     }
+
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         Tenant tenant = serializeForm(Tenant.class, req.getParameterMap());
 
-
-
+        Long tenantId = Long.valueOf(req.getParameter("modelName"));
+        tenant.setId(tenantId);
 
         try {
             // Add the tenant and retrieve the added tenant with generated ID
@@ -61,7 +65,7 @@ public class TenantAction extends BaseAction {
 
 
             List<Billing> billingList = billingBean.getBillingListByEmail(tenant.getEmail());
-                    // Set billingList to the tenant
+            // Set billingList to the tenant
             tenant.setBillings(billingList);
 
             tenantBean.add(tenant);
@@ -69,17 +73,36 @@ public class TenantAction extends BaseAction {
             throw new RuntimeException(e);
         }
 
-      resp.sendRedirect("./tenant");
+        resp.sendRedirect("./tenant");
 
 
+       /* // Retrieve the existing tenant from the database
+        Tenant existingTenant = tenantBean.tenantByEmail(tenant.getEmail());
 
+        // Update the properties of the existing tenant
+        try {
+            BeanUtils.copyProperties(existingTenant, tenant);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        } catch (InvocationTargetException e) {
+            throw new RuntimeException(e);
+        }*/
+/*
+        if (tenant.getHouseId() != null) {
+            // Retrieve the House from the database based on houseId
+            House house = houseBean.findById(tenant.getHouseId()); // Assuming you have a method like this in your HouseBean
+            existingTenant.setHouse(house);*/
 
+            if (req.getServletPath().equals("/tenant-edit-as-tenant")) {
+                // You don't need to add the tenant here; it's already updated
+                tenantBean.add(tenant);
+                resp.sendRedirect("./tenant_page.jsp");
+            }
+        }
 
 
     }
 
-
-}
 
 
 

@@ -1,12 +1,14 @@
 com/winnie/dao/GenericDaoI.class
 com/winnie/app/View/toolbar/BottomToolBar.class
 com/winnie/utility/EncryptMD5.class
+com/winnie/action/EditTenantAction.class
 com/winnie/app/model/view/MenuLink.class
 com/winnie/app/bean/AuthBeanI.class
 com/winnie/app/model/entity/Payment.class
 com/winnie/rest/api/RestResponseWrapper.class
 com/winnie/dao/GenericDao.class
 com/winnie/utility/SelectBoxStore.class
+com/winnie/action/EditPaymentAction.class
 com/winnie/app/userbean/LoginForm.class
 com/winnie/app/model/entity/House.class
 com/winnie/app/bean/HouseBeanI.class
@@ -17,6 +19,7 @@ com/winnie/action/SendMailAction.class
 com/winnie/database/helper/DbTableId.class
 com/winnie/action/HomeAction.class
 com/winnie/rest/api/HouseRestApi.class
+com/winnie/action/EditBillingAction.class
 com/winnie/app/model/entity/PaymentStatus.class
 com/winnie/action/TenantAction.class
 com/winnie/common/CommonMethods.class
@@ -54,6 +57,7 @@ com/winnie/listeners/SessionListener.class
 com/winnie/app/bean/GenericBeanI.class
 com/winnie/app/bean/HouseBean.class
 com/winnie/filters/AuthFilter.class
+com/winnie/action/EditHouseAction.class
 com/winnie/app/bean/BillingBean.class
 com/winnie/rest/api/BillingRestApi.class
 com/winnie/action/UserAction.class
@@ -73,6 +77,7 @@ com/winnie/utility/cdievents/BillingEmailObserver.class
 com/winnie/app/model/entity/HouseType.class
 com/winnie/app/View/html/HtmlComponent.class
 com/winnie/app/bean/BookingBeanI.class
+com/winnie/action/BookingAction.class
 com/winnie/utility/Email$1.class
 com/winnie/action/PaymentAction.class
 com/winnie/app/model/entity/BaseEntity.class

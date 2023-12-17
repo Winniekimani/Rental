@@ -13,7 +13,6 @@
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/bean/PaymentBeanI.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/bean/UserBean.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/utility/PaymentNo.java
-/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/AvailableHousesAction.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/BookingAction.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/listeners/SessionListener.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/EditHouseAction.java
@@ -43,6 +42,7 @@
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/View/toolbar/TopToolBar.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/View/toolbar/BottomToolBar.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/HouseAction.java
+/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/EditTenantAction.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/rest/api/RestResponseWrapper.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/BillingAction.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/filters/AuthFilter.java
@@ -57,6 +57,7 @@
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/userbean/ContentBean.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/bean/GenericBean.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/bean/BookingBean.java
+/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/EditPaymentAction.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/utility/SelectBoxStore.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/jsputils/Calculator.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/UserAction.java
@@ -71,6 +72,7 @@
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/utility/BillNo.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/model/entity/House.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/PaymentStatusConverter.java
+/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/action/EditBillingAction.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/model/entity/PaymentStatus.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/dao/GenericDao.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/bean/BillingBean.java

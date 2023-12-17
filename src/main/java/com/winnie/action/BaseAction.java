@@ -61,8 +61,6 @@ public class BaseAction extends HttpServlet {
 
         if (StringUtils.trimToEmpty(req.getParameter("action")).equals("add"))
             req.setAttribute("content", HtmlComponent.htmlForm(entity));
-     /*   else if (StringUtils.trimToEmpty(req.getParameter("action")).equals("edit"))
-            req.setAttribute("content", HtmlComponent.htmlForm(entity));*/
         else
             req.setAttribute("content", HtmlComponent.table(entity, entityList));
         RequestDispatcher dispatcher=req.getRequestDispatcher("./app/index.jsp");

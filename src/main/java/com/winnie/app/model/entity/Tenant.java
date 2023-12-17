@@ -5,6 +5,7 @@ import com.winnie.app.View.html.HtmlTable;
 import com.winnie.app.View.html.WinnieHtmlFormField;
 import com.winnie.app.View.html.WinnieHtmlForms;
 import com.winnie.app.View.html.WinnieTableColHeader;
+import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Formula;
 
 
@@ -27,6 +28,10 @@ public class Tenant extends BaseEntity{
 
     @OneToMany(mappedBy = "tenant", fetch = FetchType.EAGER)
     private List<Billing> billings;
+
+    @BatchSize(size = 10)
+    @OneToMany(mappedBy = "tenant", fetch = FetchType.LAZY)
+    private List<Booking> bookings;
 
     @WinnieHtmlFormField(label = "House ",selectList = "houses", selectValue = "id", selectValueInSuper=true, selectDisplay = "houseName")
     @Formula("(House_id)")

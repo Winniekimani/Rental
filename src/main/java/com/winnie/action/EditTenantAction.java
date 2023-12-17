@@ -1,8 +1,9 @@
 package com.winnie.action;
 
 import com.winnie.app.View.html.HtmlComponent;
-import com.winnie.app.bean.HouseBeanI;
-import com.winnie.app.model.entity.House;
+
+import com.winnie.app.bean.TenantBeanI;
+
 import com.winnie.app.model.entity.Tenant;
 
 import javax.ejb.EJB;
@@ -16,23 +17,22 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-
-@WebServlet("/edit-house")
-public class EditHouseAction extends BaseAction{
+@WebServlet("/edit-tenant")
+public class EditTenantAction extends BaseAction{
 
     @PersistenceContext
     EntityManager em;
     @EJB
-    HouseBeanI houseBean;
+    TenantBeanI tenantBean;
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession httpSession = req.getSession();
 
-        String editHouseId = req.getParameter("editHouseId");
-        if (editHouseId != null && !editHouseId.isEmpty()) {
-            Long houseId = Long.valueOf(editHouseId);
-            House house = em.find(House.class,houseId);
-            house.setId(houseId);
-            req.setAttribute("content", HtmlComponent.editHtmlForm(House.class,house));
+        String editTenantId = req.getParameter("editTenantId");
+        if (editTenantId != null && !editTenantId .isEmpty()) {
+            Long tenantId = Long.valueOf(editTenantId);
+            Tenant tenant = em.find(Tenant.class,tenantId);
+            tenant.setId(tenantId);
+            req.setAttribute("content", HtmlComponent.editHtmlForm(Tenant.class,tenant));
             RequestDispatcher dispatcher=req.getRequestDispatcher("./app/index.jsp");
             dispatcher.forward(req,resp);
         }
@@ -41,12 +41,12 @@ public class EditHouseAction extends BaseAction{
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 
-        House house = serializeForm(House.class,req.getParameterMap());
+       Tenant tenant = serializeForm(Tenant.class,req.getParameterMap());
 
 
         try {
-            houseBean.edit(house,"id",house.getId());
-            renderPage(req,resp,1, House.class, houseBean.list(new House()));
+            tenantBean.edit(tenant,"id",tenant.getId());
+            renderPage(req,resp,1, Tenant.class, tenantBean.list(new Tenant()));
             /*  resp.sendRedirect("./house");*/
         } catch (Exception e) {
             throw new RuntimeException(e);

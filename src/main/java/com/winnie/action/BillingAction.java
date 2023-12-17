@@ -55,14 +55,13 @@ public class BillingAction extends BaseAction {
 
        Billing billing = serializeForm(Billing.class,req.getParameterMap());
 
+        Long billingId = Long.valueOf(req.getParameter("modelName"));
+        billing.setId(billingId);
 
         System.out.println("billing = " + billing);
         try {
 
-
-
             billingBean.add(billing);
-
 
         } catch (Exception e) {
             throw new RuntimeException(e);

@@ -20,7 +20,6 @@ import java.util.Date;
 @WebServlet("/booking/*")
 public class BookingAction extends BaseAction{
 
-
     @EJB
     private BookingBeanI bookingBean;
 
@@ -29,25 +28,25 @@ public class BookingAction extends BaseAction{
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
 
-        HttpSession session = req.getSession();
+
+        Booking  booking = serializeForm(Booking.class,req.getParameterMap());
+
+        // Get houseId from the request parameter
         Long houseId = Long.parseLong(req.getParameter("houseId"));
-        Long tenantId = ((Tenant) session.getAttribute("tenant")).getId();
 
-        // Perform booking logic
-
+        // Perform booking confirmation logic
         House house = houseBean.getById(houseId);
-        Tenant tenant = (Tenant) session.getAttribute("tenant");
+        Tenant tenant = (Tenant) req.getSession().getAttribute("tenant");
         Date bookingDate = new Date();  // You may want to customize the booking date logic
 
-        Booking booking = new Booking(house, tenant, bookingDate);
+        booking = new Booking(house, tenant, bookingDate);
         bookingBean.addBooking(booking);
 
-        // Add a message to indicate successful booking
-        req.setAttribute("bookingMessage", "Booking successful!");
+        // Update the house status to 'Booked'
+        house.setHouseStatus("Booked");
+        houseBean.update(house);
 
-        // Redirect back to the page displaying available houses  // Forward the request to the JSP page
-            RequestDispatcher dispatcher = req.getRequestDispatcher("./vacant_houses.jsp");
-            dispatcher.forward(req, resp);
+
 
     }
 }

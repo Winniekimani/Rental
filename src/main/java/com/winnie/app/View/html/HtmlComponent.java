@@ -216,20 +216,37 @@ public class HtmlComponent implements Serializable {
 
     public static  String editHtmlForm(Class<?> modelClass,Object entity) {
 
+        List<Field>fields=new ArrayList<>(Arrays.asList(modelClass.getSuperclass().getDeclaredFields()));
+        fields.addAll(Arrays.asList(modelClass.getDeclaredFields()));
+
         WinnieHtmlForms winnieHtmlForms = null;
         if (modelClass.isAnnotationPresent(WinnieHtmlForms.class))
             winnieHtmlForms = modelClass.getAnnotation(WinnieHtmlForms.class);
 
         if (winnieHtmlForms == null)
             return StringUtils.EMPTY;
+        Object id=null;
+        for (Field field:fields){
+            try {
+                id=modelClass.getMethod("getId").invoke(entity);
+            } catch (IllegalAccessException e) {
+                throw new RuntimeException(e);
+            } catch (InvocationTargetException e) {
+                throw new RuntimeException(e);
+            } catch (NoSuchMethodException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
 
 
         String htmlForm = "<div class=\"login-container\">" +
                 "<br/>Edit " + modelClass.getSimpleName() + "<br/>" +
-                "<form action=\"./" + modelClass.getSimpleName().toLowerCase() + "\" method=\"post\">";
-        //"<div class=\"login-container\">";
+                "<form action=\"./" + modelClass.getSimpleName().toLowerCase() + "\" method=\"post\">"+
+                "<input type= 'hidden' id='modelId' name='modelName' value='"+(Long)id+"'/>";
 
-        Field[] fields = modelClass.getDeclaredFields();
+
+
 
         for (Field field : fields) {
             if (!field.isAnnotationPresent(WinnieHtmlFormField.class))

@@ -5,12 +5,11 @@ import com.winnie.app.model.entity.AuditLog;
 import com.winnie.app.model.entity.House;
 
 
+import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.servlet.RequestDispatcher;
+import javax.inject.Named;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,6 +20,8 @@ import java.util.Date;
 import java.util.List;
 
 @Stateless
+@Named("houseBean")
+@Remote
 public class HouseBean extends GenericBean<House> implements HouseBeanI, Serializable {
 
     @Inject
@@ -60,19 +61,11 @@ public class HouseBean extends GenericBean<House> implements HouseBeanI, Seriali
         System.out.println("Method injection trial............");
     }
 
-    // This method is for handling GET requests in a servlet
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-       /* // Retrieve the list of available houses
 
-        List<House> availableHouses = listAvailableHouses();
 
-        // Set the list of available houses as an attribute in the request
-        request.setAttribute("availableHouses", availableHouses);
-
-        // Forward the request to the JSP page
-        RequestDispatcher dispatcher = request.getRequestDispatcher("./vacant_houses.jsp");
-        dispatcher.forward(request, response);*/
     }
 
     // This method retrieves a list of available houses
@@ -87,6 +80,12 @@ public class HouseBean extends GenericBean<House> implements HouseBeanI, Seriali
         return getDao().getById(House.class, id);
     }
 
+
+    // Update method to update the house status
+    @Override
+    public void update(House house) {
+         getDao().update(house);
+    }
 
 }
 

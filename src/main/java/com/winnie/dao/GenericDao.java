@@ -84,12 +84,6 @@ public class GenericDao <T> implements GenericDaoI<T> {
         return em.merge(entity);
     }
 
-    /*@Override
-    public T edit(T entity,Long id) {
-
-        return em.merge( entity, id);
-
-    }*/
 
     @Override
     public void edit(Object entity, String columnName, Object columnValue) {
@@ -144,6 +138,11 @@ public class GenericDao <T> implements GenericDaoI<T> {
         Object record = em.find(klass, id);
         if (record != null)
             em.remove(record);
+    }
+
+
+    public T update(T entity) {
+        return em.merge(entity);
     }
 
     @Override

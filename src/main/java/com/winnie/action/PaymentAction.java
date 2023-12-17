@@ -1,6 +1,7 @@
 package com.winnie.action;
 
 import com.winnie.app.bean.PaymentBeanI;
+import com.winnie.app.model.entity.House;
 import com.winnie.app.model.entity.Payment;
 import com.winnie.app.model.entity.Tenant;
 
@@ -38,9 +39,14 @@ public class PaymentAction extends BaseAction {
 
 
         public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-            paymentBean.add(serializeForm(Payment.class, req.getParameterMap()));
 
+
+            Payment payment= serializeForm(Payment.class,req.getParameterMap());
+
+            Long paymentId = Long.valueOf(req.getParameter("modelName"));
+            payment.setId(paymentId);
             try {
+                paymentBean.add(payment);
                 renderPage(req, resp, 3, Payment.class,paymentBean.list(new Payment()));
             } catch (ServletException e) {
                 throw new RuntimeException(e);

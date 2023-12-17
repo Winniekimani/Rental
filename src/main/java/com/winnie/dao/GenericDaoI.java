@@ -20,6 +20,8 @@ public interface GenericDaoI <T> extends Serializable {
 
     void delete(Class<?> klass, Long id);
 
+    T update(T entity);
+
     T getById(Class<T> type, Long id);
 
     /*  T edit(T entity,Long id);*/

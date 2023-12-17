@@ -37,12 +37,11 @@ public class HouseAction extends BaseAction {
 
         House house = serializeForm(House.class,req.getParameterMap());
 
+        Long houseId = Long.valueOf(req.getParameter("modelName"));
+        house.setId(houseId);
+
         try {
             houseBean.add(house);
-            // Add a JavaScript alert for a successful addition
-            String alertScript = "<script>alert('House added successfully!');</script>";
-            resp.getWriter().write(alertScript);
-
             renderPage(req,resp,1, House.class, houseBean.list(new House()));
         } catch (Exception e) {
             throw new RuntimeException(e);

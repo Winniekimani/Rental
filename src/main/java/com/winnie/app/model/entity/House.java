@@ -28,7 +28,6 @@ public class House extends BaseEntity{
     @OneToMany(mappedBy = "house", cascade = CascadeType.ALL)
     private List<Tenant> tenants;
 
-
     @OneToMany(mappedBy = "house", cascade = CascadeType.ALL)
     private List<Booking> bookings;
 
