@@ -6,6 +6,8 @@ import com.winnie.app.View.html.WinnieHtmlFormField;
 import com.winnie.app.View.html.WinnieHtmlForms;
 import com.winnie.app.View.html.WinnieTableColHeader;
 import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.Formula;
 
 
@@ -17,10 +19,11 @@ import java.util.List;
 
 @Entity
 @Table(name="tenant")
-@HtmlTable(name = "Tenant",addUrl = "./tenant?action=add",deleteUrl = "./tenant?deleteTenantId=",editUrl = "./edit-tenant?editTenantId=")
+@HtmlTable(name = "Tenant",addUrl = "./tenant?action=add",deleteUrl = "./tenant?deleteTenantId=",editUrl = "./tenant?action=update&editTenantId=")
 @WinnieHtmlForms(label = "Tenants")
+@DynamicInsert
+@DynamicUpdate
 public class Tenant extends BaseEntity{
-
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "house_id")
@@ -34,7 +37,7 @@ public class Tenant extends BaseEntity{
     private List<Booking> bookings;
 
     @WinnieHtmlFormField(label = "House ",selectList = "houses", selectValue = "id", selectValueInSuper=true, selectDisplay = "houseName")
-    @Formula("(House_id)")
+    @Formula("(house_id)")
     private Long houseId;
 
     @WinnieTableColHeader(header = "House")

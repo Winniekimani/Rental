@@ -3,6 +3,7 @@ package com.winnie.app.bean;
 
 import com.winnie.app.model.entity.AuditLog;
 import com.winnie.app.model.entity.House;
+import com.winnie.app.model.entity.Tenant;
 
 
 import javax.ejb.Remote;
@@ -74,6 +75,7 @@ public class HouseBean extends GenericBean<House> implements HouseBeanI, Seriali
                 .createQuery("FROM House h WHERE h.houseStatus= 'available'", House.class)
                 .getResultList();
     }
+
 
     @Override
     public House getById(Long id) {

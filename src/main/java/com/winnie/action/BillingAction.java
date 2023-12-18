@@ -1,12 +1,11 @@
 package com.winnie.action;
 
+import com.winnie.app.View.html.HtmlComponent;
 import com.winnie.app.bean.BillingBeanI;
-import com.winnie.app.bean.HouseBeanI;
 import com.winnie.app.bean.TenantBeanI;
 import com.winnie.app.model.entity.Billing;
 import com.winnie.app.model.entity.House;
-import com.winnie.app.model.entity.Payment;
-import com.winnie.app.model.entity.Tenant;
+
 
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -16,7 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet("/billing")
 public class BillingAction extends BaseAction {
@@ -31,6 +29,19 @@ public class BillingAction extends BaseAction {
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession httpSession = req.getSession();
 
+
+        String action =req.getParameter("action");
+        if (action!=null && action.equals("update")) {
+            String editBillingId = req.getParameter("editBillingId");
+            if (editBillingId != null && !editBillingId .isEmpty()) {
+                Long billingId = Long.valueOf(editBillingId);
+                Billing billing = billingBean.find(Billing.class,billingId);
+                billing.setId(billingId);
+                req.setAttribute("content", HtmlComponent.editHtmlForm(Billing.class,billing));
+                RequestDispatcher dispatcher=req.getRequestDispatcher("./app/index.jsp");
+                dispatcher.forward(req,resp);
+            }
+        }
 
         String deleteBillingId = req.getParameter("deleteBillingId");
 
@@ -55,18 +66,16 @@ public class BillingAction extends BaseAction {
 
        Billing billing = serializeForm(Billing.class,req.getParameterMap());
 
-        Long billingId = Long.valueOf(req.getParameter("modelName"));
-        billing.setId(billingId);
+        Long billingId = Long.valueOf(req.getParameter("id"));
+       /* billing.setId(billingId);*/
 
-        System.out.println("billing = " + billing);
         try {
 
             billingBean.add(billing);
 
         } catch (Exception e) {
             throw new RuntimeException(e);
-        }/*
-        renderPage(req,resp,4, Billing.class, billingBean.list(Billing.class));*/
+        }
 
         resp.sendRedirect("./billing");
 

@@ -11,7 +11,7 @@ import java.util.Date;
 @Entity
 @Table(name = "bills")
 @WinnieHtmlForms(label = "Bills")
-@HtmlTable(name = "Bill",addUrl = "./billing?action=add",deleteUrl = "./billing?deleteBillingId=",editUrl = "./edit-billing?editBillingId=")
+@HtmlTable(name = "Bill",addUrl = "./billing?action=add",deleteUrl = "./billing?deleteBillingId=",editUrl = "./billing?action=update&editBillingId=")
 public class Billing extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.EAGER)

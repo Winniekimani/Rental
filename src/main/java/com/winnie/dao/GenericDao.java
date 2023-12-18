@@ -85,6 +85,7 @@ public class GenericDao <T> implements GenericDaoI<T> {
     }
 
 
+/*
     @Override
     public void edit(Object entity, String columnName, Object columnValue) {
         try {
@@ -132,6 +133,7 @@ public class GenericDao <T> implements GenericDaoI<T> {
             throw new RuntimeException(e);
         }
     }
+*/
 
     @Override
     public void delete(Class<?> klass, Long id) {

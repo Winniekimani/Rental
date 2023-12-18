@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 
+
 @Stateless
 public class BillingBean extends GenericBean<Billing> implements BillingBeanI,Serializable {
 
@@ -67,6 +68,12 @@ public class BillingBean extends GenericBean<Billing> implements BillingBeanI,Se
 
 
     }
+
+    @Override
+    public Billing find(Class<Billing> billingClass, Long billingId) {
+        return em.find(Billing.class,billingId);
+    }
+
 
 
 }

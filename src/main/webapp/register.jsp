@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default login">
-            <div class="panel-heading logintitle">Register As Tenant</div>
+            <div class="panel-heading logintitle">Registration Page</div>
             <div class="panel-body">
                 <form class="form-horizontal center-block" role="form" action="./user" method="POST">
                     <input type="hidden" name="action" value="register">
@@ -64,7 +64,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-7 col-sm-offset-2" style="margin:0 0 0 40%">
-                            <button type="submit" class="btn btn-primary">RegisterTenant Now</button>
+                            <button type="submit" class="btn btn-primary">Register User</button>
                         </div>
                     </div>
                     <br><Br><Br>

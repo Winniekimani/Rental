@@ -106,13 +106,22 @@
                             <div class="modal-body">
                                 <div class="panel panel-default">
                                     <div class="panel-body">
-                                        <form class="form-horizontal" action="./tenant-edit-as-tenant"
+                                        <form class="form-horizontal" action="./tenant-user-update"
                                               method="post">
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Tenant Id</label>
                                                 <div class="col-sm-10">
                                                     <input type="number" class="form-control" name="id"
                                                            placeholder="Tenant ID" value="${tenant.id}"
+                                                           readonly="readonly">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">House ID</label>
+                                                <div class="col-sm-10">
+                                                    <input type="number" class="form-control" name="houseId"
+                                                           placeholder="houseId" value="${tenant.houseId}"
                                                            readonly="readonly">
                                                 </div>
                                             </div>
@@ -149,6 +158,31 @@
                                                 </div>
                                             </div>
 
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Start Date</label>
+                                                <div class="col-sm-10">
+                                                    <input type="date" class="form-control" name="leaseStartDate"
+                                                           placeholder="Tenant ID" value="${tenant.leaseStartDate}"
+                                                           readonly="readonly">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">End Date</label>
+                                                <div class="col-sm-10">
+                                                    <input type="date" class="form-control" name="leaseEndDate"
+                                                           placeholder="Tenant ID" value="${tenant.leaseEndDate}"
+                                                           readonly="readonly">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">Rent Amount</label>
+                                                <div class="col-sm-10">
+                                                    <input type="number" class="form-control" name="rentAmount"
+                                                           placeholder="Tenant ID" value="${tenant.rentAmount}"
+                                                           readonly="readonly">
+                                                </div>
+                                            </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-default"
                                                         data-dismiss="modal">Close

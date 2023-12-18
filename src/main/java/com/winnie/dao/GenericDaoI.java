@@ -15,8 +15,8 @@ public interface GenericDaoI <T> extends Serializable {
     List<Object[]> nativeQuery(String sql);
 
     T add(T entity);
-
-    void edit(Object entity, String columnName, Object columnValue);
+/*
+    void edit(Object entity, String columnName, Object columnValue);*/
 
     void delete(Class<?> klass, Long id);
 

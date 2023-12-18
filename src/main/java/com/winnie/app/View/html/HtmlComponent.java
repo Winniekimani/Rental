@@ -243,7 +243,7 @@ public class HtmlComponent implements Serializable {
         String htmlForm = "<div class=\"login-container\">" +
                 "<br/>Edit " + modelClass.getSimpleName() + "<br/>" +
                 "<form action=\"./" + modelClass.getSimpleName().toLowerCase() + "\" method=\"post\">"+
-                "<input type= 'hidden' id='modelId' name='modelName' value='"+(Long)id+"'/>";
+                "<input type= 'hidden' id='id' name='id' value='"+id+"'/>";
 
 
 

@@ -70,7 +70,12 @@
                                         <a href="javascript:void(0);" onclick="confirmBooking(${house.id})">Book House</a>
                                     </li>
                                     <li role="presentation"><a href="#addpanelBodyItem">Pay for the House</a></li>
+
+                                  <%--  <li role="presentation">
+                                        <a href="<c:url value='/booking/?houseId=${house.id}'/>">Book House</a>
+                                    </li>--%>
 <%--
+
                                     <li role="presentation"><a href="#addpanelBodyItem">Book House</a></li>
 
                                     <li role="presentation"><a href="#addpanelBodyItem">Pay for the House</a></li>--%>
@@ -98,6 +103,8 @@
 
                                 // Display the confirmation message directly
                                 link.parentNode.innerHTML += '<p style="color: green;">Booking confirmed. Thank you!</p>';
+
+                                window.location.href = "<c:url value='/booking/'/>?houseId=" + houseId;
                             }
 
                             // Perform AJAX request to update the status in the database

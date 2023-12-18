@@ -6,6 +6,8 @@ import com.winnie.utility.TransactIonNoGenerator;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -13,6 +15,8 @@ import java.util.Date;
 @Stateless
 public class PaymentBean extends GenericBean<Payment> implements PaymentBeanI, Serializable {
 
+    @PersistenceContext
+    EntityManager em;
     @Inject
    /* @PaymentNo*/
     @Named("payment")
@@ -29,5 +33,12 @@ public class PaymentBean extends GenericBean<Payment> implements PaymentBeanI, S
 
         return getDao().add(payment);
 
+    }
+
+
+
+    @Override
+    public Payment find(Class<Payment> paymentClass, Long paymentId) {
+        return em.find(Payment.class,paymentId);
     }
 }

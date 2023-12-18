@@ -13,7 +13,7 @@ public interface GenericBeanI <T> extends Serializable {
 
 
   /*  T edit(T entity,Long id);*/
-
-    void edit(Object entity, String columnName, Object columnValue);
+/*
+    void edit(Object entity, String columnName, Object columnValue);*/
 
 }

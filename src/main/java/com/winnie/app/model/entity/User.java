@@ -23,6 +23,9 @@ public class User extends BaseEntity {
     @Transient
     private String confirmPassword;
 
+    @Transient
+    private String oldPassword;
+
   /*  @Transient*/
     @Column(name="userRole")
     private String userRole;
@@ -73,6 +76,14 @@ public class User extends BaseEntity {
 
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
+    }
+
+    public String getOldPassword() {
+        return oldPassword;
+    }
+
+    public void setOldPassword(String oldPassword) {
+        this.oldPassword = oldPassword;
     }
 
     public String getUserRole() {

@@ -1,6 +1,7 @@
 package com.winnie.app.model.entity;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
@@ -18,6 +19,23 @@ public class Booking  extends BaseEntity {
     @Column(name = "booking_date", nullable = false)
     private Date bookingDate;
 
+
+    @Column(name="booked_house_id")
+    private String houseId;
+
+
+    @Column(name="booked_house_name")
+    private String houseName;
+
+    @Column(name="booked_house_type")
+    @Enumerated(value = EnumType.STRING)
+    private HouseType houseType;
+
+    @Column(name="booked_house_location")
+    private String houseLocation;
+
+    @Column(name="booked_house_price")
+    private BigDecimal housePrice;
     public Booking() {
     }
 
@@ -49,5 +67,45 @@ public class Booking  extends BaseEntity {
 
     public void setBookingDate(Date bookingDate) {
         this.bookingDate = bookingDate;
+    }
+
+    public String getHouseId() {
+        return houseId;
+    }
+
+    public void setHouseId(String houseId) {
+        this.houseId = houseId;
+    }
+
+    public String getHouseName() {
+        return houseName;
+    }
+
+    public void setHouseName(String houseName) {
+        this.houseName = houseName;
+    }
+
+    public HouseType getHouseType() {
+        return houseType;
+    }
+
+    public void setHouseType(HouseType houseType) {
+        this.houseType = houseType;
+    }
+
+    public String getHouseLocation() {
+        return houseLocation;
+    }
+
+    public void setHouseLocation(String houseLocation) {
+        this.houseLocation = houseLocation;
+    }
+
+    public BigDecimal getHousePrice() {
+        return housePrice;
+    }
+
+    public void setHousePrice(BigDecimal housePrice) {
+        this.housePrice = housePrice;
     }
 }

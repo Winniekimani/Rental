@@ -50,12 +50,12 @@ public class GenericBean<T> implements GenericBeanI<T> {
         genericDao.delete(klass,id);
     }
 
-    @Override
+   /* @Override
     public void edit(Object entity, String columnName, Object columnValue) {
 
         genericDao.setEm(em);
         genericDao.edit(entity,columnName,columnValue);
-    }
+    }*/
 
     @PostConstruct
     public void initialize() {

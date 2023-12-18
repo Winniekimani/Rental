@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 @Entity
 @Table(name="payment")
-@HtmlTable(name = "Payment",addUrl = "./payment?action=add",deleteUrl = "./payment?deletePaymentId=",editUrl = "./edit-payment?editPaymentId=")
+@HtmlTable(name = "Payment",addUrl = "./payment?action=add",deleteUrl = "./payment?deletePaymentId=",editUrl = "./payment?action=update&editPaymentId=")
 @WinnieHtmlForms(label = "Payments" )
 public class Payment extends BaseEntity {
 

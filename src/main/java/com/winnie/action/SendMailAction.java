@@ -1,7 +1,4 @@
 package com.winnie.action;
-
-import com.winnie.app.bean.TenantBeanI;
-import com.winnie.app.model.entity.Tenant;
 import com.winnie.utility.Email;
 
 import java.io.File;
