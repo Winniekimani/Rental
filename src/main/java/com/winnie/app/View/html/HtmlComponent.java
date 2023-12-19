@@ -175,22 +175,22 @@ public class HtmlComponent implements Serializable {
                 }
                 htmlForm += "</select><br>";
             } else if (fieldType == String.class) {
-                htmlForm += "<input type=\"text\" id=\"" + (StringUtils.isBlank(formField.id()) ? fieldName : formField.id())
+                htmlForm += "<input type=\"text\" maxlength=\"200\" id=\"" + (StringUtils.isBlank(formField.id()) ? fieldName : formField.id())
                         + "\" name=\""
                         + (StringUtils.isBlank(formField.name()) ? fieldName : formField.name()) + "\"><br>";
             } else if (fieldType == int.class || fieldType == Integer.class || fieldType == double.class || fieldType == Double.class) {
-                htmlForm += "<input type=\"number\" step=\"any\" id=\"" + (StringUtils.isBlank(formField.id()) ? fieldName : formField.id())
+                htmlForm += "<input type=\"number\" min=\"0\" maxlength=\"20\" step=\"any\" id=\"" + (StringUtils.isBlank(formField.id()) ? fieldName : formField.id())
                         + "\" name=\"" + (StringUtils.isBlank(formField.name()) ? fieldName : formField.name()) + "\"><br>";
             } else if (fieldType == Date.class) {
-                htmlForm += "<input type=\"date\" id=\"" + (StringUtils.isBlank(formField.id()) ? fieldName : formField.id())
+                htmlForm += "<input type=\"date\" min=\"2023-12-18\" id=\"" + (StringUtils.isBlank(formField.id()) ? fieldName : formField.id())
                         + "\" name=\"" + (StringUtils.isBlank(formField.name()) ? fieldName : formField.name()) + "\"><br>";
             } else if (fieldType == BigDecimal.class) {
-                htmlForm += "<input type=\"number\" step=\"any\" id=\"" + (StringUtils.isBlank(formField.id()) ? fieldName : formField.id())
+                htmlForm += "<input type=\"number\" min=\"0\" maxlength=\"50\" step=\"any\" id=\"" + (StringUtils.isBlank(formField.id()) ? fieldName : formField.id())
                         + "\" name=\"" + (StringUtils.isBlank(formField.name()) ? fieldName : formField.name()) + "\"><br><br>";
 
             }else if(fieldType== Long.class){
 
-                htmlForm += "<input type=\"number\" id=\"" + (StringUtils.isBlank(formField.id()) ? fieldName : formField.id())
+                htmlForm += "<input type=\"number\" min=\"0\" maxlength=\"50\" id=\"" + (StringUtils.isBlank(formField.id()) ? fieldName : formField.id())
                         + "\" name=\""
                         + (StringUtils.isBlank(formField.name()) ? fieldName : formField.name()) + "\"><br>";
             }

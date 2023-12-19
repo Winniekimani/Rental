@@ -29,7 +29,8 @@
                     <table class="table table-bordered table-hover">
                         <tr class="active">
                             <td>Id</td>
-                            <td>Name</td>
+                            <td>First Name</td>
+                            <td>Last Name</td>
                             <td>Email</td>
                             <td>Phone</td>
                             <td>Lease Start Date</td>
@@ -52,6 +53,9 @@
                             </td>
                             <td>
                                 ${tenant.firstName}
+                            </td>
+                            <td>
+                                ${tenant.lastName}
                             </td>
                             <td>
                                 ${tenant.email}
@@ -145,7 +149,7 @@
                                                 <label class="col-sm-2 control-label">Email</label>
                                                 <div class="col-sm-10">
                                                     <input type="email" class="form-control" name="email"
-                                                           value="${tenant.email}" placeholder="Email">
+                                                           value="${tenant.email}" placeholder="email">
                                                 </div>
                                             </div>
 

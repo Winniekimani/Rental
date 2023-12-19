@@ -10,7 +10,7 @@ public class CommonMethods {
         HttpSession session = req.getSession();
         if (session.getAttribute("username") == null) { //checks if the previous session expired
             session.invalidate();
-            resp.sendRedirect("./login.jsp");
+            resp.sendRedirect("./");
             return true;
         } else {
             return false;

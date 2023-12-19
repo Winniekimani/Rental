@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/billing")
 public class BillingAction extends BaseAction {
@@ -51,9 +52,8 @@ public class BillingAction extends BaseAction {
             billingBean.delete(Billing.class, Long.valueOf(deleteBillingId));
 
         }
-/*
         List<Billing> billingList = billingBean.getBillingListByEmail("email");
-        req.setAttribute("billingList", billingList); // Set the billing list in the request scope*/
+        req.setAttribute("billingList", billingList); // Set the billing list in the request scope
 
 
         renderPage(req,resp,4, Billing.class, billingBean.list(new Billing()));
@@ -66,10 +66,25 @@ public class BillingAction extends BaseAction {
 
        Billing billing = serializeForm(Billing.class,req.getParameterMap());
 
-        Long billingId = Long.valueOf(req.getParameter("id"));
-       /* billing.setId(billingId);*/
 
         try {
+
+            try {
+                // Check if the "id" parameter is present
+                String idParameter = req.getParameter("id");
+                if (idParameter != null) {
+                    // Parse the "id" parameter to Long
+                    Long houseId = Long.valueOf(idParameter);
+                    // Rest of your code...
+                } else {
+                    // Handle the case when "id" is not present in the request
+                    // For example, you might set a default value or log a message
+                    System.err.println("Error: 'id' parameter is missing or null");
+                }
+            } catch (NumberFormatException e) {
+                // Handle the NumberFormatException, e.g., log an error message
+                System.err.println("Error parsing 'id' parameter to Long: " + e.getMessage());
+            }
 
             billingBean.add(billing);
 

@@ -1,10 +1,7 @@
 package com.winnie.app.model.entity;
 
-import com.winnie.database.helper.DbTable;
-import com.winnie.database.helper.DbTableColumn;
-
 import javax.persistence.*;
-import java.io.Serializable;
+
 
 
 @Entity

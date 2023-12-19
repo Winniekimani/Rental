@@ -12,7 +12,7 @@ public class HomeAction extends BaseAction {
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
         RequestDispatcher dispatcher = req.getRequestDispatcher("./home.jsp");
-       dispatcher.forward(req,resp);
+        dispatcher.forward(req,resp);
 
     }
 

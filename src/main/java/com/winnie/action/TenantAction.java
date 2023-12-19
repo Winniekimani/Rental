@@ -4,6 +4,7 @@ import com.winnie.app.View.html.HtmlComponent;
 import com.winnie.app.bean.BillingBeanI;
 import com.winnie.app.bean.TenantBeanI;
 import com.winnie.app.model.entity.Billing;
+import com.winnie.app.model.entity.House;
 import com.winnie.app.model.entity.Tenant;
 
 import javax.ejb.EJB;
@@ -44,37 +45,76 @@ public class TenantAction extends BaseAction {
             }
         }
 
+
+        try {
+            String deleteTenantId = req.getParameter("deleteTenantId");
+            if (deleteTenantId != null && !deleteTenantId.isEmpty()) {
+                Long tenantId = Long.valueOf(deleteTenantId);
+
+                // Attempt to delete Tenant
+                try {
+                    tenantBean.delete(Tenant.class, tenantId);
+                    resp.sendRedirect("./tenant");
+                } catch (Exception ex) {
+                    ex.printStackTrace(); // Print the exception stack trace
+                    req.setAttribute("error", "Error deleting tenant: " + ex.getMessage());
+                    renderPage(req, resp, 2, Tenant.class, tenantBean.list(new Tenant()));
+                }
+            } else {
+                renderPage(req, resp, 2, Tenant.class, tenantBean.list(new Tenant()));
+            }
+        } catch (Exception e) {
+            throw new ServletException("Error processing request", e);
+        }
+
+
+/*
+
         String deleteTenantId = req.getParameter("deleteTenantId");
 
         if (deleteTenantId != null && !deleteTenantId.isEmpty()) {
             Long tenantId = Long.valueOf(deleteTenantId);
             tenantBean.delete(Tenant.class, tenantId);
         }
+        renderPage(req, resp, 2, Tenant.class, tenantBean.list(new Tenant()));*/
 
 
-        renderPage(req, resp, 2, Tenant.class, tenantBean.list(new Tenant()));
+
 
 
     }
 
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-
+        Tenant tenant = serializeForm(Tenant.class, req.getParameterMap());
 
 
         try {
 
-            Tenant tenant = serializeForm(Tenant.class, req.getParameterMap());
 
-            Long tenantId = Long.valueOf(req.getParameter("id"));
-            tenant.setId(tenantId);
-            tenant.setHouseId(tenant.getHouseId());
-            System.out.println("new tenant = " + tenant);
-            /*// Add the tenant and retrieve the added tenant with generated ID
-            tenant = tenantBean.add(tenant);*/
 
-          /*  // Retrieve the updated tenant from the database
-            tenant = tenantBean.tenantByEmail(tenant.getEmail());*/
+            try {
+                // Check if the "id" parameter is present
+                String idParameter = req.getParameter("id");
+                if (idParameter != null) {
+                    // Parse the "id" parameter to Long
+                    Long houseId = Long.valueOf(idParameter);
+                    // Rest of your code...
+                } else {
+                    // Handle the case when "id" is not present in the request
+                    // For example, you might set a default value or log a message
+                    System.err.println("Error: 'id' parameter is missing or null");
+                }
+            } catch (NumberFormatException e) {
+                // Handle the NumberFormatException, e.g., log an error message
+                System.err.println("Error parsing 'id' parameter to Long: " + e.getMessage());
+            }
+
+            // Add the tenant and retrieve the added tenant with generated ID
+            tenant = tenantBean.add(tenant);
+
+            // Retrieve the updated tenant from the database
+            tenant = tenantBean.tenantByEmail(tenant.getEmail());
 
 
             List<Billing> billingList = billingBean.getBillingListByEmail(tenant.getEmail());

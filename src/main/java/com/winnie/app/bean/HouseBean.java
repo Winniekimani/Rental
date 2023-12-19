@@ -3,7 +3,6 @@ package com.winnie.app.bean;
 
 import com.winnie.app.model.entity.AuditLog;
 import com.winnie.app.model.entity.House;
-import com.winnie.app.model.entity.Tenant;
 
 
 import javax.ejb.Remote;
@@ -66,10 +65,8 @@ public class HouseBean extends GenericBean<House> implements HouseBeanI, Seriali
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
-
     }
 
-    // This method retrieves a list of available houses
     public List<House> listAvailableHouses() {
         return getDao().getEm()
                 .createQuery("FROM House h WHERE h.houseStatus= 'available'", House.class)

@@ -12,9 +12,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Date;
 
-@WebServlet("/booking/*")
+
+@WebServlet("/book-house")
 public class BookingAction extends BaseAction{
 
     @EJB
@@ -24,26 +24,34 @@ public class BookingAction extends BaseAction{
     private HouseBeanI houseBean;
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
+        System.out.println(" \nThis worked 1");
+        Booking  booking = serializeForm(Booking.class, req.getParameterMap());
 
-
-        Booking  booking = serializeForm(Booking.class,req.getParameterMap());
-
-        // Get houseId from the request parameter
         Long houseId = Long.parseLong(req.getParameter("houseId"));
 
-        // Perform booking confirmation logic
+        System.out.println(" \nThis worked");
         House house = houseBean.getById(houseId);
-        Tenant tenant = (Tenant) req.getSession().getAttribute("tenant");
-        Date bookingDate = new Date();  // You may want to customize the booking date logic
 
-        booking = new Booking(house, tenant, bookingDate);
+        System.out.println("house Id" + house.getId());
+        System.out.println("Tenant " + req.getSession().getAttribute("tenant"));
+        Tenant tenant = (Tenant) req.getSession().getAttribute("tenant");
+
+        System.out.println("Tenant Id \t"+tenant.getId());
+        System.out.println("Tenant email \t"+tenant.getEmail());
+        System.out.println("Tenant houseId \t" + tenant.getHouseId());
+
+
+
+        booking = new Booking(house, tenant);
         bookingBean.addBooking(booking);
 
-        // Update the house status to 'Booked'
         house.setHouseStatus("Booked");
         houseBean.update(house);
+        resp.sendRedirect("./vacant_houses.jsp");
 
+    }
 
-
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println(" \nThis worked 2");
     }
 }

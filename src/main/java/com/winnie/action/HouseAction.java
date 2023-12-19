@@ -2,6 +2,7 @@ package com.winnie.action;
 import com.winnie.app.View.html.HtmlComponent;
 import com.winnie.app.bean.HouseBeanI;
 import com.winnie.app.model.entity.House;
+import com.winnie.app.model.entity.Payment;
 
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -11,6 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet("/house/*")
 public class HouseAction extends BaseAction {
@@ -33,7 +37,7 @@ public class HouseAction extends BaseAction {
             }
         }
 
-            String deleteHouseId = req.getParameter("deleteHouseId");
+        String deleteHouseId = req.getParameter("deleteHouseId");
         if (deleteHouseId != null && !deleteHouseId.isEmpty()) {
             Long houseId = Long.valueOf(deleteHouseId);
             houseBean.delete(House.class, houseId);
@@ -43,30 +47,49 @@ public class HouseAction extends BaseAction {
 
 
     }
-    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-
-
-
-        House house = serializeForm(House.class,req.getParameterMap());
-
-        Long houseId =  Long.valueOf(req.getParameter("id"));
-        house.setId(houseId);
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) {
+       House house = serializeForm(House.class,req.getParameterMap());
 
         try {
+
+
+            try {
+                // Check if the "id" parameter is present
+                String idParameter = req.getParameter("id");
+                if (idParameter != null) {
+                    // Parse the "id" parameter to Long
+                    Long houseId = Long.valueOf(idParameter);
+
+                    // Rest of your code...
+                } else {
+                    // Handle the case when "id" is not present in the request
+                    // For example, you might set a default value or log a message
+                    System.err.println("Error: 'id' parameter is missing or null");
+                }/*
+                Long price = Long.parseLong(req.getParameter("housePrice"));
+                if (price < 1 )
+                    errors.add("Price cannot be less than 1");*/
+
+
+            } catch (NumberFormatException e) {
+                // Handle the NumberFormatException, e.g., log an error message
+                System.err.println("Error parsing 'id' parameter to Long: " + e.getMessage());
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+
             houseBean.add(house);
-            renderPage(req,resp,1, House.class, houseBean.list(new House()));
-        } catch (Exception e) {
+            renderPage(req, resp, 1, House.class,houseBean.list(new House()));
+        } catch (ServletException | IOException e) {
             throw new RuntimeException(e);
         }
 
-
-
+    }
 
     }
 
 
 
-}
+
 
 

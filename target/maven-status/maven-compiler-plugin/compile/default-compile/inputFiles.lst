@@ -18,6 +18,7 @@
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/View/html/WinnieTableColHeader.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/bean/HouseBean.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/model/entity/User.java
+/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/model/entity/HouseAvailability.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/bean/TenantBeanI.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/utility/EncryptSha256.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/utility/PaymentNoGenerator.java
@@ -29,7 +30,6 @@
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/model/entity/Billing.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/bean/PaymentBean.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/rest/api/BaseRestApi.java
-/home/winnie/java-ee-training/Rental/src/main/java/com/winnie/database/MysqlDatabase.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/model/entity/HouseType.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/app/model/entity/Tenant.java
 /home/winnie/java-ee-training/Rental/src/main/java/com/winnie/utility/cdievents/BillingEmailObserver.java

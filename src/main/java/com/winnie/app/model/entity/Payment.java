@@ -16,10 +16,6 @@ import java.util.Date;
 @WinnieHtmlForms(label = "Payments" )
 public class Payment extends BaseEntity {
 
-  /*  @WinnieTableColHeader(header = "PaymentId")
-    @WinnieHtmlFormField(label = "Id Payment")
-    @DbTableColumn(name="id")
-    private String paymentId;*/
     @WinnieTableColHeader(header = "PaymentAmount")
     @WinnieHtmlFormField(label = "Amount to Pay")
     @Column(name="amount")

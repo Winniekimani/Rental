@@ -58,10 +58,28 @@ public class PaymentAction extends BaseAction {
 
 
             Payment payment= serializeForm(Payment.class,req.getParameterMap());
-
-            Long paymentId = Long.valueOf(req.getParameter("id"));
+/*
+            Long paymentId = Long.valueOf(req.getParameter("id"));*/
            /* payment.setId(paymentId);*/
             try {
+
+
+                try {
+                    // Check if the "id" parameter is present
+                    String idParameter = req.getParameter("id");
+                    if (idParameter != null) {
+                        // Parse the "id" parameter to Long
+                        Long houseId = Long.valueOf(idParameter);
+                        // Rest of your code...
+                    } else {
+                        // Handle the case when "id" is not present in the request
+                        // For example, you might set a default value or log a message
+                        System.err.println("Error: 'id' parameter is missing or null");
+                    }
+                } catch (NumberFormatException e) {
+                    // Handle the NumberFormatException, e.g., log an error message
+                    System.err.println("Error parsing 'id' parameter to Long: " + e.getMessage());
+                }
                 paymentBean.add(payment);
                 renderPage(req, resp, 3, Payment.class,paymentBean.list(new Payment()));
             } catch (ServletException e) {

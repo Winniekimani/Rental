@@ -13,7 +13,6 @@ import org.hibernate.annotations.Formula;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -77,7 +76,7 @@ public class Tenant extends BaseEntity{
     private BigDecimal rentAmount;
 
 
-    @OneToMany(mappedBy = "tenant",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "tenant",fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<User> users ;
 
 
@@ -91,8 +90,6 @@ public class Tenant extends BaseEntity{
     }
 
 
-
-    // Add this method to set billings
     public void setBillings(List<Billing> billings) {
         this.billings = billings;
     }

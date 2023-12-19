@@ -51,12 +51,15 @@ public class LoginAction extends BaseAction {
 
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        System.out.println(">>>>>>>>>>>>>>>>");
+
         User loginUser = serializeForm(User.class, req.getParameterMap());
 
 
         try {
             servletCtx.setAttribute("loginError", "");
             User userDetails = authBean.authenticate(loginUser);
+            System.out.println("user details " + userDetails);
 
             if (userDetails != null) {
 
@@ -65,22 +68,21 @@ public class LoginAction extends BaseAction {
                 httpSession.setAttribute("loggedIn", new Date().getTime() + "");
                 httpSession.setAttribute("username", loginUser.getUsername());
                 httpSession.setAttribute("activeMenu", 0);
-                System.out.println(loginUser.getUserRole());
+
+                Tenant tenant = tenantBean.tenantByEmail(userDetails.getEmail());
+                if (tenant != null) {
+                    httpSession.setAttribute("tenant", tenant);
+                }
+
                 if (userDetails.getUserRole().equals("tenant")) {
                     httpSession.setAttribute("email", userDetails.getEmail());
                     httpSession.setAttribute("tenantBean", tenantBean);
-                    Tenant tenant = tenantBean.tenantByEmail(userDetails.getEmail());
                     httpSession.setAttribute("billingBean", billingBean);
-
                     RequestDispatcher dispatcher = req.getRequestDispatcher("./tenant_page.jsp");
                     dispatcher.forward(req, resp);
                   /*  resp.sendRedirect("./tenant_page.jsp");*/
                 }
                     resp.sendRedirect("./home.jsp");
-
-
-
-
 
             }
         } catch (SQLException | RuntimeException e) {

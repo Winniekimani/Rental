@@ -57,6 +57,7 @@ com/winnie/app/bean/BillingBean.class
 com/winnie/rest/api/BillingRestApi.class
 com/winnie/action/TenantEditTenant.class
 com/winnie/action/UserAction.class
+com/winnie/app/model/entity/HouseAvailability.class
 com/winnie/app/bean/AuthBean.class
 com/winnie/app/View/html/WinnieTableColHeader.class
 com/winnie/utility/EncryptSha256.class
