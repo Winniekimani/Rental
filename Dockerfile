@@ -9,7 +9,8 @@ COPY . .
 RUN curl -o mysql-connector-java-8.0.17.jar https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.17/mysql-connector-java-8.0.17.jar
 #RUN mvn clean install -DskipTests -X
 
-
+# Build the project
+RUN mvn compile package
 FROM quay.io/wildfly/wildfly:26.1.3.Final-jdk17 AS deploy
 
 RUN rm /opt/jboss/wildfly/standalone/configuration/standalone.xml
