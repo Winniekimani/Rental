@@ -2,7 +2,7 @@ FROM maven:3.9.5-eclipse-temurin-17-alpine AS build
 LABEL authors=" "
 
 
-WORKDIR /appa
+WORKDIR /app
 
 COPY . .
 
