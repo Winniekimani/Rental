@@ -12,6 +12,7 @@ COPY . .
 FROM quay.io/wildfly/wildfly:26.1.3.Final-jdk17 AS deploy
 
 RUN rm /opt/jboss/wildfly/standalone/configuration/standalone.xml
+RUN curl -o mysql-connector-java-8.0.17.jar https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.17/mysql-connector-java-8.0.17.jar
 
 COPY --from=build /app/target/Rental.war /opt/jboss/wildfly/standalone/deployments/
 COPY --from=build /app/standalone.xml /opt/jboss/wildfly/standalone/configuration/
