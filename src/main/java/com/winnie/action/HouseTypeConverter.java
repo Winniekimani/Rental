@@ -5,7 +5,7 @@ import org.apache.commons.beanutils.ConversionException;
 import org.apache.commons.beanutils.Converter;
 
 public class HouseTypeConverter implements Converter {
-    @SuppressWarnings("unchecked")
+
     //this class converts a string to a housetype
     @Override
     public <T> T convert(Class<T> type, Object value) {

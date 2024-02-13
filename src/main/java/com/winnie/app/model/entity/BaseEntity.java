@@ -1,14 +1,12 @@
 package com.winnie.app.model.entity;
 
-import com.winnie.database.helper.DbTableColumn;
-import com.winnie.database.helper.DbTableId;
+//import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
-import java.lang.annotation.Inherited;
 
 
 @MappedSuperclass
@@ -19,11 +17,22 @@ public abstract class BaseEntity implements Serializable {
 
     private Long id;
 
+//    @JsonIgnore
+    private boolean isDeleted;
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
     }
 }

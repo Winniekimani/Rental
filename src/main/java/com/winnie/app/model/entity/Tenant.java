@@ -5,13 +5,13 @@ import com.winnie.app.View.html.HtmlTable;
 import com.winnie.app.View.html.WinnieHtmlFormField;
 import com.winnie.app.View.html.WinnieHtmlForms;
 import com.winnie.app.View.html.WinnieTableColHeader;
-import org.hibernate.annotations.BatchSize;
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.annotations.Formula;
+import org.hibernate.annotations.*;
 
 
 import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -76,7 +76,7 @@ public class Tenant extends BaseEntity{
     private BigDecimal rentAmount;
 
 
-    @OneToMany(mappedBy = "tenant",fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "tenant",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<User> users ;
 
 

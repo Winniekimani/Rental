@@ -110,7 +110,7 @@
                             <div class="modal-body">
                                 <div class="panel panel-default">
                                     <div class="panel-body">
-                                        <form class="form-horizontal" action="./tenant-user-update"
+                                        <form class="form-horizontal" action=""
                                               method="post">
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Tenant Id</label>
@@ -134,14 +134,14 @@
                                                 <label class="col-sm-2 control-label">FirstName</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" class="form-control" name="firstName"
-                                                           value="${tenant.firstName}" placeholder="Name">
+                                                           value="${tenant.firstName}" placeholder="Name" readonly="readonly">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">LastName</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" class="form-control" name="lastName"
-                                                           value="${tenant.lastName}}" placeholder="Name">
+                                                           value="${tenant.lastName}}" placeholder="Name" readonly="readonly">
                                                 </div>
                                             </div>
 
@@ -149,7 +149,7 @@
                                                 <label class="col-sm-2 control-label">Email</label>
                                                 <div class="col-sm-10">
                                                     <input type="email" class="form-control" name="email"
-                                                           value="${tenant.email}" placeholder="email">
+                                                           value="${tenant.email}" placeholder="email" readonly="readonly">
                                                 </div>
                                             </div>
 
@@ -158,7 +158,7 @@
                                                 <label class="col-sm-2 control-label">Phone</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" class="form-control" name="phone"
-                                                           value="${tenant.phone}" placeholder="Phone">
+                                                           value="${tenant.phone}" placeholder="Phone" readonly="readonly">
                                                 </div>
                                             </div>
 
@@ -191,7 +191,7 @@
                                                 <button type="button" class="btn btn-default"
                                                         data-dismiss="modal">Close
                                                 </button>
-                                                <input type="submit" class="btn btn-primary" value="Update"></button>
+                                                <input type="" class="btn btn-primary" value="Update"></button>
                                             </div>
                                         </form>
                                     </div>

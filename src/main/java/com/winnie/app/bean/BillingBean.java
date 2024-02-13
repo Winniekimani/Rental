@@ -20,7 +20,6 @@ public class BillingBean extends GenericBean<Billing> implements BillingBeanI,Se
     @PersistenceContext
     EntityManager em;
     @Inject
-  /*  @BillNo*/
     @Named("bill")
     private TransactIonNoGenerator txnNoGenerator;
 

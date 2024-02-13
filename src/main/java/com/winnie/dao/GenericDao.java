@@ -85,55 +85,6 @@ public class GenericDao <T> implements GenericDaoI<T> {
     }
 
 
-/*
-    @Override
-    public void edit(Object entity, String columnName, Object columnValue) {
-        try {
-            Class<?> clazz = entity.getClass();
-            if (!clazz.isAnnotationPresent(Entity.class)) {
-                throw new RuntimeException("Entity Annotation Does Not Exist");
-            }
-
-            List<Field> fields = new ArrayList<>(Arrays.asList(clazz.getSuperclass().getDeclaredFields()));
-            fields.addAll(Arrays.asList(clazz.getDeclaredFields()));
-
-            StringBuilder setBuilder = new StringBuilder();
-
-            for (Field field : fields) {
-                if (!field.isAnnotationPresent(Column.class) || field.isAnnotationPresent(Id.class)) {
-                    continue;
-                }
-
-                field.setAccessible(true);
-                Column column = field.getAnnotation(Column.class);
-
-                setBuilder.append(column.name()).append(" = :").append(field.getName()).append(", ");
-            }
-
-            // Remove the trailing comma and space from setBuilder
-            setBuilder.delete(setBuilder.length() - 2, setBuilder.length());
-
-            String jpqlQuery = "UPDATE " + clazz.getSimpleName() + " SET " + setBuilder +
-                    " WHERE " + columnName + " = :columnValue";
-
-            Query query = em.createQuery(jpqlQuery);
-
-            // Set parameters for SET clause
-            for (Field field : fields) {
-                if (field.isAnnotationPresent(Column.class) && !field.isAnnotationPresent(Id.class)) {
-                    query.setParameter(field.getName(), field.get(entity));
-                }
-            }
-
-            // Set parameter for WHERE clause (column value)
-            query.setParameter("columnValue", columnValue);
-
-            query.executeUpdate();
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
-    }
-*/
 
     @Override
     public void delete(Class<?> klass, Long id) {

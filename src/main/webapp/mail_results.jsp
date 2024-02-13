@@ -3,9 +3,6 @@
 
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix ="c" %>
 
-<%@ page import="com.winnie.app.View.toolbar.TopToolBar" %>
-<%@ page import="com.winnie.app.userbean.ActiveMenuBean" %>
-
 <%
     if (CommonMethods.IsSessionExpired(request, response)) {
                 return;

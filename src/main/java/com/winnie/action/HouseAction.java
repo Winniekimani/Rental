@@ -54,25 +54,17 @@ public class HouseAction extends BaseAction {
 
 
             try {
-                // Check if the "id" parameter is present
                 String idParameter = req.getParameter("id");
                 if (idParameter != null) {
-                    // Parse the "id" parameter to Long
                     Long houseId = Long.valueOf(idParameter);
 
-                    // Rest of your code...
+
                 } else {
-                    // Handle the case when "id" is not present in the request
-                    // For example, you might set a default value or log a message
                     System.err.println("Error: 'id' parameter is missing or null");
-                }/*
-                Long price = Long.parseLong(req.getParameter("housePrice"));
-                if (price < 1 )
-                    errors.add("Price cannot be less than 1");*/
+                }
 
 
             } catch (NumberFormatException e) {
-                // Handle the NumberFormatException, e.g., log an error message
                 System.err.println("Error parsing 'id' parameter to Long: " + e.getMessage());
             } catch (Exception e) {
                 throw new RuntimeException(e);

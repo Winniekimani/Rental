@@ -5,6 +5,7 @@ import com.winnie.app.bean.HouseBeanI;
 import com.winnie.app.model.entity.Billing;
 import com.winnie.app.model.entity.House;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -16,6 +17,7 @@ public class BillingRestApi extends BaseRestApi{
     private BillingBeanI billingBean;
 
     @Path("/add")
+    @RolesAllowed("LOGGED-IN")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -26,6 +28,7 @@ public class BillingRestApi extends BaseRestApi{
 
     }
     @Path("/list")
+    @RolesAllowed("LOGGED-IN")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response list(){
@@ -33,6 +36,7 @@ public class BillingRestApi extends BaseRestApi{
     }
 
     @Path("/delete/{id}")
+    @RolesAllowed("LOGGED-IN")
     @DELETE
     public Response delete(@PathParam("id") Long id){
         billingBean.delete(Billing.class,id);
@@ -41,6 +45,7 @@ public class BillingRestApi extends BaseRestApi{
     }
 
     @Path("/tenant/{id}")
+    @RolesAllowed("LOGGED-IN")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response tenantBill(@PathParam("id") Long id){

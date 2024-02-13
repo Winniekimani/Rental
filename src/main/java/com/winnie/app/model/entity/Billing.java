@@ -4,6 +4,8 @@ import com.winnie.app.View.html.WinnieHtmlFormField;
 import com.winnie.app.View.html.WinnieHtmlForms;
 import com.winnie.app.View.html.WinnieTableColHeader;
 import org.hibernate.annotations.Formula;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -16,6 +18,7 @@ public class Billing extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "tenant_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Tenant tenant;
 
 

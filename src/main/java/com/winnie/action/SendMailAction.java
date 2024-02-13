@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import javax.ejb.EJB;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -22,8 +21,7 @@ import javax.servlet.http.*;
         maxRequestSize = 1024 * 1024 * 50)              // 50MB
 public class SendMailAction extends HttpServlet {
 
-   /* @EJB
-    TenantBeanI tenantBean;*/
+
     private String host;
     private String port;
     private String user;
@@ -47,11 +45,6 @@ public class SendMailAction extends HttpServlet {
         HttpSession httpSession = request.getSession();
 
         List<File> uploadedFiles = saveUploadedFiles(request);
-
-       /* httpSession.setAttribute("tenantBean", tenantBean);*/
-
-      /*  // Retrieve the Tenant directly using the TenantBean
-        Tenant tenant = tenantBean.tenantByEmail(email);*/
         String recipient = request.getParameter("recipient");
         String subject = request.getParameter("subject");
         String content = request.getParameter("content");

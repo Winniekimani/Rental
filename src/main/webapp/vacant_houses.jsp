@@ -70,7 +70,7 @@
                                             class="glyphicon glyphicon-check" aria-hidden="true"> Book house</span></a>
                                 </td>
                                 <td>
-                                    <a href="#addpanelBodyItem"
+                                    <a href="./mpesa-action?housePrice=${house.housePrice}"
                                     <%--    onclick="return confirmBooking()"--%>
                                        class="btn btn-primary"><span class="glyphicon glyphicon-usd" aria-hidden="true"> Pay for the House</span></a>
                                 </td>

@@ -4,6 +4,7 @@ import com.winnie.app.bean.HouseBean;
 import com.winnie.app.bean.HouseBeanI;
 import com.winnie.app.model.entity.House;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -14,6 +15,7 @@ import javax.ws.rs.core.Response;
 public class HouseRestApi extends BaseRestApi{
     @EJB private HouseBeanI houseBean;
 
+    @RolesAllowed("LOGGED-IN")
     @Path("/add")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
@@ -26,6 +28,7 @@ public class HouseRestApi extends BaseRestApi{
     }
 
     @Path("/list")
+    @RolesAllowed("LOGGED-IN")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response list(){
@@ -33,6 +36,7 @@ public class HouseRestApi extends BaseRestApi{
     }
 
     @Path("/delete/{id}")
+    @RolesAllowed("LOGGED-IN")
     @DELETE
     public Response delete(@PathParam("id") Long id){
         houseBean.delete(House.class,id);

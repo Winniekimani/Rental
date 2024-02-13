@@ -25,7 +25,7 @@ public class House extends BaseEntity{
     public static final String HouseByType = "House.FindByType";
     public static final String HouseByLocation = "House.FindByLocation";
 
-    @OneToMany(mappedBy = "house", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "house", cascade = CascadeType.ALL)
     private List<Tenant> tenants;
 
     @OneToMany(mappedBy = "house", cascade = CascadeType.ALL)
@@ -65,7 +65,6 @@ public class House extends BaseEntity{
     @WinnieTableColHeader(header="HousePrice")
     @WinnieHtmlFormField(label="House Price")
     @Column(name="house_price")
-
     private BigDecimal housePrice;
 
 

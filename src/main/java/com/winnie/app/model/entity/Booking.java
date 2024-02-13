@@ -1,8 +1,9 @@
 package com.winnie.app.model.entity;
 
-import org.hibernate.annotations.Formula;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.util.Date;
 
 
@@ -14,6 +15,7 @@ public class Booking  extends BaseEntity {
     private House house;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "tenant_id", nullable = false)
     private Tenant tenant;
 

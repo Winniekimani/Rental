@@ -12,7 +12,6 @@ public interface HouseBeanI extends GenericBeanI<House>{
     House getById(Long id);
 
 
-    // Update method to update the house status
     void update(House house);
 }
 

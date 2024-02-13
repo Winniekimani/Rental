@@ -1,5 +1,4 @@
-<%@ page import="com.winnie.app.View.toolbar.TopToolBar" %>
-<%@ page import="com.winnie.app.userbean.ActiveMenuBean" %>
+
 <%@ page import="com.winnie.common.CommonMethods" %>
 
 
@@ -85,7 +84,6 @@
                         </div>
                     </div>
                 </div>
-                <!----------------   Send Email Tenant Ends   --------------->
 
                 <!----------------   Send Email Form General Start   --------------->
                 <div id="addpanelBodyItem" class="switchgroup">

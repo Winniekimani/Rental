@@ -3,8 +3,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 <%@ page isELIgnored="false" %>
-<%@ page import="com.winnie.app.View.toolbar.TopToolBar" %>
-<%@ page import="com.winnie.app.userbean.ActiveMenuBean" %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="com.winnie.listeners.SessionListener" %>

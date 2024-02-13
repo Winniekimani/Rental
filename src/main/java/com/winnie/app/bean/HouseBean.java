@@ -10,6 +10,8 @@ import javax.ejb.Stateless;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,10 +29,20 @@ public class HouseBean extends GenericBean<House> implements HouseBeanI, Seriali
     @Inject
     private Event<AuditLog> logger;
 
+    @PersistenceContext
+    EntityManager em;
 
-    public List<House> list() {
-        return super.list(new House());
+
+//    public List<House> list() {
+//        return super.list(new House());
+//    }
+   @Override
+    public List<House> list(House house) {
+        return getDao().getEm()
+                .createQuery("FROM House h WHERE h.isDeleted= false", House.class)
+                .getResultList();
     }
+
 
     @Override
     public House add(House house) {
@@ -80,11 +92,20 @@ public class HouseBean extends GenericBean<House> implements HouseBeanI, Seriali
     }
 
 
-    // Update method to update the house status
     @Override
     public void update(House house) {
-         getDao().update(house);
+        getDao().update(house);
     }
+
+    @Override
+    public void delete(Class<?> klass, Long id) {
+        House record = em.find(House.class, id);
+        if (record != null){
+            record.setDeleted(true);
+            em.merge(record);
+            }
+    }
+
 
 }
 

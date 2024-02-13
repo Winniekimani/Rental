@@ -2,9 +2,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page isELIgnored="false" %>
 
-<%@ page import="com.winnie.app.View.toolbar.TopToolBar" %>
-<%@ page import="com.winnie.app.userbean.ActiveMenuBean" %>
-
 <%@ include file="./main_content_header.jsp" %>
 <div class="row">
     <jsp:useBean id="toolbar" class="com.winnie.app.View.toolbar.TopToolBar" />

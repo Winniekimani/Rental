@@ -2,7 +2,6 @@ package com.winnie.action;
 
 import com.winnie.app.View.html.HtmlComponent;
 import com.winnie.app.bean.PaymentBeanI;
-import com.winnie.app.model.entity.House;
 import com.winnie.app.model.entity.Payment;
 
 import javax.ejb.EJB;

@@ -32,7 +32,7 @@ public class AuthFilter implements Filter {
             httpSession.invalidate();
 
             if (servletPath.equals("/login") || servletPath.equals("/changepwd")
-                    || servletPath.equals("/rest") || servletPath.equals("/user") || servletPath.contains(".jsp")) {
+                    || servletPath.contains("/rest") || servletPath.equals("/user") || servletPath.contains(".jsp")) {
                 filterChain.doFilter(servletRequest, servletResponse);
 
             } else {

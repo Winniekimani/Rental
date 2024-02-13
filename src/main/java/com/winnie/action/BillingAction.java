@@ -4,7 +4,6 @@ import com.winnie.app.View.html.HtmlComponent;
 import com.winnie.app.bean.BillingBeanI;
 import com.winnie.app.bean.TenantBeanI;
 import com.winnie.app.model.entity.Billing;
-import com.winnie.app.model.entity.House;
 
 
 import javax.ejb.EJB;
@@ -70,19 +69,14 @@ public class BillingAction extends BaseAction {
         try {
 
             try {
-                // Check if the "id" parameter is present
+
                 String idParameter = req.getParameter("id");
                 if (idParameter != null) {
-                    // Parse the "id" parameter to Long
                     Long houseId = Long.valueOf(idParameter);
-                    // Rest of your code...
                 } else {
-                    // Handle the case when "id" is not present in the request
-                    // For example, you might set a default value or log a message
                     System.err.println("Error: 'id' parameter is missing or null");
                 }
             } catch (NumberFormatException e) {
-                // Handle the NumberFormatException, e.g., log an error message
                 System.err.println("Error parsing 'id' parameter to Long: " + e.getMessage());
             }
 

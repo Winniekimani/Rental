@@ -2,12 +2,14 @@ package com.winnie.action;
 
 import com.winnie.app.bean.AuthBeanI;
 import com.winnie.app.bean.BillingBeanI;
+import com.winnie.app.bean.GlobalBean;
 import com.winnie.app.bean.TenantBeanI;
 import com.winnie.app.model.entity.Tenant;
 import com.winnie.app.model.entity.User;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.ejb.EJB;
+import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -24,6 +26,8 @@ import java.util.Date;
 
 public class LoginAction extends BaseAction {
 
+    @Inject
+    GlobalBean globalBean;
     @EJB
     AuthBeanI authBean;
     @EJB
@@ -67,8 +71,11 @@ public class LoginAction extends BaseAction {
                 HttpSession httpSession = req.getSession(true);
                 httpSession.setAttribute("loggedIn", new Date().getTime() + "");
                 httpSession.setAttribute("username", loginUser.getUsername());
+                httpSession.setAttribute("user",userDetails);
+
                 httpSession.setAttribute("activeMenu", 0);
 
+                globalBean.setUser(loginUser);
                 Tenant tenant = tenantBean.tenantByEmail(userDetails.getEmail());
                 if (tenant != null) {
                     httpSession.setAttribute("tenant", tenant);
