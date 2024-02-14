@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-config-map
+data:
+  MYSQL_HOST: mysql# The name of mysql service
+  MYSQL_DATABASE: Rentals   # The name of the database used by the demo app
+  MYSQL_USER: root     # A new created user for the demo app

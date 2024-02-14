@@ -13,7 +13,7 @@ services:
   Rental-apprental-management:
     depends_on:
       - rentalservice
-    image: rental-management:latest
+    image: weneey/rental-with-mysql:latest
     ports:
       - "8080:8080"
     environment:
