@@ -145,6 +145,7 @@
                     <user-name>${env.MYSQL_USER}</user-name>
                     <password>${env.MYSQL_PASSWORD}</password>
                 </security>
+                </datasource>
                 <drivers>
                     <driver name="mysql" module="com.mysql">
                         <driver-class>com.mysql.cj.jdbc.Driver</driver-class>

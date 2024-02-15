@@ -4,5 +4,5 @@ metadata:
   name: mysql-config-map
 data:
   MYSQL_HOST: mysql# The name of mysql service
-  MYSQL_DATABASE: Rentals   # The name of the database used by the demo app
-  MYSQL_USER: root     # A new created user for the demo app
+  MYSQL_DATABASE: Rentals   # The name of the database used  app
+  MYSQL_USER: root     #  user for  app
