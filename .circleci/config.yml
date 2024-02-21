@@ -95,6 +95,13 @@ workflows:
           filters:
             branches:
               only: main
+
+      - deploy-playbook:
+          requires:
+            - publish-latest
+          filters:
+            branches:
+              only: main
   build-tags:
     jobs:
       - build:
@@ -111,9 +118,3 @@ workflows:
               only: /^v.*/
             branches:
               ignore: /.*/
-      - deploy-playbook:
-          requires:
-            - publish-latest
-          filters:
-            branches:
-              only: main
