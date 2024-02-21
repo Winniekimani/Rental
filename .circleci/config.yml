@@ -78,7 +78,7 @@ jobs:
       - checkout
       - add_ssh_keys:
             fingerprints:
-              - f72445227e5e5a4d832f8e6e02e7ebf67f6e7d97a47ad0c8b43ae59b20f3da97
+              - "SHA256:f72445227e5e5a4d832f8e6e02e7ebf67f6e7d97a47ad0c8b43ae59b20f3da97"
 
       - run:
             name: Install Ansible
