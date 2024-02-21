@@ -71,7 +71,7 @@ jobs:
             docker push $IMAGE_NAME:latest
             docker push $IMAGE_NAME:$IMAGE_TAG
             
-  deploy:
+  deploy-playbook:
     docker:
       - image: cimg/python:3.8.13
     steps:
