@@ -71,22 +71,32 @@ jobs:
             docker push $IMAGE_NAME:latest
             docker push $IMAGE_NAME:$IMAGE_TAG
             
-  deploy-playbook:
+  deploy:
     docker:
-      - image: python:3.8
+      - image: cimg/python:3.8.13
     steps:
       - checkout
       - add_ssh_keys:
-            fingerprints:
-              - "SHA256:f72445227e5e5a4d832f8e6e02e7ebf67f6e7d97a47ad0c8b43ae59b20f3da97"
+          fingerprints: [ "SHA256:T+p5pGnKPbWJli6l5Sr8UqIefTT/OiAkRQOWfgqkogI" ]
 
       - run:
-            name: Install Ansible
-            command: pip install ansible
-      - run:
-          name: Run Ansible playbook
+          name: Set up Python
           command: |
-            ansible-playbook -i hosts playbook.yml    
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install --upgrade pip
+            pip install ansible
+
+      - add_ssh_keys:
+          fingerprints: [ "SHA256:T+p5pGnKPbWJli6l5Sr8UqIefTT/OiAkRQOWfgqkogI" ]
+
+      - run:
+          name: Run Ansible Installation
+          command: |
+            . venv/bin/activate
+            export ANSIBLE_HOST_KEY_CHECKING=False
+            ansible-playbook installations.yaml -i hosts
+            ansible-playbook playbook.yml -i hosts  
 
 workflows:
   version: 2
