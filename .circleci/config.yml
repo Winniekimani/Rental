@@ -86,7 +86,7 @@ jobs:
       - run:
           name: Run Ansible playbook
           command: |
-            ansible-playbook -i hosts  playbook.yml         
+            ansible-playbook -i hosts playbook.yml    
 
 workflows:
   version: 2
