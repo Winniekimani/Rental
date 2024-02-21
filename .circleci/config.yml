@@ -95,7 +95,6 @@ jobs:
           command: |
             . venv/bin/activate
             export ANSIBLE_HOST_KEY_CHECKING=False
-            ansible-playbook installations.yaml -i hosts
             ansible-playbook playbook.yml -i hosts  
 
 workflows:
