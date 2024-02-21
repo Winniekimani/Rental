@@ -127,6 +127,7 @@
       <artifactId>json</artifactId>
       <version>20231013</version>
     </dependency>
+
   </dependencies>
 
 
@@ -148,6 +149,9 @@
         <artifactId>maven-war-plugin</artifactId>
         <version>3.4.0</version>
       </plugin>
+
+      <!-- Unzip New Relic Java agent into target/ -->
+
     </plugins>
   </build>
 </project>

@@ -13,7 +13,7 @@ public class SeleniumTest {
     public static void main(String[] args) {
 
         WebDriver driver = new ChromeDriver();
-        driver.get("http://localhost:8080/Rental");
+        driver.get("http://34.16.4.251:8080/Rental");
 
         WebElement username = driver.findElement(By.xpath("//input[@placeholder='username']"));
         WebElement password = driver.findElement( By.xpath("//input[@placeholder='Password']"));
@@ -40,29 +40,25 @@ public class SeleniumTest {
         WebElement addHouseButton= driver.findElement(By.xpath("//*[@id=\"panelBodyItemlist\"]/div/div/div/form/input[7]"));
 
         addHouseNo.sendKeys("0090A");
-        addHouseName.sendKeys("Winnies apartment");
+        addHouseName.sendKeys("vinny's apartment");
         addHouseNStatus.sendKeys("available");
         addHouseDescrption.sendKeys("located few kilometres from the road,with water backup");
         addHouseType.sendKeys("AIRBNB");
         addHouseLocation.sendKeys("Limuru");
         addHousePrice.sendKeys("200000");
 
-      addHouseButton.click();
+        addHouseButton.click();
 
 
 
-        String addedHouseName = driver.findElement(By.xpath("//tbody/tr[7]/td[2]")).getText();/*
+        String addedHouseName = driver.findElement(By.xpath("//tbody/tr[7]/td[2]")).getText();
 
         String addedHouseLocation = driver.findElement(By.xpath("(//td[contains(text(),'Limuru')])[1]]")).getText();
-        String addedHousePrice = driver.findElement(By.xpath("///tbody/tr[7]/td[2]")).getText();*/
-
+        String addedHousePrice = driver.findElement(By.xpath("///tbody/tr[7]/td[2]")).getText();
        // Asserting details of the added house
         Assert.assertEquals("Winnie's apartment",addedHouseName );/*
-        Assert.assertEquals(addedHouseLocation, "Limuru",addedHouseLocation );
+        Assert.assertEquals(addedHouseLocation, "Limuru",addedHouseLocation );*//*
         Assert.assertEquals(String.valueOf(addedHousePrice), "20000",addedHousePrice  );*/
-
-
-
 
 
 //        driver.quit();

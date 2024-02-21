@@ -9,6 +9,8 @@ services:
       MYSQL_DATABASE: Rentals
     expose:
       - "3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
 
   Rental-apprental-management:
     depends_on:
@@ -17,8 +19,11 @@ services:
     ports:
       - "8080:8080"
     environment:
-      MYSQL_HOST: mysql
-      MYSQL_PORT: 3306
+      MYSQL_HOST: rentalservice
       MYSQL_USER: root
       MYSQL_PASSWORD: root
       MYSQL_DATABASE: Rentals
+      MYSQL_CONNECTION_URL: jdbc:mysql://rentalservice:3306/Rentals
+
+volumes:
+  mysql-data:

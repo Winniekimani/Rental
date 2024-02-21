@@ -1,0 +1,23 @@
+- name: Run Docker Compose
+  hosts: all
+  become: true
+  tasks:
+    - name: Running Docker without root and add it to user groups
+      shell: |
+        usermod -aG docker winnie
+      become: true
+
+    - name: Recursively change ownership
+      file:
+        path: /home/winnie/Remote/
+        state: directory
+        recurse: yes
+        owner: winnie
+
+    - name: Copy Docker Compose file
+      copy:
+        src: ./docker-compose.yml
+        dest: /home/winnie/Remote/docker-compose.yml
+
+    - name: Start Docker Compose
+      shell: docker compose -f /home/winnie/Remote/docker-compose.yml up -d

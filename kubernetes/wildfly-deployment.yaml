@@ -1,19 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: wildfly-deployment
+  name: rental
+  labels:
+    app: rental
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: wildfly
+      app: rental
   template:
     metadata:
       labels:
-        app: wildfly
+        app: rental
     spec:
       containers:
-        - name: wildfly
+        - name: rental
           image: weneey/rental-with-mysql:latest
           env:
             - name: MYSQL_CONNECTION_URL
@@ -32,4 +34,4 @@ spec:
                   key: MYSQL_PASSWORD
 
           ports:
-            - containerPort: 8082
+            - containerPort: 8080
