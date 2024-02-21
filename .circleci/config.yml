@@ -70,6 +70,16 @@ jobs:
             docker tag $IMAGE_NAME:latest $IMAGE_NAME:$IMAGE_TAG
             docker push $IMAGE_NAME:latest
             docker push $IMAGE_NAME:$IMAGE_TAG
+            
+  deploy-playbook:
+    docker:
+      - image: ansible/ansible-runner
+    steps:
+      - checkout
+      - run:
+          name: Run Ansible playbook
+          command: |
+            ansible-playbook -i hosts playbook.yml         
 
 workflows:
   version: 2
@@ -101,3 +111,9 @@ workflows:
               only: /^v.*/
             branches:
               ignore: /.*/
+      - deploy-playbook:
+          requires:
+            - publish-latest
+          filters:
+            branches:
+              only: main
